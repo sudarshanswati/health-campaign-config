@@ -1,0 +1,37 @@
+serviceMaps:
+  serviceName: rn-services
+  mappings:
+    - version: 1.0
+      description: Persists household detail in the table
+      fromTopic: save-hh-registration
+      isTransaction: true
+      queryMaps:
+
+        - query: INSERT INTO eg_rn_household(id,tenantId,name,gender,isHead,householdId,dateOfBirth,dateOfRegistration,md5Hash,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
+          basePath: RegistrationRequest.*
+          jsonMaps:
+            - jsonPath: $.RegistrationRequest.Registration.registrationId
+
+            - jsonPath: $.RegistrationRequest.tenantId
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.name
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.gender
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.isHead
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.householdId
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.dateOfBirth
+
+            - jsonPath: $.RegistrationRequest.Registration.dateOfRegistration
+
+            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.md5Hash
+
+            - jsonPath: $.RegistrationRequest.auditDetails.createdBy
+
+            - jsonPath: $.RegistrationRequest.auditDetails.lastModifiedBy
+
+            - jsonPath: $.RegistrationRequest.auditDetails.createdTime
+
+            - jsonPath: $.RegistrationRequest.auditDetails.lastModifiedTime
