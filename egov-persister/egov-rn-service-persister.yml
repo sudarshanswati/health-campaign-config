@@ -10,23 +10,23 @@ serviceMaps:
         - query: INSERT INTO eg_rn_household(id,tenantId,name,gender,isHead,householdId,dateOfBirth,dateOfRegistration,md5Hash,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: RegistrationRequest.*
           jsonMaps:
-            - jsonPath: $.RegistrationRequest.Registration.registrationId
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.registrationId
 
             - jsonPath: $.RegistrationRequest.tenantId
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.name
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.name
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.gender
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.gender
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.isHead
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.isHead
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.householdId
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.householdId
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.dateOfBirth
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.dateOfBirth
 
-            - jsonPath: $.RegistrationRequest.Registration.dateOfRegistration
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.dateOfRegistration
 
-            - jsonPath: $.RegistrationRequest.Registration.HouseholdRegistration.md5Hash
+            - jsonPath: $.RegistrationRequest.HouseholdRegistration.md5Hash
 
             - jsonPath: $.RegistrationRequest.auditDetails.createdBy
 
