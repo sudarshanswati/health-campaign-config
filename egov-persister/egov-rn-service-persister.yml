@@ -8,30 +8,30 @@ serviceMaps:
       queryMaps:
 
         - query: INSERT INTO eg_rn_household(id,tenantId,name,gender,isHead,householdId,dateOfBirth,dateOfRegistration,md5Hash,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
-          basePath: RegistrationRequest.*
+          basePath: Registration
           jsonMaps:
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.registrationId
+            - jsonPath: $.Registration.registrationId
 
-            - jsonPath: $.RegistrationRequest.tenantId
+            - jsonPath: $.Registration.tenantId
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.name
+            - jsonPath: $.Registration.name
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.gender
+            - jsonPath: $.Registration.gender
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.isHead
+            - jsonPath: $.Registration.isHead
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.householdId
+            - jsonPath: $.Registration.householdId
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.dateOfBirth
+            - jsonPath: $.Registration.dateOfBirth
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.dateOfRegistration
+            - jsonPath: $.Registration.dateOfRegistration
 
-            - jsonPath: $.RegistrationRequest.HouseholdRegistration.md5Hash
+            - jsonPath: $.Registration.md5Hash
 
-            - jsonPath: $.RegistrationRequest.auditDetails.createdBy
+            - jsonPath: $.Registration.auditDetails.createdBy
 
-            - jsonPath: $.RegistrationRequest.auditDetails.lastModifiedBy
+            - jsonPath: $.Registration.auditDetails.lastModifiedBy
 
-            - jsonPath: $.RegistrationRequest.auditDetails.createdTime
+            - jsonPath: $.Registration.auditDetails.createdTime
 
-            - jsonPath: $.RegistrationRequest.auditDetails.lastModifiedTime
+            - jsonPath: $.Registration.auditDetails.lastModifiedTime
