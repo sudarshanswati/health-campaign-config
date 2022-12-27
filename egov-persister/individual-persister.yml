@@ -1,0 +1,79 @@
+serviceMaps:
+  serviceName: individual
+  mappings:
+    - version: 1.0
+      description: Persists Address
+      fromTopic: save-individual-topic
+      isTransaction: true
+      queryMaps:
+        - query: INSERT INTO address(id, tenantId, doorNo, latitude, longitude, locationAccuracy, type, addressLine1, addressLine2, landmark, city, pincode, buildingName, street, localityCode, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.address.*.id
+            - jsonPath: $.*.address.*.tenantId
+            - jsonPath: $.*.address.*.doorNo
+            - jsonPath: $.*.address.*.latitude
+            - jsonPath: $.*.address.*.longitude
+            - jsonPath: $.*.address.*.locationAccuracy
+            - jsonPath: $.*.address.*.type
+            - jsonPath: $.*.address.*.addressLine1
+            - jsonPath: $.*.address.*.addressLine2
+            - jsonPath: $.*.address.*.landmark
+            - jsonPath: $.*.address.*.city
+            - jsonPath: $.*.address.*.pincode
+            - jsonPath: $.*.address.*.buildingName
+            - jsonPath: $.*.address.*.street
+            - jsonPath: $.*.address.*.localityCode
+        - query: INSERT INTO individual(id, userId, clientReferenceId, tenantId, givenName, familyName, otherNames, dateOfBirth, gender, bloodGroup, latitude, longitude, mobileNumber, altContactNumber, email, fatherName, husbandName, photo, addressIds, additionalFields, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.id
+            - jsonPath: $.*.userId
+            - jsonPath: $.*.clientReferenceId
+            - jsonPath: $.*.tenantId
+            - jsonPath: $.*.givenName
+            - jsonPath: $.*.familyName
+            - jsonPath: $.*.otherNames
+            - jsonPath: $.*.dateOfBirth
+            - jsonPath: $.*.gender
+            - jsonPath: $.*.bloodGroup
+            - jsonPath: $.*.latitude
+            - jsonPath: $.*.longitude
+            - jsonPath: $.*.mobileNumber
+            - jsonPath: $.*.altContactNumber
+            - jsonPath: $.*.email
+            - jsonPath: $.*.fatherName
+            - jsonPath: $.*.husbandName
+            - jsonPath: $.*.photo
+            - jsonPath: $.*.addressIds
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+        - query: INSERT INTO individual_address(id, identifierType, identifierId, individualId, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.id
+            - jsonPath: $.*.address.*.id
+            - jsonPath: $.*.address.*.type
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+        - query: INSERT INTO individual_identifier(id, identifierType, identifierId, individualId, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.identifier.*.id
+            - jsonPath: $.*.identifier.*.identifierType
+            - jsonPath: $.*.identifier.*.identifierId
+            - jsonPath: $.*.id
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
