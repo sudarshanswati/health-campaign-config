@@ -31,9 +31,9 @@ serviceMaps:
             - jsonPath: $.*.userId
             - jsonPath: $.*.clientReferenceId
             - jsonPath: $.*.tenantId
-            - jsonPath: $.*.givenName
-            - jsonPath: $.*.familyName
-            - jsonPath: $.*.otherNames
+            - jsonPath: $.*.name.givenName
+            - jsonPath: $.*.name.familyName
+            - jsonPath: $.*.name.otherNames
             - jsonPath: $.*.dateOfBirth
             - jsonPath: $.*.gender
             - jsonPath: $.*.bloodGroup
