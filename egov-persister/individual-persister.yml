@@ -6,8 +6,8 @@ serviceMaps:
       fromTopic: save-individual-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO address(id, tenantId, doorNo, latitude, longitude, locationAccuracy, type, addressLine1, addressLine2, landmark, city, pincode, buildingName, street, localityCode, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-          basePath: $.*
+        - query: INSERT INTO address(id, tenantId, doorNo, latitude, longitude, locationAccuracy, type, addressLine1, addressLine2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*.address.*
           jsonMaps:
             - jsonPath: $.*.address.*.id
             - jsonPath: $.*.address.*.tenantId
@@ -23,8 +23,8 @@ serviceMaps:
             - jsonPath: $.*.address.*.pincode
             - jsonPath: $.*.address.*.buildingName
             - jsonPath: $.*.address.*.street
-            - jsonPath: $.*.address.*.localityCode
-        - query: INSERT INTO individual(id, userId, clientReferenceId, tenantId, givenName, familyName, otherNames, dateOfBirth, gender, bloodGroup, latitude, longitude, mobileNumber, altContactNumber, email, fatherName, husbandName, photo, addressIds, additionalFields, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            - jsonPath: $.*.address.*.locality.code
+        - query: INSERT INTO individual(id, userId, clientReferenceId, tenantId, givenName, familyName, otherNames, dateOfBirth, gender, bloodGroup, mobileNumber, altContactNumber, email, fatherName, husbandName, photo, addressIds, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -37,8 +37,6 @@ serviceMaps:
             - jsonPath: $.*.dateOfBirth
             - jsonPath: $.*.gender
             - jsonPath: $.*.bloodGroup
-            - jsonPath: $.*.latitude
-            - jsonPath: $.*.longitude
             - jsonPath: $.*.mobileNumber
             - jsonPath: $.*.altContactNumber
             - jsonPath: $.*.email
@@ -55,25 +53,28 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-        - query: INSERT INTO individual_address(id, identifierType, identifierId, individualId, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-          basePath: $.*
+        - query: INSERT INTO individual_address(individualId, addressId, type, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*.address.*
           jsonMaps:
-            - jsonPath: $.*.id
+            - jsonPath: $.*.address.*.individualId
             - jsonPath: $.*.address.*.id
             - jsonPath: $.*.address.*.type
-            - jsonPath: $.*.auditDetails.lastModifiedBy
-            - jsonPath: $.*.auditDetails.createdTime
-            - jsonPath: $.*.auditDetails.lastModifiedTime
-            - jsonPath: $.*.rowVersion
-            - jsonPath: $.*.isDeleted
-        - query: INSERT INTO individual_identifier(id, identifierType, identifierId, individualId, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-          basePath: $.*
+            - jsonPath: $.*.address.*.auditDetails.createdBy
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.address.*.auditDetails.createdTime
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.address.*.rowVersion
+            - jsonPath: $.*.address.*.isDeleted
+        - query: INSERT INTO individual_identifier(id, identifierType, identifierId, individualId, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*.identifiers.*
           jsonMaps:
-            - jsonPath: $.*.identifier.*.id
-            - jsonPath: $.*.identifier.*.identifierType
-            - jsonPath: $.*.identifier.*.identifierId
-            - jsonPath: $.*.id
-            - jsonPath: $.*.auditDetails.lastModifiedBy
-            - jsonPath: $.*.auditDetails.lastModifiedTime
-            - jsonPath: $.*.rowVersion
-            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.identifiers.*.id
+            - jsonPath: $.*.identifiers.*.identifierType
+            - jsonPath: $.*.identifiers.*.identifierId
+            - jsonPath: $.*.identifiers.*.individualId
+            - jsonPath: $.*.identifiers.*.auditDetails.createdBy
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.identifiers.*.auditDetails.createdTime
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.identifiers.*.rowVersion
+            - jsonPath: $.*.identifiers.*.isDeleted
