@@ -5,8 +5,8 @@ ServiceMaps:
     - topic: save-project-staff-topic
       configKey: INDEX
       indexes:
-        - name: projec-staff-index-v1
-          type: projectStaff
+        - name: projectStaffIndex-v1
+          type: project-staff
           id: $.id
           isBulk: true
           jsonPath: $.*
@@ -15,8 +15,8 @@ ServiceMaps:
     - topic: update-project-staff-topic
       configKey: INDEX
       indexes:
-        - name: projec-staff-index-v1
-          type: projectStaff
+        - name: projectStaffUpdateIndex-v1
+          type: project-staff-update
           id: $.id
           isBulk: true
           jsonPath: $.*
