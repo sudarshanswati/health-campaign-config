@@ -24,7 +24,7 @@ serviceMaps:
             - jsonPath: $.*.address.*.buildingName
             - jsonPath: $.*.address.*.street
             - jsonPath: $.*.address.*.locality.code
-        - query: INSERT INTO individual(id, userId, clientReferenceId, tenantId, givenName, familyName, otherNames, dateOfBirth, gender, bloodGroup, mobileNumber, altContactNumber, email, fatherName, husbandName, photo, addressIds, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO individual(id, userId, clientReferenceId, tenantId, givenName, familyName, otherNames, dateOfBirth, gender, bloodGroup, mobileNumber, altContactNumber, email, fatherName, husbandName, photo, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -43,7 +43,6 @@ serviceMaps:
             - jsonPath: $.*.fatherName
             - jsonPath: $.*.husbandName
             - jsonPath: $.*.photo
-            - jsonPath: $.*.addressIds
             - jsonPath: $.*.additionalFields
               type: JSON
               dbType: JSONB
