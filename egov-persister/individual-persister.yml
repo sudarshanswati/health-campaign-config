@@ -35,6 +35,7 @@ serviceMaps:
             - jsonPath: $.*.name.familyName
             - jsonPath: $.*.name.otherNames
             - jsonPath: $.*.dateOfBirth
+              type: DATE
             - jsonPath: $.*.gender
             - jsonPath: $.*.bloodGroup
             - jsonPath: $.*.mobileNumber
