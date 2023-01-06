@@ -111,3 +111,38 @@ serviceMaps:
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
             - jsonPath: $.*.id
+    - version: 1.0
+      description: Deletes Individual and related Entities
+      fromTopic: delete-individual-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE individual SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.id
+        - query: UPDATE individual_address SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE addressId=?;
+          basePath: $.*.address.*
+          jsonMaps:
+            - jsonPath: $.*.address.*.auditDetails.createdBy
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.address.*.auditDetails.createdTime
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.address.*.rowVersion
+            - jsonPath: $.*.address.*.isDeleted
+            - jsonPath: $.*.address.*.id
+        - query: UPDATE individual_identifier SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+          basePath: $.*.identifiers.*
+          jsonMaps:
+            - jsonPath: $.*.identifiers.*.auditDetails.createdBy
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.identifiers.*.auditDetails.createdTime
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.identifiers.*.rowVersion
+            - jsonPath: $.*.identifiers.*.isDeleted
+            - jsonPath: $.*.identifiers.*.id
