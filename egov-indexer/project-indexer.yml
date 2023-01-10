@@ -5,7 +5,7 @@ ServiceMaps:
     - topic: save-project-staff-topic
       configKey: INDEX
       indexes:
-        - name: projec-staff-index-v1
+        - name: project-staff-index-v1
           type: projectStaff
           id: $.id
           isBulk: true
@@ -15,7 +15,7 @@ ServiceMaps:
     - topic: update-project-staff-topic
       configKey: INDEX
       indexes:
-        - name: projec-staff-index-v1
+        - name: project-staff-index-v1
           type: projectStaff
           id: $.id
           isBulk: true
@@ -25,7 +25,7 @@ ServiceMaps:
     - topic: save-project-beneficiary-topic
       configKey: INDEX
       indexes:
-        - name: projec-beneficiary-index-v1
+        - name: project-beneficiary-index-v1
           type: projectBeneficiary
           id: $.id
           isBulk: true
@@ -35,7 +35,7 @@ ServiceMaps:
     - topic: update-project-beneficiary-topic
       configKey: INDEX
       indexes:
-        - name: projec-beneficiary-index-v1
+        - name: project-beneficiary-index-v1
           type: projectBeneficiary
           id: $.id
           isBulk: true
