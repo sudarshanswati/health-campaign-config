@@ -10046,6 +10046,45 @@
           ]
         }
       ]
+    },
+    {
+      "name": "DSS_NH_BOUNDARY_DASHBOARD",
+      "id": "nh-boundary",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DCC_NH_BOUNDARY",
+          "vizType": []
+        }
+      ]
+    },
+    {
+      "name": "DSS_PH_BOUNDARY_DASHBOARD",
+      "id": "ph-boundary",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DCC_PH_BOUNDARY",
+          "vizType": []
+        }
+      ]
+    },
+    {
+      "name": "DSS_DH_BOUNDARY_DASHBOARD",
+      "id": "dh-boundary",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DCC_DH_BOUNDARY",
+          "vizType": []
+        }
+      ]
     }
 
   ]
