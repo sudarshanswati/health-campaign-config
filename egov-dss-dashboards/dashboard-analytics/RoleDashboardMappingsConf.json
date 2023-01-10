@@ -155,15 +155,15 @@
       "dashboards": [
         {
           "name": "National Health Dashboard",
-          "id": "nh-dashboard"
+          "id": "national-health-dashboard"
         },
         {
           "name": "Provincial Health Dashboard",
-          "id": "ph-dashboard"
+          "id": "provincial-health-dashboard"
         },
         {
           "name": "District Health Dashboard",
-          "id": "dh-dashboard"
+          "id": "district-health-dashboard"
         }
       ]
     },
@@ -176,11 +176,11 @@
       "dashboards": [
         {
           "name": "Provincial Health Dashboard",
-          "id": "ph-dashboard"
+          "id": "provincial-health-dashboard"
         },
         {
           "name": "District Health Dashboard",
-          "id": "dh-dashboard"
+          "id": "district-health-dashboard"
         }
       ]
     },
@@ -193,7 +193,7 @@
       "dashboards": [
         {
           "name": "District Health Dashboard",
-          "id": "dh-dashboard"
+          "id": "district-health-dashboard"
         }
       ]
     }
