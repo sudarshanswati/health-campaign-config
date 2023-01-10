@@ -10048,40 +10048,40 @@
       ]
     },
     {
-      "name": "DSS_NH_BOUNDARY_DASHBOARD",
-      "id": "nh-boundary",
+      "name": "DSS_NATIONAL_HEALTH_DASHBOARD",
+      "id": "national-health-dashboard",
       "isActive": "",
       "style": "linear",
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_NH_BOUNDARY",
+          "name": "DSS_NATIONAL_HEALTH",
           "vizType": []
         }
       ]
     },
     {
-      "name": "DSS_PH_BOUNDARY_DASHBOARD",
-      "id": "ph-boundary",
+      "name": "DSS_PROVINCIAL_HEALTH_DASHBOARD",
+      "id": "provincial-health-dashboard",
       "isActive": "",
       "style": "linear",
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_PH_BOUNDARY",
+          "name": "DCC_PROVINCIAL_HEALTH",
           "vizType": []
         }
       ]
     },
     {
-      "name": "DSS_DH_BOUNDARY_DASHBOARD",
-      "id": "dh-boundary",
+      "name": "DSS_DISTRICT_HEALTH_DASHBOARD",
+      "id": "district-health-dashboard",
       "isActive": "",
       "style": "linear",
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_DH_BOUNDARY",
+          "name": "DCC_DISTRICT_HEALTH",
           "vizType": []
         }
       ]
