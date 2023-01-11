@@ -11,3 +11,12 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.*.auditDetails.createdTime
+    - topic: update-individual-topic
+      configKey: INDEX
+      indexes:
+        - name: individualUpdateIndex-v1
+          type: individual-update
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime

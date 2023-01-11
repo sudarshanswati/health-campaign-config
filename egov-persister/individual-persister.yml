@@ -2,7 +2,7 @@ serviceMaps:
   serviceName: individual
   mappings:
     - version: 1.0
-      description: Persists Address
+      description: Persists Individual
       fromTopic: save-individual-topic
       isTransaction: true
       queryMaps:
@@ -78,3 +78,71 @@ serviceMaps:
             - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.identifiers.*.rowVersion
             - jsonPath: $.*.identifiers.*.isDeleted
+    - version: 1.0
+      description: Updates Individual
+      fromTopic: update-individual-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE individual SET userId=?, tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, photo=?, additionalDetails=?, createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.userId
+            - jsonPath: $.*.tenantId
+            - jsonPath: $.*.name.givenName
+            - jsonPath: $.*.name.familyName
+            - jsonPath: $.*.name.otherNames
+            - jsonPath: $.*.dateOfBirth
+              type: DATE
+            - jsonPath: $.*.gender
+            - jsonPath: $.*.bloodGroup
+            - jsonPath: $.*.mobileNumber
+            - jsonPath: $.*.altContactNumber
+            - jsonPath: $.*.email
+            - jsonPath: $.*.fatherName
+            - jsonPath: $.*.husbandName
+            - jsonPath: $.*.photo
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.id
+    - version: 1.0
+      description: Deletes Individual and related Entities
+      fromTopic: delete-individual-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE individual SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.id
+        - query: UPDATE individual_address SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE addressId=?;
+          basePath: $.*.address.*
+          jsonMaps:
+            - jsonPath: $.*.address.*.auditDetails.createdBy
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.address.*.auditDetails.createdTime
+            - jsonPath: $.*.address.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.address.*.rowVersion
+            - jsonPath: $.*.address.*.isDeleted
+            - jsonPath: $.*.address.*.id
+        - query: UPDATE individual_identifier SET createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+          basePath: $.*.identifiers.*
+          jsonMaps:
+            - jsonPath: $.*.identifiers.*.auditDetails.createdBy
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.identifiers.*.auditDetails.createdTime
+            - jsonPath: $.*.identifiers.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.identifiers.*.rowVersion
+            - jsonPath: $.*.identifiers.*.isDeleted
+            - jsonPath: $.*.identifiers.*.id
