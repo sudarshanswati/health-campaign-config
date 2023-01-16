@@ -2,7 +2,7 @@
   "_comment": "Master dashboard which holds all the possible visualisation. Note new dashboards/visualisations can be added",
   "dashboards": [
     {
-      "name": "DSS_NATIONAL_HEALTH_DASHBOARD",
+      "name": "DSS_HEALTH_NATIONAL_DASHBOARD_LLIN_HEADING",
       "id": "national-health-dashboard",
       "isActive": "",
       "style": "linear",
@@ -13,15 +13,15 @@
           "vizArray": [
             {
               "id": 101,
-              "name": "DSS_HOUSEHOLDS",
-              "label": "DSS_HOUSEHOLDS",
-              "vizType": "metric-collection",
+              "name": "DSS_HEALTH_HOUSEHOLDS",
+              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "vizType": "collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "todaysVisits",
-                  "name": "DSS_HOUSEHOLDS_VISITED_TODAY",
+                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -29,7 +29,7 @@
                 },
                 {
                   "id": "totalVisits",
-                  "name": "DSS_TOTAL_HOUSEHOLD_VISITS",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
