@@ -48,15 +48,7 @@
     "aggregationPaths": [
       "Total Population Covered"
     ],
-    "insight": {
-      "chartResponseMap" : "totalPopulationCovered",
-      "action" : "differenceOfNumbers",
-      "upwardIndicator" : "positive",
-      "downwardIndicator" : "negative",
-      "textMessage" : "$indicator$value% than last $insightInterval",
-      "colorCode" : "#228B22",
-      "insightInterval" : "day"
-    },
+    "insight": { },
     "_comment": " "
   }
 }
