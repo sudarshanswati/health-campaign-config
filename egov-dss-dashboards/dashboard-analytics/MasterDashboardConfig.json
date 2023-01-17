@@ -15,7 +15,7 @@
               "id": 102,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
-              "vizType": "metric-collection",
+              "vizType": "collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
