@@ -12,6 +12,32 @@
           "name": "DSS_NATIONAL_HEALTH",
           "vizArray": [
             {
+              "id": 101,
+              "name": "DSS_HEALTH_HOUSEHOLDS",
+              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "vizType": "collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "todaysVisits",
+                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalVisits",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
               "id": 103,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
@@ -50,7 +76,7 @@
         {
           "row": 1,
           "name": "DCC_PROVINCIAL_HEALTH",
-          "vizArray": []
+          "vizType": []
         }
       ]
     },
@@ -63,7 +89,7 @@
         {
           "row": 1,
           "name": "DCC_DISTRICT_HEALTH",
-          "vizArray": []
+          "vizType": []
         }
       ]
     }
