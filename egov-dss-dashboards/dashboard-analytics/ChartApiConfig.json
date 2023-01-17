@@ -1,5 +1,5 @@
 {
-  "todaysVisits": {
+"todaysVisits": {
     "chartName": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
     "queries": [
       {
@@ -19,13 +19,13 @@
       "Todays visits"
     ],
     "insight": {
-      "chartResponseMap" : "todaysVisits",
-      "action" : "differenceOfNumbers",
-      "upwardIndicator" : "positive",
-      "downwardIndicator" : "negative",
-      "textMessage" : "$indicator$value% than last $insightInterval",
-      "colorCode" : "#228B22",
-      "insightInterval" : "day"
+      "chartResponseMap": "todaysVisits",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
     },
     "_comment": " "
   },
@@ -47,6 +47,59 @@
     "action": "",
     "aggregationPaths": [
       "Total visits"
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "todayDistributions": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TODAY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Today Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"gte\": \"now/d\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Today Distributions"
+    ],
+    "insight": {
+      "chartResponseMap": "todayDistributions",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
+    },
+    "_comment": " "
+  },
+  "totalDistributions": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Distributions"
     ],
     "insight": {
     },

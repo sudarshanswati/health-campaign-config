@@ -36,6 +36,32 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 103,
+              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "vizType": "collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "todayDistributions",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalDistributions",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         }
