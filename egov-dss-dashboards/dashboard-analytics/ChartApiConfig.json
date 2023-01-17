@@ -1,5 +1,5 @@
 {
-"todaysVisits": {
+  "todaysVisits": {
     "chartName": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
     "queries": [
       {
@@ -50,6 +50,58 @@
     ],
     "insight": {
     },
+    "_comment": " "
+  },
+  "populationCoveredToday": {
+    "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TODAY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Individual\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"INDIVIDUAL\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"gte\": \"now/d\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Population Covered Today"
+    ],
+    "insight": {
+      "chartResponseMap": "populationCoveredToday",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
+    },
+    "_comment": " "
+  },
+  "totalPopulationCovered": {
+    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Individual\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"INDIVIDUAL\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Total Population Covered\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Population Covered"
+    ],
+    "insight": {},
     "_comment": " "
   },
   "todayDistributions": {

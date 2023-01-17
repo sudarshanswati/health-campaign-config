@@ -38,6 +38,32 @@
               ]
             },
             {
+              "id": 102,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "collection",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "populationCoveredToday",
+                  "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalPopulationCovered",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
               "id": 103,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
