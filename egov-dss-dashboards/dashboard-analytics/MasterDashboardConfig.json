@@ -12,7 +12,7 @@
           "name": "DSS_NATIONAL_HEALTH",
           "vizArray": [
             {
-              "id": 101,
+              "id": 103,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "vizType": "collection",
