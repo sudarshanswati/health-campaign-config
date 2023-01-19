@@ -157,15 +157,15 @@
     },
     "_comment": " "
   },
-  "provincialPopulationCovered": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_POPULATION_COVERED",
+  "provincialOrDistrictPopulationCovered": {
+    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERED",
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"province\": \"Tete\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"gte\": \"now/d\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Provincial Population Covered for Date range\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered for Date range\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -174,50 +174,42 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Provincial Population Covered for Date range"
-    ],
-    "insight": {
-      "chartResponseMap": "provincialPopulationCovered",
-      "action": "differenceOfNumbers",
-      "upwardIndicator": "positive",
-      "downwardIndicator": "negative",
-      "textMessage": "$indicator$value% than last $insightInterval",
-      "colorCode": "#228B22",
-      "insightInterval": "day"
-    },
-    "_comment": " "
-  },
-  "provincialTotalPopulationCovered": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_TOTAL_POPULATION_COVERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "",
-        "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"province\": \"Tete\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Total Provincial Population Covered\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Total Provincial Population Covered"
+      "Population Covered for Date range"
     ],
     "insight": { },
     "_comment": " "
   },
-  "provincialPopulationTargeted": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_POPULATION_TARGETED",
+  "provincialOrDistrictTotalPopulationCovered": {
+    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_TOTAL_POPULATION_COVERED",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Total Population Covered\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Population Covered"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "provincialOrDistrictPopulationTargeted": {
+    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_TARGETED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Province Filter\":{\n            \"bool\": {\n              \n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duartion in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 1.8\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 1.8\"\n          }\n        }\n      }\n      }\n    }\n  }"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Province Filter\":{\n            \"bool\": {\n              \n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duartion in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 1.8 * 365\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 1.8\"\n          }\n        }\n      }\n      }\n    }\n  }"
       }
     ],
     "chartType": "metric",
@@ -226,25 +218,26 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Overall Population Target"
+      "Target Population per Day"
     ],
+    "postAggregationTheory" : "repsonseToDifferenceOfDates",
     "insight": { },
     "_comment": " "
   },
-  "provincialPopulationCoverageAchieved": {
-    "chartName": "`DSS_HEALTH_PROVINCIAL_POPULATION_COVERAGE_ACHIEVED`",
+  "provincialOrDistrictPopulationCoverageAchieved": {
+    "chartName": "`DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERAGE_ACHIEVED`",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"province\": \"Tete\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Provincial Population Covered for Date range\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered till Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "micro-plan-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Province Filter\":{\n            \"bool\": {\n              \n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duration in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 1.8\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 1.8\"\n          }\n        }\n      }\n      }\n    }\n  }"
       }
@@ -255,11 +248,11 @@
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": [
-      "Provincial Population Covered for Date range",
+      "Population Covered till Today",
       "Overall Population Target"
     ],
     "insight": {
-      "chartResponseMap": "provincialPopulationCoverageAchieved",
+      "chartResponseMap": "provincialOrDistrictPopulationCoverageAchieved",
       "action": "differenceOfNumbers",
       "upwardIndicator": "positive",
       "downwardIndicator": "negative",
