@@ -80,8 +80,24 @@
                   "headers": []
                 },
                 {
-                  "id": "totalDistributions",
+                  "id": "totalDistributionsByRange",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsTarget",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsDistributionCoverage",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
