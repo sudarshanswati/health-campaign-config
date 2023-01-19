@@ -134,7 +134,37 @@
     },
     "_comment": " "
   },
-  "totalDistributionsByRange": {
+  "distributionsByRange": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TODAY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Distributions By Range\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"quantity\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Distributions By Range"
+    ],
+    "insight": {
+      "chartResponseMap": "distributionsByRange",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
+    },
+    "_comment": " "
+  },
+  "totalDistributions": {
     "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
     "queries": [
       {
@@ -142,7 +172,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"gte\" : \"now/M\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -165,16 +195,17 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filter\":{\n            \"bool\":{\n              \"must\": [\n                  {\n                    \"term\": {\n                        \"province\": \"Tete\"\n                    }\n                  }\n                ]\n            }\n          },\n          \"aggs\":{\n            \"target\": {\n              \"sum\":{\n                  \"field\": \"targetPerDay\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
+        "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filters\":{\n            \"filters\": {\n              \"nets\":{\n                \"bool\":{\n                  \"must\": [\n                      {\n                        \"term\": {\n                            \"productVariant\": \"LLIN\"\n                        }\n                      },\n                      {\n                        \"term\": {\n                            \"targetType\": \"HOUSEHOLD\"\n                        }\n                      }\n                    ]\n                }\n              }\n              \n            }\n            \n          },\n          \"aggs\":{\n            \"Target\": {\n              \"sum\":{\n                  \"field\": \"targetPerDay\"\n              }\n            },\n            \"Target by Range\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Target\"\n                },\n                \"script\": \"(params.target) * 365\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
       }
     ],
     "chartType": "metric",
+    "postAggregationTheory" : "repsonseToDifferenceOfDates",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Bednets Target"
+      "Target by Range"
     ],
     "insight": {
     },
@@ -195,7 +226,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"gte\" : \"now/M\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",

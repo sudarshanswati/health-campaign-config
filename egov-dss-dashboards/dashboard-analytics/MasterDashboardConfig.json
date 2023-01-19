@@ -80,7 +80,47 @@
                   "headers": []
                 },
                 {
-                  "id": "totalDistributionsByRange",
+                  "id": "totalDistributions",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DSS_PROVINCIAL_HEALTH_DASHBOARD",
+      "id": "provincial-health-dashboard",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DCC_PROVINCIAL_HEALTH",
+          "vizArray": [
+            {
+              "id": 203,
+              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "vizType": "collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "distributionsByRange",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalDistributions",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
                   "code": "",
                   "chartType": "metric",
@@ -106,19 +146,26 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "DSS_PROVINCIAL_HEALTH_DASHBOARD",
-      "id": "provincial-health-dashboard",
-      "isActive": "",
-      "style": "linear",
-      "visualizations": [
+        },
         {
-          "row": 1,
-          "name": "DCC_PROVINCIAL_HEALTH",
-          "vizType": []
+          "name": "DSS_PROVINCIAL_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_PROVINCIAL_HEALTH_COMPLAINTS",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_PROVINCIAL_HEALTH_INVENTORY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_PROVINCIAL_HEALTH_SUPERVISION",
+          "vizArray": [
+          ]
         }
       ]
     },
