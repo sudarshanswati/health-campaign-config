@@ -188,7 +188,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Campaign Filter\":{\"bool\":{\"must\":[{\"term\":{\"targetType\":\"HOUSEHOLD\"}},{\"term\":{\"productVariant\":\"LLIN\"}}]}}}},\"aggs\":{\"Target per day\":{\"sum\":{\"field\":\"targetPerDay\"}}}}}}"
+        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Campaign Filter\":{\"bool\":{\"must\":[{\"term\":{\"targetType\":\"HOUSEHOLD\"}},{\"term\":{\"productVariant\":\"LLIN\"}}]}}}},\"aggs\":{\"Target per day\":{\"sum\":{\"field\":\"targetPerDay\"}},\"Target Households per Day\":{\"bucket_script\":{\"buckets_path\":{\"tpd\":\"Target per day\"},\"script\":\"(params.tpd)*365\"}}}}}}"
       }
     ],
     "chartType": "metric",
