@@ -113,7 +113,7 @@
               "charts": [
                 {
                   "id": "distributionsByRange",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TODAY",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -121,7 +121,7 @@
                 },
                 {
                   "id": "totalDistributions",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED_TOTAL",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -178,7 +178,7 @@
         {
           "row": 1,
           "name": "DCC_DISTRICT_HEALTH",
-          "vizType": []
+          "vizArray": []
         }
       ]
     }
