@@ -94,7 +94,7 @@
       ]
     },
     {
-      "name": "DSS_PROVINCIAL_HEALTH_DASHBOARD",
+      "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "provincial-health-dashboard",
       "isActive": "",
       "style": "linear",
@@ -120,7 +120,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalDistributionsTillToday",
+                  "id": "totalDistributions",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
                   "code": "",
                   "chartType": "metric",
@@ -148,29 +148,29 @@
           ]
         },
         {
-          "name": "DSS_PROVINCIAL_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
           ]
         },
         {
-          "name": "DSS_PROVINCIAL_HEALTH_COMPLAINTS",
+          "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
           ]
         },
         {
-          "name": "DSS_PROVINCIAL_HEALTH_INVENTORY",
+          "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
           ]
         },
         {
-          "name": "DSS_PROVINCIAL_HEALTH_SUPERVISION",
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
           ]
         }
       ]
     },
     {
-      "name": "DSS_DISTRICT_HEALTH_DASHBOARD",
+      "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "district-health-dashboard",
       "isActive": "",
       "style": "linear",
@@ -178,7 +178,70 @@
         {
           "row": 1,
           "name": "DCC_DISTRICT_HEALTH",
-          "vizArray": []
+          "vizArray": [
+            {
+              "id": 303,
+              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "vizType": "collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "distributionsByRange",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalDistributions",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsTarget",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsDistributionCoverage",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+          ]
         }
       ]
     }
