@@ -112,7 +112,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "provincialOrDistrictPopulationCovered",
+                  "id": "overviewPopulationCovered",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
@@ -120,7 +120,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictTotalPopulationCovered",
+                  "id": "overviewTotalPopulationCovered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
@@ -128,7 +128,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictPopulationTargeted",
+                  "id": "overviewPopulationTargeted",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
@@ -136,7 +136,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictPopulationCoverageAchieved",
+                  "id": "overviewPopulationCoverageAchieved",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
@@ -188,7 +188,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "provincialOrDistrictPopulationCovered",
+                  "id": "overviewPopulationCovered",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
@@ -196,7 +196,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictTotalPopulationCovered",
+                  "id": "overviewTotalPopulationCovered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
@@ -204,7 +204,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictPopulationTargeted",
+                  "id": "overviewPopulationTargeted",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
@@ -212,7 +212,7 @@
                   "headers": []
                 },
                 {
-                  "id": "provincialOrDistrictPopulationCoverageAchieved",
+                  "id": "overviewPopulationCoverageAchieved",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
