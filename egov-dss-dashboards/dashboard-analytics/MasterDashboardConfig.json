@@ -94,7 +94,7 @@
       ]
     },
     {
-      "name": "DSS_PROVINCIAL_HEALTH_DASHBOARD",
+      "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "provincial-health-dashboard",
       "isActive": "",
       "style": "linear",
@@ -102,12 +102,75 @@
         {
           "row": 1,
           "name": "DCC_PROVINCIAL_HEALTH",
-          "vizType": []
+          "vizArray": [
+            {
+              "id": 201,
+              "name": "DSS_HEALTH_HOUSEHOLDS",
+              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dateRangeVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "targetVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalCoverage",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+          ]
         }
       ]
     },
     {
-      "name": "DSS_DISTRICT_HEALTH_DASHBOARD",
+      "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "district-health-dashboard",
       "isActive": "",
       "style": "linear",
@@ -115,7 +178,70 @@
         {
           "row": 1,
           "name": "DCC_DISTRICT_HEALTH",
-          "vizType": []
+          "vizArray": [
+            {
+              "id": 301,
+              "name": "DSS_HEALTH_HOUSEHOLDS",
+              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dateRangeVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "targetVisits",
+                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalCoverage",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+          ]
+        },
+        {
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+          ]
         }
       ]
     }
