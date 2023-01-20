@@ -107,7 +107,7 @@
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
-              "vizType": "stacked-collection",
+              "vizType": "collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
@@ -183,7 +183,7 @@
               "id": 302,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
-              "vizType": "stacked-collection",
+              "vizType": "collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
