@@ -15,7 +15,7 @@
               "id": 101,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -41,7 +41,7 @@
               "id": 102,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
@@ -67,7 +67,7 @@
               "id": 103,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
