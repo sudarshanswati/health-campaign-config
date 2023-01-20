@@ -101,13 +101,13 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_PROVINCIAL_HEALTH",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
               "id": 201,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
+              "vizType": "collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -177,13 +177,13 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_DISTRICT_HEALTH",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
               "id": 301,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
+              "vizType": "collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
