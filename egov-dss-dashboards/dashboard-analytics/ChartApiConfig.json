@@ -157,8 +157,8 @@
     },
     "_comment": " "
   },
-  "provincialOrDistrictPopulationCovered": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERED",
+  "overviewPopulationCovered": {
+    "chartName": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
     "queries": [
       {
         "module": "COMMON",
@@ -179,8 +179,8 @@
     "insight": { },
     "_comment": " "
   },
-  "provincialOrDistrictTotalPopulationCovered": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_TOTAL_POPULATION_COVERED",
+  "overviewTotalPopulationCovered": {
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
     "queries": [
       {
         "module": "COMMON",
@@ -201,15 +201,15 @@
     "insight": { },
     "_comment": " "
   },
-  "provincialOrDistrictPopulationTargeted": {
-    "chartName": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_TARGETED",
+  "overviewPopulationTargeted": {
+    "chartName": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Province Filter\":{\n            \"bool\": {\n              \n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duartion in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 1.8 * 365\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 1.8\"\n          }\n        }\n      }\n      }\n    }\n  }"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Campaign Filter\":{\n            \"bool\": {\n              \"must\" : [\n                {\n                  \"term\": {\n                    \"deliveredTo\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                }\n                ]\n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duartion in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 365\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 365\"\n          }\n        }\n      }\n      }\n    }\n  }"
       }
     ],
     "chartType": "metric",
@@ -224,8 +224,8 @@
     "insight": { },
     "_comment": " "
   },
-  "provincialOrDistrictPopulationCoverageAchieved": {
-    "chartName": "`DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERAGE_ACHIEVED`",
+  "overviewPopulationCoverageAchieved": {
+    "chartName": "`DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED`",
     "queries": [
       {
         "module": "COMMON",
@@ -239,7 +239,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Province Filter\":{\n            \"bool\": {\n              \n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duration in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 1.8\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 1.8\"\n          }\n        }\n      }\n      }\n    }\n  }"
+        "aggrQuery": " {\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Campaign Filter\":{\n            \"bool\": {\n              \"must\" : [\n                {\n                  \"term\": {\n                    \"deliveredTo\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                }\n                ]\n            }\n          }\n        }\n        },\n      \"aggs\": {\n        \"Target per day\": {\n          \"sum\": {\n            \"field\": \"targetPerDay\"\n          }\n        },\n        \"Overall Target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        },\n        \"Campaign Total Duration in days\": {\n          \"sum\": {\n            \"field\": \"campaignDurationInDays\"\n          }\n        },\n        \"Target Population per Day\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"tpd\": \"Target per day\"\n            },\n            \"script\": \"(params.tpd) * 365\"\n          }\n        },\n        \"Overall Population Target\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"opt\": \"Overall Target\"\n            },\n            \"script\": \"(params.opt) * 365\"\n          }\n        }\n      }\n      }\n    }\n  }"
       }
     ],
     "chartType": "metric",

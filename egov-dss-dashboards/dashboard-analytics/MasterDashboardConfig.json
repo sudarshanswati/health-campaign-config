@@ -113,7 +113,7 @@
               "charts": [
                 {
                   "id": "provincialOrDistrictPopulationCovered",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -121,7 +121,7 @@
                 },
                 {
                   "id": "provincialOrDistrictTotalPopulationCovered",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_TOTAL_POPULATION_COVERED",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -129,7 +129,7 @@
                 },
                 {
                   "id": "provincialOrDistrictPopulationTargeted",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_TARGETED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -137,7 +137,7 @@
                 },
                 {
                   "id": "provincialOrDistrictPopulationCoverageAchieved",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERAGE_ACHIEVED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -189,7 +189,7 @@
               "charts": [
                 {
                   "id": "provincialOrDistrictPopulationCovered",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -197,7 +197,7 @@
                 },
                 {
                   "id": "provincialOrDistrictTotalPopulationCovered",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_TOTAL_POPULATION_COVERED",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -205,7 +205,7 @@
                 },
                 {
                   "id": "provincialOrDistrictPopulationTargeted",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_TARGETED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -213,7 +213,7 @@
                 },
                 {
                   "id": "provincialOrDistrictPopulationCoverageAchieved",
-                  "name": "DSS_HEALTH_PROVINCIAL_DISTRICT_POPULATION_COVERAGE_ACHIEVED",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
