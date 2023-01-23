@@ -7,7 +7,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\"aggs\": {\"Todays visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}},{\"range\":{\"createdTime\":{\"gte\":\"now/d\"}}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
+        "aggrQuery": "{\"aggs\": {\"Todays visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}},{\"range\":{\"createdTime\":{\"gte\":\"now/d\",\"lte\":\"now\"}}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
       }
     ],
     "chartType": "metric",
@@ -197,7 +197,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Target per day"
+      "Target Households per Day"
     ],
     "postAggregationTheory" : "repsonseToDifferenceOfDates",
     "insight": {

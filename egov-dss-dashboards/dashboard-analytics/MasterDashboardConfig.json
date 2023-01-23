@@ -107,7 +107,7 @@
               "id": 201,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -183,7 +183,7 @@
               "id": 301,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
