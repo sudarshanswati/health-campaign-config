@@ -177,13 +177,7 @@
       "Distributions By Range"
     ],
     "insight": {
-      "chartResponseMap": "distributionsByRange",
-      "action": "differenceOfNumbers",
-      "upwardIndicator": "positive",
-      "downwardIndicator": "negative",
-      "textMessage": "$indicator$value% than last $insightInterval",
-      "colorCode": "#228B22",
-      "insightInterval": "day"
+      
     },
     "_comment": " "
   },
@@ -262,6 +256,13 @@
       "Bednets Target"
     ],
     "insight": {
+      "chartResponseMap": "bednetsDistributionCoverage",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
     },
     "_comment": " "
   }
