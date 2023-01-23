@@ -142,7 +142,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -156,5 +156,115 @@
     "insight": {
     },
     "_comment": " "
+  },
+  "distributionsByRange": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Distributions By Range\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"quantity\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Distributions By Range"
+    ],
+    "insight": {
+      
+    },
+    "_comment": " "
+  },
+  "totalDistributionsTillToday": {
+    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Distributions"
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "bednetsTarget": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filters\":{\n            \"filters\": {\n              \"nets\":{\n                \"bool\":{\n                  \"must\": [\n                      {\n                        \"term\": {\n                            \"productVariant\": \"LLIN\"\n                        }\n                      },\n                      {\n                        \"term\": {\n                            \"targetType\": \"BEDNETS\"\n                        }\n                      }\n                    ]\n                }\n              }\n              \n            }\n            \n          },\n          \"aggs\":{\n            \"Target\": {\n              \"sum\":{\n                  \"field\": \"targetPerDay\"\n              }\n            },\n            \"Target by Range\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Target\"\n                },\n                \"script\": \"(params.target) * 365\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "postAggregationTheory" : "repsonseToDifferenceOfDates",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Target by Range"
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "bednetsDistributionCoverage": {
+    "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filter\":{\n            \"bool\":{\n              \"must\": [\n                  {\n                    \"term\": {\n                        \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"term\": {\n                        \"targetType\": \"BEDNETS\"\n                    }\n                  }\n                ]\n            }\n          },\n          \"aggs\":{\n            \"target\": {\n              \"sum\":{\n                  \"field\": \"overallTarget\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Total Distributions Coverage",
+      "Bednets Target"
+    ],
+    "insight": {
+      "chartResponseMap": "bednetsDistributionCoverage",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "day"
+    },
+    "_comment": " "
   }
 }
+
