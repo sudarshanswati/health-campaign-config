@@ -107,7 +107,7 @@
               "id": 203,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -183,7 +183,7 @@
               "id": 303,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "vizType": "collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
