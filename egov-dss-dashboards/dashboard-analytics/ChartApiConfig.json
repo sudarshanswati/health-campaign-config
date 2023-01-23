@@ -140,7 +140,7 @@
       {
         "module": "COMMON",
         "dateRefField": "createdTime",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Distributions By Range\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"quantity\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
@@ -193,7 +193,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
@@ -216,7 +216,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "micro-plan-index-v1",
         "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filters\":{\n            \"filters\": {\n              \"nets\":{\n                \"bool\":{\n                  \"must\": [\n                      {\n                        \"term\": {\n                            \"productVariant\": \"LLIN\"\n                        }\n                      },\n                      {\n                        \"term\": {\n                            \"targetType\": \"BEDNETS\"\n                        }\n                      }\n                    ]\n                }\n              }\n              \n            }\n            \n          },\n          \"aggs\":{\n            \"Target\": {\n              \"sum\":{\n                  \"field\": \"targetPerDay\"\n              }\n            },\n            \"Target by Range\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Target\"\n                },\n                \"script\": \"(params.target) * 365\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
       }
@@ -240,14 +240,14 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "micro-plan-index-v1",
         "aggrQuery": "{\n    \"aggs\":{\n        \"Bednets Target\":{\n          \"filter\":{\n            \"bool\":{\n              \"must\": [\n                  {\n                    \"term\": {\n                        \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"term\": {\n                        \"targetType\": \"BEDNETS\"\n                    }\n                  }\n                ]\n            }\n          },\n          \"aggs\":{\n            \"target\": {\n              \"sum\":{\n                  \"field\": \"overallTarget\"\n              }\n            }\n          }\n        }\n        \n    }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
