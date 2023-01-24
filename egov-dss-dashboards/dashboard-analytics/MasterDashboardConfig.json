@@ -101,8 +101,50 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_PROVINCIAL_HEALTH",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
+            {
+              "id": 202,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "stacked-collection",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "overviewPopulationCovered",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewTotalPopulationCovered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationTargeted",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationCoverageAchieved",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
             {
               "id": 203,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
@@ -177,8 +219,50 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DCC_DISTRICT_HEALTH",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
+            {
+              "id": 302,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "stacked-collection",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "overviewPopulationCovered",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewTotalPopulationCovered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationTargeted",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationCoverageAchieved",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
             {
               "id": 303,
               "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
