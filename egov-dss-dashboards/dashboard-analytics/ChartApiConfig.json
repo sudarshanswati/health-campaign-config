@@ -157,7 +157,7 @@
     },
     "_comment": " "
   },
-  "dateRangeVisits": {
+  "householdVisitsWithinDateRange": {
     "chartName": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
     "queries": [
       {
@@ -180,7 +180,7 @@
     },
     "_comment": " "
   },
-  "targetVisits": {
+  "householdVisitsTarget": {
     "chartName": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
     "queries": [
       {
@@ -204,7 +204,7 @@
     },
     "_comment": " "
   },
-  "totalCoverage": {
+  "totalHouseholdCoverage": {
     "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
     "queries": [
       {

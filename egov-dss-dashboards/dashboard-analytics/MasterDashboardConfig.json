@@ -112,7 +112,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "dateRangeVisits",
+                  "id": "householdVisitsWithinDateRange",
                   "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
                   "code": "",
                   "chartType": "metric",
@@ -128,7 +128,7 @@
                   "headers": []
                 },
                 {
-                  "id": "targetVisits",
+                  "id": "householdVisitsTarget",
                   "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -136,7 +136,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalCoverage",
+                  "id": "totalHouseholdCoverage",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -188,7 +188,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "dateRangeVisits",
+                  "id": "householdVisitsWithinDateRange",
                   "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
                   "code": "",
                   "chartType": "metric",
@@ -204,7 +204,7 @@
                   "headers": []
                 },
                 {
-                  "id": "targetVisits",
+                  "id": "householdVisitsTarget",
                   "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -212,7 +212,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalCoverage",
+                  "id": "totalHouseholdCoverage",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
