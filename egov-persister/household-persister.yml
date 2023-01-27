@@ -94,3 +94,47 @@ serviceMaps:
             - jsonPath: $.*.address.buildingName
             - jsonPath: $.*.address.street
             - jsonPath: $.*.address.locality.code
+    - version: 1.0
+      description: Persists household member.
+      fromTopic: save-household-member-topic
+      isTransaction: true
+      queryMaps:
+        - query: INSERT INTO HOUSEHOLD_MEMBER(id, tenantId, individualId, householdId, isHeadOfHousehold, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.id
+            - jsonPath: $.*.tenantId
+            - jsonPath: $.*.individualId
+            - jsonPath: $.*.householdId
+            - jsonPath: $.*.isHeadOfHousehold
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+    - version: 1.0
+      description: Update household member.
+      fromTopic: update-household-member-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE HOUSEHOLD_MEMBER SET individualId=?, householdId=?, isHeadOfHousehold=?, additionalDetails=?, createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE individualId=? AND householdId=?;
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.individualId
+            - jsonPath: $.*.householdId
+            - jsonPath: $.*.isHeadOfHousehold
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.individualId
+            - jsonPath: $.*.householdId
