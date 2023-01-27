@@ -47,7 +47,7 @@ serviceMaps:
       fromTopic: update-household-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ? AND isDeleted = false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -121,18 +121,14 @@ serviceMaps:
       fromTopic: update-household-member-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE HOUSEHOLD_MEMBER SET individualId=?, householdId=?, isHeadOfHousehold=?, additionalDetails=?, createdBy=?, lastModifiedBy=?, createdTime=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE individualId=? AND householdId=?;
+        - query: UPDATE HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE individualId=? AND householdId=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
-            - jsonPath: $.*.individualId
-            - jsonPath: $.*.householdId
             - jsonPath: $.*.isHeadOfHousehold
             - jsonPath: $.*.additionalFields
               type: JSON
               dbType: JSONB
-            - jsonPath: $.*.auditDetails.createdBy
             - jsonPath: $.*.auditDetails.lastModifiedBy
-            - jsonPath: $.*.auditDetails.createdTime
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
