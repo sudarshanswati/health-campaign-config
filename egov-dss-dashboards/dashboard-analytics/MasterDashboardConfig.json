@@ -232,6 +232,54 @@
           ]
         },
         {
+          "row": 2,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 205,
+              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "vizType": "metric-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "closedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_CLOSED_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "rejectedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_REJECTED_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "relocatedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_RELOCATED_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
           ]
@@ -382,6 +430,54 @@
                 {
                   "id": "bednetsDistributionCoverage",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 305,
+              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "vizType": "metric-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "closedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_CLOSED_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "rejectedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_REJECTED_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "relocatedHouseholdsNotDelivered",
+                  "name": "DSS_HEALTH_OVERVIEW_RELOCATED_HOUSEHOLDS_NOT_DELIVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
