@@ -249,14 +249,6 @@
                 "chartType": "bar",
                 "filter": "",
                 "headers": []
-                },
-                {
-                "id": "rdPopulationChartPercentageProvince",
-                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_PROVINCE",
-                "code": "",
-                "chartType": "bar",
-                "filter": "",
-                "headers": []
                 }
               ]
             }
@@ -431,14 +423,6 @@
                 {
                   "id": "rdPopulationChartDistrict",
                   "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "rdPopulationChartPercentageDistrict",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
