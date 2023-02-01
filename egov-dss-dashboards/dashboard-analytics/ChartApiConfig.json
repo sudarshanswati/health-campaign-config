@@ -449,5 +449,111 @@
       "insightInterval": "day"
     },
     "_comment": " "
+  },
+  "rdPopulationChartProvince": {
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n              {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"Province Population\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Provincial Population"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartPercentageProvince": {
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n              {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"Province Population\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Target Filter\": {\n            \"bool\": {\n              \"must\":  [\n                  {\n                    \"term\": {\n                      \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"term\": {\n                      \"targetType\": \"HOUSEHOLD\"\n                    }\n                  }\n                ],\n                \"must_not\": [\n                  {\n                    \"term\": {\n                      \"district\": \"\"\n                    }\n                  }\n                  ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Target Per day\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"SUM\": { \n              \"sum\": {\n                \"field\": \"targetPerDay\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "isCumulative": false,
+    "aggregationPaths": [
+      "Provincial Population", "Target Per day"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartDistrict": {
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n              {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"District Population\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "District Population"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartPercentageDistrict": {
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n              {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"District Population\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Target Filter\": {\n            \"bool\": {\n              \"must\":  [\n                  {\n                    \"term\": {\n                      \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"term\": {\n                      \"targetType\": \"HOUSEHOLD\"\n                    }\n                  }\n                ],\n                \"must_not\": [\n                  {\n                    \"term\": {\n                      \"administrativeProvince\": \"\"\n                    }\n                  }\n                  ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Target Per day\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"SUM\": { \n              \"sum\": {\n                \"field\": \"targetPerDay\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "isCumulative": false,
+    "aggregationPaths": [
+      "District Population", "Target Per day"
+    ],
+    "insight": { },
+    "_comment": " "
   }
 }

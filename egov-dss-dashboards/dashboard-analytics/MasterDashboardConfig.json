@@ -234,6 +234,32 @@
         {
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 212,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                "id": "rdPopulationChartProvince",
+                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                "code": "",
+                "chartType": "bar",
+                "filter": "",
+                "headers": []
+                },
+                {
+                "id": "rdPopulationChartPercentageProvince",
+                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_PROVINCE",
+                "code": "",
+                "chartType": "bar",
+                "filter": "",
+                "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -394,6 +420,32 @@
         {
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 312,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdPopulationChartDistrict",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "rdPopulationChartPercentageDistrict",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PERCENT_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
