@@ -282,6 +282,24 @@
         {
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 214,
+              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdTotalHouseholdsNotDeliveredChartProvince",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -490,6 +508,24 @@
         {
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 314,
+              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdTotalHouseholdsNotDeliveredChartDistrict",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
