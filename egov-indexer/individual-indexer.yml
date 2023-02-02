@@ -19,4 +19,13 @@ ServiceMaps:
           id: $.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: delete-individual-topic
+      configKey: INDEX
+      indexes:
+        - name: individualDeleteIndex-v1
+          type: individual-delete
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
