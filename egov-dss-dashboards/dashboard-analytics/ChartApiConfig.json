@@ -580,5 +580,51 @@
     ],
     "insight": {},
     "_comment": " "
+  },
+  "rdBednetsDistributedChartProvince": {
+    "chartName": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Bednets Distributed\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Bednets Distributed"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdBednetsDistributedChartDistrict": {
+    "chartName": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Bednets Distributed\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Bednets Distributed"
+    ],
+    "insight": { },
+    "_comment": " "
   }
 }
