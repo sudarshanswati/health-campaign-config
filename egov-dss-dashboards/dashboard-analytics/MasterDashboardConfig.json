@@ -280,26 +280,33 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 214,
-              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
-              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "id": 212,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdTotalHouseholdsNotDeliveredChartProvince",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
+                "id": "rdPopulationChartProvince",
+                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                "code": "",
+                "chartType": "bar",
+                "filter": "",
+                "headers": []
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
             {
               "id": 213,
               "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
@@ -311,6 +318,24 @@
                 {
                   "id": "rdBednetsDistributedChartProvince",
                   "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 214,
+              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdTotalHouseholdsNotDeliveredChartProvince",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_PROVINCE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -524,26 +549,33 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 314,
-              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
-              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "id": 312,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdTotalHouseholdsNotDeliveredChartDistrict",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_DISTRICT",
+                  "id": "rdPopulationChartDistrict",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
             {
               "id": 313,
               "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
@@ -555,6 +587,24 @@
                 {
                   "id": "rdBednetsDistributedChartDistrict",
                   "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 314,
+              "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "label": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdTotalHouseholdsNotDeliveredChartDistrict",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
