@@ -1,0 +1,33 @@
+ServiceMaps:
+  serviceName: Project Service
+  version: 1.0.0
+  mappings:
+    - topic: save-project-task-topic
+      configKey: INDEX
+      indexes:
+        - name: projectTaskIndex-v1
+          type: projectTask
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+
+    - topic: update-project-task-topic
+      configKey: INDEX
+      indexes:
+        - name: projectTaskUpdateIndex-v1
+          type: projectTaskUpdate
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: delete-project-task-topic
+      configKey: INDEX
+      indexes:
+        - name: projectTaskDeleteIndex-v1
+          type: projectTaskDelete
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
