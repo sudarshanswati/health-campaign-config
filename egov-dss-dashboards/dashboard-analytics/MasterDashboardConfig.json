@@ -285,8 +285,8 @@
           "vizArray": [
             {
               "id": 212,
-              "name": "DSS_HEALTH_POPULATION_COVERED",
-              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
@@ -554,8 +554,8 @@
           "vizArray": [
             {
               "id": 312,
-              "name": "DSS_HEALTH_POPULATION_COVERED",
-              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
