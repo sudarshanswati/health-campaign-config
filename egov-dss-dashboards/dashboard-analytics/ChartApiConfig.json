@@ -521,7 +521,21 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"term\": {\n                \"deliveryComment\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Household not delivered count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Household Rejected delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Household Relocated delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Household Closed delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
 
@@ -531,7 +545,7 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "District",
-    "excludedColumns": ["Household not delivered count","Bednets distributed count","Population covered count","Households distributed count","Quantity","Total Households distributed","Overall Household target","Total Population covered","Overall Population target","Total Bednets distributed","Overall Bednets target"],
+    "excludedColumns": ["Household Closed delivery count","Household Relocated delivery count","Household Rejected delivery count","Bednets distributed count","Population covered count","Households distributed count","Quantity","Total Households distributed","Overall Household target","Total Population covered","Overall Population target","Total Bednets distributed","Overall Bednets target"],
 
     "computedFields": [
       {
@@ -579,8 +593,22 @@
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household not delivered count"],
-        "newField" : "Households Not Delivered",
+        "fields" : ["Household Rejected delivery count"],
+        "newField" : "Non Delivery HH (Rejected)",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Household Relocated delivery count"],
+        "newField" : "Non Delivery HH (Relocated)",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Household Closed delivery count"],
+        "newField" : "Non Delivery HH (Closed)",
         "_comments": ""
       }
     ],
@@ -659,7 +687,21 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"term\": {\n                \"deliveryComment\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"Household not delivered count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"Household Rejected delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"Household Relocated delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\"\n          },\n          \"aggs\": {\n            \"Household Closed delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
 
@@ -669,7 +711,7 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "AdministrativeProvince",
-    "excludedColumns": ["Household not delivered count","Bednets distributed count","Population covered count","Households distributed count","Quantity","Total Households distributed","Overall Household target","Total Population covered","Overall Population target","Total Bednets distributed","Overall Bednets target"],
+    "excludedColumns": ["Household Closed delivery count","Household Relocated delivery count","Household Rejected delivery count","Bednets distributed count","Population covered count","Households distributed count","Quantity","Total Households distributed","Overall Household target","Total Population covered","Overall Population target","Total Bednets distributed","Overall Bednets target"],
 
     "computedFields": [
       {
@@ -717,8 +759,22 @@
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household not delivered count"],
-        "newField" : "Households Not Delivered",
+        "fields" : ["Household Rejected delivery count"],
+        "newField" : "Non Delivery HH (Rejected)",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Household Relocated delivery count"],
+        "newField" : "Non Delivery HH (Relocated)",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Household Closed delivery count"],
+        "newField" : "Non Delivery HH (Closed)",
         "_comments": ""
       }
     ],
