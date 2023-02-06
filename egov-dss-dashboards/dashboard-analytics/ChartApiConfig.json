@@ -817,21 +817,21 @@
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Rejected delivery count"],
-        "newField" : "Non Delivery HH (Rejected)",
+        "newField" : "Non Delivery HH Rejected",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Relocated delivery count"],
-        "newField" : "Non Delivery HH (Relocated)",
+        "newField" : "Non Delivery HH Relocated",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Closed delivery count"],
-        "newField" : "Non Delivery HH (Closed)",
+        "newField" : "Non Delivery HH Closed",
         "_comments": ""
       }
     ],
@@ -983,21 +983,21 @@
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Rejected delivery count"],
-        "newField" : "Non Delivery HH (Rejected)",
+        "newField" : "Non Delivery HH Rejected",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Relocated delivery count"],
-        "newField" : "Non Delivery HH (Relocated)",
+        "newField" : "Non Delivery HH Relocated",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
         "fields" : ["Household Closed delivery count"],
-        "newField" : "Non Delivery HH (Closed)",
+        "newField" : "Non Delivery HH Closed",
         "_comments": ""
       }
     ],
