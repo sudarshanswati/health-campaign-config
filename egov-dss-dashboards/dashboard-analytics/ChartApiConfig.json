@@ -457,82 +457,16 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Total household not delivered\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                  \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                  \"quantity\": 0                \n                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ],\n              \"must_not\": [\n              {\n                \"term\": {\n                    \"deliveryComment\": \"\" \n                  } \n              }\n            ]\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Total household not delivered\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                  \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                  \"quantity\": 0                \n                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ],\n              \"must_not\": [\n              {\n                \"term\": {\n                    \"deliveryComment\": \"\" \n                  } \n              }\n            ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Not Delivered\": {\n          \"terms\": {\n            \"field\": \"deliveryComment\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
-    "chartType": "metric",
+    "chartType": "pie",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Total household not delivered"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "closedHouseholdsNotDelivered": {
-    "chartName": "DSS_HEALTH_OVERVIEW_CLOSED_HOUSEHOLDS_NOT_DELIVERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "createdTime",
-        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
-        "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Closed Households\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                  \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                  \"quantity\": 0                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"term\": {\n                  \"deliveryComment\": \"CLOSED\"\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ]\n            }\n          }\n        }\n      }\n    }\n  }\n}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Closed Households"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "rejectedHouseholdsNotDelivered": {
-    "chartName": "DSS_HEALTH_OVERVIEW_REJECTED_HOUSEHOLD_NOT_DELIVERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "createdTime",
-        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
-        "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Rejected Households\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                  \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                  \"quantity\": 0                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"term\": {\n                  \"deliveryComment\": \"REJECTED\"\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ]\n            }\n          }\n        }\n      }\n    }\n  }\n}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Rejected Households"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "relocatedHouseholdsNotDelivered": {
-    "chartName": "DSS_HEALTH_OVERVIEW_RELOCATED_HOUSEHOLD_NOT_DELIVERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "createdTime",
-        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
-        "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Relocated Households\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                  \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                  \"quantity\": 0                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"term\": {\n                  \"deliveryComment\": \"RELOCATED\"\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ]\n            }\n          }\n        }\n      }\n    }\n  }\n}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Relocated Households"
+      "Not Delivered"
     ],
     "insight": {},
     "_comment": " "
