@@ -1,30 +1,32 @@
 ServiceMaps:
-  serviceName: individual
+  serviceName: Project Service
   version: 1.0.0
   mappings:
-    - topic: save-individual-topic
+    - topic: save-project-task-topic
       configKey: INDEX
       indexes:
-        - name: individualIndex-v1
-          type: individual
-          id: $.*.id
+        - name: projectTaskIndex-v1
+          type: projectTask
+          id: $.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.*.auditDetails.createdTime
-    - topic: update-individual-topic
+          timeStampField: $.auditDetails.createdTime
+
+    - topic: update-project-task-topic
       configKey: INDEX
       indexes:
-        - name: individualUpdateIndex-v1
-          type: individual-update
+        - name: projectTaskUpdateIndex-v1
+          type: projectTaskUpdate
           id: $.id
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
-    - topic: delete-individual-topic
+
+    - topic: delete-project-task-topic
       configKey: INDEX
       indexes:
-        - name: individualDeleteIndex-v1
-          type: individual-delete
+        - name: projectTaskDeleteIndex-v1
+          type: projectTaskDelete
           id: $.id
           isBulk: true
           jsonPath: $.*
