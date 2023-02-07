@@ -22,6 +22,16 @@ ServiceMaps:
           jsonPath: $.*
           timeStampField: $.auditDetails.createdTime
 
+    - topic: delete-project-staff-topic
+      configKey: INDEX
+      indexes:
+        - name: project-staff-index-v1
+          type: projectStaff
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+
     - topic: save-project-beneficiary-topic
       configKey: INDEX
       indexes:
@@ -33,6 +43,16 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
 
     - topic: update-project-beneficiary-topic
+      configKey: INDEX
+      indexes:
+        - name: project-beneficiary-index-v1
+          type: projectBeneficiary
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+
+    - topic: delete-project-beneficiary-topic
       configKey: INDEX
       indexes:
         - name: project-beneficiary-index-v1
