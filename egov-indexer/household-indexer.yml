@@ -11,3 +11,21 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.*.auditDetails.createdTime
+    - topic: update-household-topic
+      configKey: INDEX
+      indexes:
+        - name: householdUpdateIndex-v1
+          type: household-update
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: delete-household-topic
+      configKey: INDEX
+      indexes:
+        - name: householdDeleteIndex-v1
+          type: household-delete
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime

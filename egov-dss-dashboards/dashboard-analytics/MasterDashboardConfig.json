@@ -239,7 +239,7 @@
               "id": 205,
               "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "metric-collection",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -247,31 +247,7 @@
                   "id": "totalHouseholdsNotDelivered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
                   "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "closedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_CLOSED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "rejectedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_REJECTED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "relocatedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_RELOCATED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
@@ -280,32 +256,51 @@
           ]
         },
         {
-          "row": 4,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "row": 1,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 208,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "id": 212,
+              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsProvince",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                "id": "rdPopulationChartProvince",
+                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                "code": "",
+                "chartType": "bar",
+                "filter": "",
+                "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 213,
+              "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdBednetsDistributedChartProvince",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
-          "vizArray": [
+            },
             {
               "id": 214,
               "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
@@ -489,7 +484,7 @@
               "id": 305,
               "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "metric-collection",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -497,31 +492,7 @@
                   "id": "totalHouseholdsNotDelivered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
                   "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "closedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_CLOSED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "rejectedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_REJECTED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "relocatedHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_RELOCATED_HOUSEHOLDS_NOT_DELIVERED",
-                  "code": "",
-                  "chartType": "metric",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
@@ -530,20 +501,20 @@
           ]
         },
         {
-          "row": 4,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "row": 1,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 308,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "id": 312,
+              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsDistrict",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "id": "rdPopulationChartDistrict",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -554,8 +525,27 @@
           ]
         },
         {
+          "row": 2,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 313,
+              "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdBednetsDistributedChartDistrict",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
             {
               "id": 314,
               "name": "DSS_HEALTH_R_D_HOUSEHOLD_NOT_DELIVERED",
