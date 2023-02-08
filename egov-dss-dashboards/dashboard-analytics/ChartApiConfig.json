@@ -761,10 +761,13 @@
         "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"terms\": {\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Household Closed delivery count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
-
+    "filterKeys": [
+      {"key": "district", "column": "District"}
+    ],
     "chartType": "xtable",
     "valueType": "number",
-    "drillChart": "none",
+
+    "drillChart": "summaryByAdministrativeProvince",
     "documentType": "_doc",
     "action": "",
     "plotLabel": "District",
@@ -840,6 +843,7 @@
     "_comment": " "
   },
   "summaryByAdministrativeProvince": {
+    "kind": "drillDown",
     "chartName": "DSS_HEALTH_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
     "queries": [
       {
