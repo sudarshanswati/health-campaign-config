@@ -268,12 +268,22 @@
               "isCollapsible": false,
               "charts": [
                 {
-                "id": "rdPopulationChartProvince",
-                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
-                "code": "",
-                "chartType": "bar",
-                "filter": "",
-                "headers": []
+                  "id": "rdPopulationChartProvince",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdPopulationChartProvincePercent",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             }
@@ -518,7 +528,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdPopulationChartDistrictPercent",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             }
