@@ -329,6 +329,24 @@
         {
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
+            {
+              "id": 241,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "daysInventoryStockLastsProvince",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -574,6 +592,24 @@
         {
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
+            {
+              "id": 341,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "daysInventoryStockLastsDistrict",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
