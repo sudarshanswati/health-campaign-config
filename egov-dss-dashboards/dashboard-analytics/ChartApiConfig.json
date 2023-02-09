@@ -524,7 +524,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"District wise Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Total No. of Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -534,7 +534,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "District wise Bednets Distributed"
+      "Total No. of Bednets Distributed"
     ],
     "insight": { },
     "_comment": " "
@@ -547,7 +547,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"District wise Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -563,8 +563,8 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
-    "excludedColumns": ["District wise Bednets Distributed", "Bednets Targeted"],
-    "aggregationPaths": ["District wise Bednets Distributed","Bednets Targeted"],
+    "excludedColumns": ["Percentage of Bednets Distributed", "Bednets Targeted"],
+    "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
     "computedFields": [
       {
         "postAggregationTheory" : "repsonseToDifferenceOfDates",
@@ -585,7 +585,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"AP wise Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Total No. of Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -595,7 +595,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "AP wise Bednets Distributed"
+      "Total No. of Bednets Distributed"
     ],
     "insight": { },
     "_comment": " "
@@ -608,7 +608,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"AP wise Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"isDelivered\": true\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ],\n              \"must_not\": [\n                  {\n                  \"term\": {\n                    \"quantity\": 0\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Bednets Distributed\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -624,8 +624,8 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
-    "excludedColumns": ["AP wise Bednets Distributed", "Bednets Targeted"],
-    "aggregationPaths": ["AP wise Bednets Distributed","Bednets Targeted"],
+    "excludedColumns": ["Percentage of Bednets Distributed", "Bednets Targeted"],
+    "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
     "computedFields": [
       {
         "postAggregationTheory" : "repsonseToDifferenceOfDates",
