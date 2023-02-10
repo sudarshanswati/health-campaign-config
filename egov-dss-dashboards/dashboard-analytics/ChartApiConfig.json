@@ -761,6 +761,126 @@
     "insight": { },
     "_comment": " "
   },
+  "rdHouseholdsCoveredChartProvince": {
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households Visited"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdHouseholdsCoveredChartProvincePercent": {
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"range\": {\n                    \"createdTime\": {\n                      \"lte\": \"now\"\n                    }\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Households Visited\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Targeted\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"target\": {\n              \"sum\": {\n                \"field\": \"targetPerDay\"\n              }\n            },\n            \"Target for daterange\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"SUM\": \"target\"\n                },\n                \"script\": \"(params.SUM) * 365\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "repsonseToDifferenceOfDates",
+        "actionName": "",
+        "fields" : [ "Target for daterange" ],
+        "newField" : "Households for daterange",
+        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
+      }
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdHouseholdsCoveredChartDistrict": {
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households Visited"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdHouseholdsCoveredChartDistrictPercent": {
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"range\": {\n                    \"createdTime\": {\n                      \"lte\": \"now\"\n                    }\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Households Visited\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"locality\": \"\" \n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Targeted\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"target\": {\n              \"sum\": {\n                \"field\": \"targetPerDay\"\n              }\n            },\n            \"Target for daterange\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"SUM\": \"target\"\n                },\n                \"script\": \"(params.SUM) * 365\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "repsonseToDifferenceOfDates",
+        "actionName": "",
+        "fields" : [ "Target for daterange" ],
+        "newField" : "Households over daterange",
+        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
+      }
+    ],
+    "insight": { },
+    "_comment": " "
+  },
   "daysInventoryStockLastsProvince": {
     "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
     "queries": [
