@@ -610,7 +610,6 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
-    "excludedColumns": ["Percentage of Population Covered", "Population Targeted"],
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
     "computedFields": [
       {
@@ -662,7 +661,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Population Targeted\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"TPD\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['targetPerDay'].value * 365\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"locality\": \"\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Population Targeted\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"TPD\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['targetPerDay'].value * 365\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
 
     ],
@@ -672,7 +671,6 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
-    "excludedColumns": ["Percentage of Population Covered", "Population Targeted"],
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
     "computedFields": [
       {
