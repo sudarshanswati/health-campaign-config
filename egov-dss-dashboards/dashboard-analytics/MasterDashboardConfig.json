@@ -321,7 +321,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdBednetsDistributedChartProvincePercent",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             },
@@ -608,7 +618,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdBednetsDistributedChartDistrictPercent",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             },
