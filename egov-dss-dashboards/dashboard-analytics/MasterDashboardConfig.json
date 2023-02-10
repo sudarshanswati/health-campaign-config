@@ -256,20 +256,20 @@
           ]
         },
         {
-          "row": 3,
+          "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
+              "id": 207,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageBarchartByDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
+                  "id": "daysInventoryStockLastsProvince",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -292,12 +292,22 @@
               "isCollapsible": false,
               "charts": [
                 {
-                "id": "rdPopulationChartProvince",
-                "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
-                "code": "",
-                "chartType": "bar",
-                "filter": "",
-                "headers": []
+                  "id": "rdPopulationChartProvince",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdPopulationChartProvincePercent",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             }
@@ -321,7 +331,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdBednetsDistributedChartProvincePercent",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             },
@@ -353,6 +373,24 @@
         {
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
+            {
+              "id": 241,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "daysInventoryStockLastsProvince",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -525,20 +563,20 @@
           ]
         },
         {
-          "row": 3,
+          "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 306,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
+              "id": 307,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageBarchartByAP",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
+                  "id": "daysInventoryStockLastsDistrict",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -566,7 +604,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdPopulationChartDistrictPercent",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             }
@@ -590,7 +638,17 @@
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdBednetsDistributedChartDistrictPercent",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
                 }
               ]
             },
@@ -622,6 +680,24 @@
         {
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
+            {
+              "id": 341,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "daysInventoryStockLastsDistrict",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
