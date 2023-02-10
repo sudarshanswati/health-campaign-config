@@ -260,6 +260,34 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
+              "id": 211,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdHouseholdsCoveredChartProvince",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdHouseholdsCoveredChartProvincePercent",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                }
+              ]
+            },
+            {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
               "label": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -504,6 +532,34 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
+            {
+              "id": 311,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdHouseholdsCoveredChartDistrict",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                },
+                {
+                  "id": "rdHouseholdsCoveredChartDistrictPercent",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                }
+              ]
+            },
             {
               "id": 312,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
