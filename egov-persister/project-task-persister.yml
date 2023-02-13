@@ -128,8 +128,8 @@ serviceMaps:
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.resources.*.isDeleted
             - jsonPath: $.*.resources.*.tenantId
-            - jsonPath: $.*.resources.*.productVariantId
             - jsonPath: $.*.resources.*.taskId
+            - jsonPath: $.*.resources.*.productVariantId
             - jsonPath: $.*.resources.*.quantity
             - jsonPath: $.*.resources.*.isDelivered
             - jsonPath: $.*.resources.*.deliveryComment
