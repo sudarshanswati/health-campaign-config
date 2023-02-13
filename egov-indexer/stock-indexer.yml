@@ -1,0 +1,31 @@
+ServiceMaps:
+  serviceName: stock
+  version: 1.0.0
+  mappings:
+    - topic: update-stock-topic
+      configKey: INDEX
+      indexes:
+        - name: stockUpdateIndex-v1
+          type: stock-update
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.*.auditDetails.createdTime
+    - topic: save-stock-topic
+      configKey: INDEX
+      indexes:
+        - name: stockIndex-v1
+          type: stock
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: delete-stock-topic
+      configKey: INDEX
+      indexes:
+        - name: stockDeleteIndex-v1
+          type: stock-delete
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
