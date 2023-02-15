@@ -436,6 +436,14 @@
                   "chartType": "table",
                   "filter": "",
                   "headers": []
+                },
+                {
+                  "id": "summaryByDistrictDay",
+                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
@@ -815,6 +823,14 @@
                 {
                   "id": "summaryByAdministrativeProvince",
                   "name": "DSS_HEALTH_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "summaryByAdministrativeProvinceDay",
+                  "name": "DSS_HEALTH_SUMMARY_BY_ADMINISTRATIVE_PROVINCE_DAY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
