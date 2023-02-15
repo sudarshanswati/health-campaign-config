@@ -6,72 +6,82 @@ serviceMaps:
       fromTopic: save-ss-survey
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO eg_ss_survey( uuid,tenantid,title,description,status,postedby,startDate,endDate,collectCitizenInfo,active,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-          basePath: SurveyEntity
+        - query: INSERT INTO eg_ss_survey( uuid,tenantid,title,description,status,postedby,startDate,endDate,collectCitizenInfo,active,tags,entityType,entityId,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.*
           jsonMaps:
-            - jsonPath: $.SurveyEntity.uuid
+            - jsonPath: $.*.uuid
 
-            - jsonPath: $.SurveyEntity.tenantId
+            - jsonPath: $.*.tenantId
 
-            - jsonPath: $.SurveyEntity.title
+            - jsonPath: $.*.title
 
-            - jsonPath: $.SurveyEntity.description
+            - jsonPath: $.*.description
 
-            - jsonPath: $.SurveyEntity.status
+            - jsonPath: $.*.status
 
-            - jsonPath: $.SurveyEntity.postedBy
+            - jsonPath: $.*.postedBy
 
-            - jsonPath: $.SurveyEntity.startDate
+            - jsonPath: $.*.startDate
 
-            - jsonPath: $.SurveyEntity.endDate
+            - jsonPath: $.*.endDate
 
-            - jsonPath: $.SurveyEntity.collectCitizenInfo
+            - jsonPath: $.*.collectCitizenInfo
 
-            - jsonPath: $.SurveyEntity.active
+            - jsonPath: $.*.active
 
-            - jsonPath: $.SurveyEntity.auditDetails.createdBy
-
-            - jsonPath: $.SurveyEntity.auditDetails.lastModifiedBy
-
-            - jsonPath: $.SurveyEntity.auditDetails.createdTime
-
-            - jsonPath: $.SurveyEntity.auditDetails.lastModifiedTime
-
-        - query: INSERT INTO eg_ss_question( uuid,surveyid,questionstatement,options,status,type,required,createdby,lastmodifiedby,createdtime,lastmodifiedtime,qorder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
-          basePath: SurveyEntity.questions.*
-          jsonMaps:
-            - jsonPath: $.SurveyEntity.questions.*.uuid
-
-            - jsonPath: $.SurveyEntity.questions.*.surveyId
-
-            - jsonPath: $.SurveyEntity.questions.*.questionStatement
-
-            - jsonPath: $.SurveyEntity.questions.*.options
+            - jsonPath: $.*.tags
               type: ARRAY
               dbType: STRING
 
-            - jsonPath: $.SurveyEntity.questions.*.status
+            - jsonPath: $.*.entityType
 
-            - jsonPath: $.SurveyEntity.questions.*.type
+            - jsonPath: $.*.entityId
 
-            - jsonPath: $.SurveyEntity.questions.*.required
+            - jsonPath: $.*.auditDetails.createdBy
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.lastModifiedTime
+        - query: INSERT INTO eg_ss_question( uuid,surveyid,questionstatement,options,status,type,required,extraInfo,createdby,lastmodifiedby,createdtime,lastmodifiedtime,qorder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
+          basePath: $.*.questions.*
+          jsonMaps:
+            - jsonPath: $.*.questions.*.uuid
 
-            - jsonPath: $.SurveyEntity.questions.*.qorder
+            - jsonPath: $.*.questions.*.surveyId
+
+            - jsonPath: $.*.questions.*.questionStatement
+
+            - jsonPath: $.*.questions.*.options
+              type: ARRAY
+              dbType: STRING
+
+            - jsonPath: $.*.questions.*.status
+
+            - jsonPath: $.*.questions.*.type
+
+            - jsonPath: $.*.questions.*.required
+
+            - jsonPath: $.*.questions.*.extraInfo
+
+            - jsonPath: $.*.questions.*.auditDetails.createdBy
+
+            - jsonPath: $.*.questions.*.auditDetails.lastModifiedBy
+
+            - jsonPath: $.*.questions.*.auditDetails.createdTime
+
+            - jsonPath: $.*.questions.*.auditDetails.lastModifiedTime
+
+            - jsonPath: $.*.questions.*.qorder
 
     - version: 1.0
       description: Persists answers in eg_ss_answer table
       fromTopic: save-ss-answer
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO eg_ss_answer( uuid,questionid,surveyid,answer,citizenid,mobilenumber,emailid,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO eg_ss_answer( uuid,questionid,surveyid,answer,citizenid,mobilenumber,emailid,additionalComments,entityId,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: AnswerEntity.answers.*
           jsonMaps:
             - jsonPath: $.AnswerEntity.answers.*.uuid
@@ -90,6 +100,10 @@ serviceMaps:
 
             - jsonPath: $.AnswerEntity.answers.*.emailId
 
+            - jsonPath: $.AnswerEntity.answers.*.additionalComments
+
+            - jsonPath: $.AnswerEntity.answers.*.entityId
+
             - jsonPath: $.AnswerEntity.answers.*.auditDetails.createdBy
 
             - jsonPath: $.AnswerEntity.answers.*.auditDetails.lastModifiedBy
@@ -103,52 +117,62 @@ serviceMaps:
       fromTopic: update-ss-survey
       isTransaction: true
       queryMaps:
-        - query: UPDATE eg_ss_survey SET tenantid=?, title=?, description=?, status=?, postedBy=?, startDate = ?, endDate = ?, collectCitizenInfo = ?, lastmodifiedby=?, lastmodifiedtime=? WHERE uuid=?;
-          basePath: SurveyEntity
+        - query: UPDATE eg_ss_survey SET tenantid=?, title=?, description=?, status=?, postedBy=?, startDate = ?, endDate = ?, collectCitizenInfo = ?, tags = ?, entityType = ?, entityId = ?, lastmodifiedby=?, lastmodifiedtime=? WHERE uuid=?;
+          basePath: $.*
           jsonMaps:
-            - jsonPath: $.SurveyEntity.tenantId
+            - jsonPath: $.*.tenantId
 
-            - jsonPath: $.SurveyEntity.title
+            - jsonPath: $.*.title
 
-            - jsonPath: $.SurveyEntity.description
+            - jsonPath: $.*.description
 
-            - jsonPath: $.SurveyEntity.status
+            - jsonPath: $.*.status
 
-            - jsonPath: $.SurveyEntity.postedBy
+            - jsonPath: $.*.postedBy
 
-            - jsonPath: $.SurveyEntity.startDate
+            - jsonPath: $.*.startDate
 
-            - jsonPath: $.SurveyEntity.endDate
+            - jsonPath: $.*.endDate
 
-            - jsonPath: $.SurveyEntity.collectCitizenInfo
+            - jsonPath: $.*.collectCitizenInfo
 
-            - jsonPath: $.SurveyEntity.auditDetails.lastModifiedBy
-
-            - jsonPath: $.SurveyEntity.auditDetails.lastModifiedTime
-
-            - jsonPath: $.SurveyEntity.uuid
-
-        - query: UPDATE eg_ss_question SET questionstatement = ?, options = ?, status = ?, type = ?, required = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE uuid = ?;
-          basePath: SurveyEntity.questions.*
-          jsonMaps:
-
-            - jsonPath: $.SurveyEntity.questions.*.questionStatement
-
-            - jsonPath: $.SurveyEntity.questions.*.options
+            - jsonPath: $.*.tags
               type: ARRAY
               dbType: STRING
 
-            - jsonPath: $.SurveyEntity.questions.*.status
+            - jsonPath: $.*.entityType
 
-            - jsonPath: $.SurveyEntity.questions.*.type
+            - jsonPath: $.*.entityId
 
-            - jsonPath: $.SurveyEntity.questions.*.required
+            - jsonPath: $.*.auditDetails.lastModifiedBy
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.lastModifiedTime
 
-            - jsonPath: $.SurveyEntity.questions.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.uuid
 
-            - jsonPath: $.SurveyEntity.questions.*.uuid
+        - query: UPDATE eg_ss_question SET questionstatement = ?, options = ?, status = ?, type = ?, required = ?, extraInfo = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE uuid = ?;
+          basePath: $.*.questions.*
+          jsonMaps:
+
+            - jsonPath: $.*.questions.*.questionStatement
+
+            - jsonPath: $.*.questions.*.options
+              type: ARRAY
+              dbType: STRING
+
+            - jsonPath: $.*.questions.*.status
+
+            - jsonPath: $.*.questions.*.type
+
+            - jsonPath: $.*.questions.*.required
+
+            - jsonPath: $.*.questions.*.extraInfo
+
+            - jsonPath: $.*.questions.*.auditDetails.lastModifiedBy
+
+            - jsonPath: $.*.questions.*.auditDetails.lastModifiedTime
+
+            - jsonPath: $.*.questions.*.uuid
 
     - version: 1.0
       description: Deletes survey in tables
