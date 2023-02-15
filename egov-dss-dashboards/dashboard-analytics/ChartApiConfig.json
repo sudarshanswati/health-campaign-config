@@ -1180,6 +1180,8 @@
     ],
     "insight": {
     },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
     "_comment": " "
   },
   "summaryByAdministrativeProvince": {
@@ -1349,6 +1351,8 @@
     ],
     "insight": {
     },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
     "_comment": " "
   },
   "summaryByLocality": {
@@ -1518,6 +1522,8 @@
     ],
     "insight": {
     },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
     "_comment": " "
   },
   "summaryByVillage": {
@@ -1685,6 +1691,8 @@
     ],
     "insight": {
     },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
     "_comment": " "
   }
 }
