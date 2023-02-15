@@ -435,7 +435,8 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "BOUNDARY"
                 },
                 {
                   "id": "summaryByDistrictDay",
@@ -443,7 +444,8 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "DAYWISE"
                 }
               ]
             }
@@ -826,7 +828,8 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "BOUNDARY"
                 },
                 {
                   "id": "summaryByAdministrativeProvinceDay",
@@ -834,7 +837,8 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "DAYWISE"
                 }
               ]
             }
