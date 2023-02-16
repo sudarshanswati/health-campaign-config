@@ -1762,7 +1762,7 @@
     "documentType": "_doc",
     "action": "division",
     "plotLabel": "Daily Count",
-    "excludedColumns": ["S.N.","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Population Target","Daily Bednets Target","household count","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
+    "excludedColumns": ["S.N.","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "isDivisionEnabled" : true,
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
     "filterKeys": [
