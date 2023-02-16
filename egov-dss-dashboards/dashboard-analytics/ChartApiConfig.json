@@ -1764,6 +1764,9 @@
     "plotLabel": "Daily Count",
     "excludedColumns": ["Daily Population Target","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
+    "filterKeys": [
+      {"key": "Daily Count", "column": "Daily Count"}
+    ],
 
     "hideInsights": true,
     "hideHeaderDenomination": true,
@@ -1813,21 +1816,21 @@
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Rejected delivery count"],
+        "fields" : ["Household Rejected Delivery Count"],
         "newField" : "Non Delivery HH Rejected",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Relocated delivery count"],
+        "fields" : ["Household Relocated Delivery Count"],
         "newField" : "Non Delivery HH Relocated",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Closed delivery count"],
+        "fields" : ["Household Closed Delivery Count"],
         "newField" : "Non Delivery HH Closed",
         "_comments": ""
       }
@@ -1927,6 +1930,9 @@
     "plotLabel": "Daily Count",
     "excludedColumns": ["Daily Count","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Population Target","Daily Bednets Target","household count","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
+    "filterKeys": [
+      {"key": "Daily Count", "column": "Daily Count"}
+    ],
     "computedFields": [
       {
         "postAggregationTheory" : "",
@@ -1973,21 +1979,21 @@
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Rejected delivery count"],
+        "fields" : ["Household Rejected Delivery Count"],
         "newField" : "Non Delivery HH Rejected",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Relocated delivery count"],
+        "fields" : ["Household Relocated Delivery Count"],
         "newField" : "Non Delivery HH Relocated",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Household Closed delivery count"],
+        "fields" : ["Household Closed Delivery Count"],
         "newField" : "Non Delivery HH Closed",
         "_comments": ""
       }
