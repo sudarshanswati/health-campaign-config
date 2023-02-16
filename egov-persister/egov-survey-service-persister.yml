@@ -81,7 +81,7 @@ serviceMaps:
       fromTopic: save-ss-answer
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO eg_ss_answer( uuid,questionid,surveyid,answer,citizenid,mobilenumber,emailid,additionalComments,entityId,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO eg_ss_answer( uuid,questionid,surveyid,answer,citizenid,mobilenumber,emailid,additionalComments,entityId,entityType,additionalDetails,createdby,lastmodifiedby,createdtime,lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: AnswerEntity.answers.*
           jsonMaps:
             - jsonPath: $.AnswerEntity.answers.*.uuid
@@ -103,6 +103,12 @@ serviceMaps:
             - jsonPath: $.AnswerEntity.answers.*.additionalComments
 
             - jsonPath: $.AnswerEntity.answers.*.entityId
+
+            - jsonPath: $.AnswerEntity.answers.*.entityType
+
+            - jsonPath: $.AnswerEntity.answers.*.additionalFields
+              type: JSON
+              dbType: JSONB
 
             - jsonPath: $.AnswerEntity.answers.*.auditDetails.createdBy
 
