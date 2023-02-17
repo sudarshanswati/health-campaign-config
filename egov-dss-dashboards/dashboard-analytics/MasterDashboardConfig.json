@@ -423,6 +423,30 @@
           "vizArray": [
             {
               "id": 215,
+              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "actualVsPlannedLineGraph",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 216,
               "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
               "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
               "vizType": "chart",
@@ -806,6 +830,30 @@
           "vizArray": [
             {
               "id": 315,
+              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "actualVsPlannedLineGraph",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 316,
               "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
               "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
               "vizType": "chart",
