@@ -662,16 +662,17 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Households not delivered\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },{\n                \"term\": {\n                  \"quantity\": 0                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ],\n              \"must_not\": [\n              {\n                \"term\": {\n                    \"deliveryComment\": \"\" \n                  } \n              }\n            ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Province Level Not Delivered\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n             \"order\": {\n              \"_key\": \"asc\"\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Households not Delivered by District\": {\n      \"terms\": {\n        \"field\": \"district\",\n        \"size\": 500,\n        \"order\": {\n          \"_key\": \"asc\"\n        }\n      },\n      \"aggs\": {\n        \"Households not delivered\": {\n          \"filter\": {\n            \"term\": {\n              \"isDelivered\": \"false\"\n            }\n          }, \n          \"aggs\": {\n            \"NAME\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
-    "chartType": "pie",
+    "chartType": "line",
     "valueType": "number",
     "drillChart": "none",
+    "isCumulative": false,
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Province Level Not Delivered"
+      "Households not Delivered by District"
     ],
     "insight": {},
     "_comment": " "
@@ -684,16 +685,17 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Households not delivered\": {\n           \"bool\": {\n              \"must\":[\n              {\n                \"term\": {\n                  \"deliveredTo\": \"HOUSEHOLD\"\n                }\n              },{\n                \"term\": {\n                  \"quantity\": 0                }\n              },\n              {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              },\n              {\n                \"range\" : {\n                  \"createdTime\" : {\n                    \"lte\": \"now\"\n                  }\n                }\n              }\n            ],\n              \"must_not\": [\n              {\n                \"term\": {\n                    \"deliveryComment\": \"\" \n                  } \n              }\n            ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"District Level Not Delivered\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"district\",\n             \"order\": {\n              \"_key\": \"asc\"\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Households not Delivered by AP\": {\n      \"terms\": {\n        \"field\": \"administrativeProvince\",\n        \"size\": 500,\n        \"order\": {\n          \"_key\": \"asc\"\n        }\n      },\n      \"aggs\": {\n        \"Households not delivered\": {\n          \"filter\": {\n            \"term\": {\n              \"isDelivered\": false\n            }\n          }, \n          \"aggs\": {\n            \"NAME\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
-    "chartType": "pie",
+    "chartType": "line",
+    "isCumulative": false,
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "District Level Not Delivered"
+      "Households not Delivered by AP"
     ],
     "insight": {},
     "_comment": " "
@@ -1008,7 +1010,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\":  {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                  {\n                  \"term\": {\n                    \"deliveredTo\": \"HOUSEHOLD\"\n                    }\n                  },\n                  {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                    }\n                  },\n                  {\n                    \"range\": {\n                      \"createdTime\": {\n                        \"lte\": \"now\"\n                      }\n                    }\n                  }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500, \n            \"field\": \"administrativeProvince\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+        "aggrQuery": "{\n  \"size\": 0, \n  \"aggs\": {\n    \"AGGR\": {\n      \"terms\": {\n        \"field\": \"administrativeProvince\",\n        \"size\": 500,\n        \"order\": {\n          \"_key\": \"asc\"\n        }\n      },\n      \"aggs\": {\n        \"Households not delivered\": {\n          \"filters\": {\n            \"filters\": {\n              \"NAME\": {\n                \"term\": {\n                  \"isDelivered\": false\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
