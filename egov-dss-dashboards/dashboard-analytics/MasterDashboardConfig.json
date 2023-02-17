@@ -98,6 +98,7 @@
       "id": "provincial-health-dashboard",
       "isActive": "",
       "style": "linear",
+      "hideFilterFields": ["DDR", "Ulb", "Denomination", "ModuleFilter"],
       "visualizations": [
         {
           "row": 1,
@@ -128,7 +129,7 @@
                   "headers": []
                 },
                 {
-                  "id": "householdVisitsTarget",
+                  "id": "householdVisitsTargetProvince",
                   "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -136,7 +137,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalHouseholdCoverage",
+                  "id": "totalHouseholdCoverageProvince",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -170,7 +171,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationTargeted",
+                  "id": "overviewPopulationTargetedProvince",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
@@ -178,7 +179,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationCoverageAchieved",
+                  "id": "overviewPopulationCoverageAchievedProvince",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
@@ -212,7 +213,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsTarget",
+                  "id": "bednetsTargetProvince",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
                   "code": "",
                   "chartType": "metric",
@@ -220,7 +221,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsDistributionCoverage",
+                  "id": "bednetsDistributionCoverageProvince",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
@@ -316,15 +317,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdHouseholdsCoveredChartProvince",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdHouseholdsCoveredChartProvincePercent",
                   "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
                   "code": "",
@@ -332,6 +324,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdHouseholdsCoveredChartProvince",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             },
@@ -344,15 +345,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdPopulationChartProvince",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdPopulationChartProvincePercent",
                   "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE_PERCENT",
                   "code": "",
@@ -360,6 +352,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdPopulationChartProvince",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             }
@@ -378,15 +379,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdBednetsDistributedChartProvince",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdBednetsDistributedChartProvincePercent",
                   "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE_PERCENT",
                   "code": "",
@@ -394,6 +386,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdBednetsDistributedChartProvince",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             },
@@ -490,6 +491,7 @@
       "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "district-health-dashboard",
       "isActive": "",
+      "hideFilterFields": ["DDR", "Ulb", "Denomination", "ModuleFilter"],
       "style": "linear",
       "visualizations": [
         {
@@ -521,7 +523,7 @@
                   "headers": []
                 },
                 {
-                  "id": "householdVisitsTarget",
+                  "id": "householdVisitsTargetDistrict",
                   "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -529,7 +531,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalHouseholdCoverage",
+                  "id": "totalHouseholdCoverageDistrict",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -563,7 +565,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationTargeted",
+                  "id": "overviewPopulationTargetedDistrict",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
@@ -571,7 +573,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationCoverageAchieved",
+                  "id": "overviewPopulationCoverageAchievedDistrict",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
@@ -605,7 +607,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsTarget",
+                  "id": "bednetsTargetDistrict",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
                   "code": "",
                   "chartType": "metric",
@@ -613,7 +615,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsDistributionCoverage",
+                  "id": "bednetsDistributionCoverageDistrict",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
@@ -709,15 +711,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdHouseholdsCoveredChartDistrict",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdHouseholdsCoveredChartDistrictPercent",
                   "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
                   "code": "",
@@ -725,6 +718,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdHouseholdsCoveredChartDistrict",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             },
@@ -737,15 +739,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdPopulationChartDistrict",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdPopulationChartDistrictPercent",
                   "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
                   "code": "",
@@ -753,6 +746,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdPopulationChartDistrict",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             }
@@ -771,15 +773,6 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdBednetsDistributedChartDistrict",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                },
-                {
                   "id": "rdBednetsDistributedChartDistrictPercent",
                   "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT_PERCENT",
                   "code": "",
@@ -787,6 +780,15 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdBednetsDistributedChartDistrict",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
                 }
               ]
             },
