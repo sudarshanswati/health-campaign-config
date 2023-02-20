@@ -7,9 +7,9 @@ ServiceMaps:
       indexes:
         - name: project-task-index-v1
           type: project-task
-          id: $.*.id
+          id: $.id
           isBulk: true
-          jsonPath: $.*
+          jsonPath: $
           timeStampField: $.auditDetails.createdTime
 
     - topic: update-project-task-topic
