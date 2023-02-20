@@ -11,18 +11,14 @@ ServiceMaps:
           isBulk: true
           jsonPath: $
           customJsonMapping:
-            indexMapping: { "Data": { "projectTask": {}, "delivery": {} } }
+            indexMapping: { "Data": { "projectTask": {}, "delivered": {} } }
             fieldMapping:
               - inJsonPath: $.projectId
                 outJsonPath: $.Data.projectTask.projectId
               - inJsonPath: $.auditDetails.createdBy
                 outJsonPath: $.Data.projectTask.userId
-              - inJsonPath: $.resources.*.productVariantId
-                outJsonPath: $.Data.delivery
-              - inJsonPath: $.resources.*.isDelivered
-                outJsonPath: $.Data.delivery
-              - inJsonPath: $.resources.*.deliveryComment
-                outJsonPath: $.Data.delivery.deliveryComment
+              - inJsonPath: $.resources[?(@.isDelivered == true)].productVariantId
+                outJsonPath: $.Data.delivered.productVariantId
           timeStampField: $.auditDetails.createdTime
 
     - topic: update-project-task-topic
