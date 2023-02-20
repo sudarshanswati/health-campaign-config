@@ -18,11 +18,11 @@ ServiceMaps:
               - inJsonPath: $.auditDetails.createdBy
                 outJsonPath: $.Data.projectTask.userId
               - inJsonPath: $.resources.*.productVariantId
-                outJsonPath: $.Data.projectTask.delivery.productVariantId
+                outJsonPath: $.Data.delivery.productVariantId
               - inJsonPath: $.resources.*.isDelivered
-                outJsonPath: $.Data.projectTask.delivery.isDelivered
+                outJsonPath: $.Data.delivery.isDelivered
               - inJsonPath: $.resources.*.deliveryComment
-                outJsonPath: $.Data.projectTask.delivery.deliveryComment
+                outJsonPath: $.Data.delivery.deliveryComment
           timeStampField: $.auditDetails.createdTime
 
     - topic: update-project-task-topic
