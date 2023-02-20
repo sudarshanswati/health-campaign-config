@@ -5,9 +5,9 @@ ServiceMaps:
     - topic: save-project-task-topic
       configKey: INDEX
       indexes:
-        - name: projectTaskIndex-v1
-          type: projectTask
-          id: $.id
+        - name: project-task-index-v1
+          type: project-task
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.createdTime
