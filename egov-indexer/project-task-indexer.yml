@@ -18,9 +18,9 @@ ServiceMaps:
               - inJsonPath: $.auditDetails.createdBy
                 outJsonPath: $.Data.projectTask.userId
               - inJsonPath: $.resources.*.productVariantId
-                outJsonPath: $.Data.delivery.productVariantId
+                outJsonPath: $.Data.delivery
               - inJsonPath: $.resources.*.isDelivered
-                outJsonPath: $.Data.delivery.isDelivered
+                outJsonPath: $.Data.delivery
               - inJsonPath: $.resources.*.deliveryComment
                 outJsonPath: $.Data.delivery.deliveryComment
           timeStampField: $.auditDetails.createdTime
