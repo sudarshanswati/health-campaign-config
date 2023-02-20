@@ -6,7 +6,7 @@ ServiceMaps:
       configKey: INDEX
       indexes:
         - name: project-task-index-v1
-          type: project-task
+          type: tasks
           id: $.id
           isBulk: true
           jsonPath: $
