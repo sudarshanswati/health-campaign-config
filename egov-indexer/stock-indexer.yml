@@ -29,3 +29,31 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: update-stock-reconciliation-topic
+      configKey: INDEX
+      indexes:
+        - name: stockReconciliationUpdateIndex-v1
+          type: stock-reconciliation-update
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.*.auditDetails.createdTime
+    - topic: save-stock-reconciliation-topic
+      configKey: INDEX
+      indexes:
+        - name: stockReconciliationIndex-v1
+          type: stock-reconciliation
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: delete-stock-reconciliation-topic
+      configKey: INDEX
+      indexes:
+        - name: stockReconciliationDeleteIndex-v1
+          type: stock-reconciliation-delete
+          id: $.*.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
