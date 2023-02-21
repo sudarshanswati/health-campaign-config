@@ -208,7 +208,7 @@ serviceMaps:
 
             - jsonPath: $.Projects.*.address.street
 
-            - jsonPath: $.Projects.*.address.locality
+            - jsonPath: $.Projects.*.address.locality.code
 
 
         - query: INSERT INTO project_target(id,projectId,beneficiaryType,totalNo,targetNo,isDeleted,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?);
@@ -306,7 +306,7 @@ serviceMaps:
             - jsonPath: $.Projects.*.id
 
 
-        - query: UPDATE project_address SET door_no = ?, latitude=?, longitude=?, locationAccuracy=?, type=?, addressLine1=?, addressLine2=?, landmark=?, city=?, pinCode=?, buildingName=?, street=? WHERE id=?;
+        - query: UPDATE project_address SET doorNo = ?, latitude=?, longitude=?, locationAccuracy=?, type=?, addressLine1=?, addressLine2=?, landmark=?, city=?, pinCode=?, buildingName=?, street=?, locality=? WHERE id=?;
           basePath: $.Projects.*.address
           jsonMaps:
 
@@ -333,6 +333,8 @@ serviceMaps:
             - jsonPath: $.Projects.*.address.buildingName
 
             - jsonPath: $.Projects.*.address.street
+
+            - jsonPath: $.Projects.*.address.locality.code
 
             - jsonPath: $.Projects.*.address.id
 
