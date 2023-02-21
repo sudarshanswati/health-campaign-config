@@ -5,11 +5,23 @@ ServiceMaps:
     - topic: save-project-task-topic
       configKey: INDEX
       indexes:
-        - name: projectTaskIndex-v1
-          type: projectTask
+        - name: project-task-index-v1
+          type: tasks
           id: $.id
           isBulk: true
-          jsonPath: $.*
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": {} }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+            externalUriMapping:
+              - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
+                queryParam: hierarchyTypeCode=ADMIN,boundaryType=locality,code=$.address.locality.code,tenantId=$.tenantId
+                apiRequest: { "RequestInfo": { "apiId": "org.egov","ver": "1.0","ts": 1502890899493,"action": "asd","did": "4354648646","key": "xyz","msgId": "654654","requesterId": "61","authToken": "d9994555-7656-4a67-ab3a-a952a0d4dfc8","userInfo": { "id": 105,"uuid": "adf829ff-7a65-4e8b-b1a7-191ec298e79e","type": "EMPLOYEE","tenantId": "default","roles": [ { "name": "System Administrator","code": "SYSTEM_ADMINISTRATOR","tenantId": "default" } ] } } }
+                uriResponseMapping:
+                  - inJsonPath: $.TenantBoundary[0].boundary[0]
+                    outJsonPath: $.Data.locality
           timeStampField: $.auditDetails.createdTime
 
     - topic: update-project-task-topic
