@@ -1147,6 +1147,7 @@
       {
         "postAggregationTheory" : "repsonseToDifferenceOfDates",
         "actionName": "",
+        "sort": "sortValueDesc",
         "fields" : ["Target"],
         "newField" : "Coverage",
         "_comments": ""
@@ -1184,6 +1185,7 @@
       {
         "postAggregationTheory" : "repsonseToDifferenceOfDates",
         "actionName": "",
+        "sort": "sortValueDesc",
         "fields" : ["Target"],
         "newField" : "Coverage",
         "_comments": ""
