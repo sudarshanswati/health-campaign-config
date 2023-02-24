@@ -1,5 +1,5 @@
 ServiceMaps:
-  serviceName: Project Service
+  serviceName: project
   version: 1.0.0
   mappings:
     - topic: transformer-producer-bulk-create-project-task-index-v1-topic
@@ -15,4 +15,4 @@ ServiceMaps:
             fieldMapping:
               - inJsonPath: $
                 outJsonPath: $.Data
-          timeStampField: $.auditDetails.createdTime
+          timeStampField: $.createdTime
