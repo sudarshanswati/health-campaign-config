@@ -501,6 +501,24 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 242,
+              "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "label": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "inventoryStockInHandProvince",
+                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -913,6 +931,24 @@
                 {
                   "id": "daysInventoryStockLastsDistrict",
                   "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 342,
+              "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "label": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "inventoryStockInHandDistrict",
+                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
