@@ -236,21 +236,22 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\"aggs\":{\"Total visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}},{\"range\":{\"createdTime\":{\"lte\":\"now\"}}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
+        "aggrQuery": "{\"aggs\":{\"Total visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Campaign Filter\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"province\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Overall target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Overall target\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"province\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"TargetValue\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
     "valueType": "percentage",
+    "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
@@ -260,6 +261,13 @@
     ],
     "postAggregationTheory": "",
     "insight": {
+      "chartResponseMap": "totalHouseholdCoverageProvince",
+      "action": "differenceOfNumbers",
+      "upwardIndicator": "positive",
+      "downwardIndicator": "negative",
+      "textMessage": "$indicator$value% than last $insightInterval",
+      "colorCode": "#228B22",
+      "insightInterval": "dateRange"
     },
     "_comment": " "
   },
@@ -278,7 +286,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "micro-plan-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Campaign Filter\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Overall target\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Overall target\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"targetType\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"productVariant\": \"LLIN\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"administrativeProvince\": \"\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"district\": \"\"\n                  }\n                }\n                ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"TargetValue\": {\n          \"sum\": {\n            \"field\": \"overallTarget\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -323,10 +331,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -401,14 +409,15 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\":[\n            {\n              \"term\":{\n                \"deliveredTo\":\"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\":{\n                \"productVariant\":\"LLIN\"\n              }\n            }]\n        }\n      },\n      \"aggs\": {\n        \"overallQuantity\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
     "valueType": "percentage",
+    "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
@@ -423,7 +432,7 @@
       "downwardIndicator": "negative",
       "textMessage": "$indicator$value% than last $insightInterval",
       "colorCode": "#228B22",
-      "insightInterval": "day"
+      "insightInterval": "dateRange"
     },
     "_comment": " "
   },
@@ -575,6 +584,7 @@
     ],
     "chartType": "metric",
     "valueType": "percentage",
+    "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
@@ -589,7 +599,7 @@
       "downwardIndicator": "negative",
       "textMessage": "$indicator$value% than last $insightInterval",
       "colorCode": "#228B22",
-      "insightInterval": "day"
+      "insightInterval": "dateRange"
     },
     "_comment": " "
   },
