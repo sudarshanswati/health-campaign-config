@@ -61,3 +61,33 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: save-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: projectFacilityIndex-v1
+          type: projectFacility
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+
+    - topic: update-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: projectFacilityUpdateIndex-v1
+          type: projectFacility-update
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: delete-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: projectFacilityDeleteIndex-v1
+          type: projectFacility-delete
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
