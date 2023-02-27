@@ -420,6 +420,65 @@ serviceMaps:
 
             - jsonPath: $.Projects.*.documents.*.auditDetails.lastModifiedTime
 
+
+    - version: 1.0
+      description: Saves a project resourcce
+      fromTopic: save-project-resource-topic
+      isTransaction: true
+      queryMaps:
+        - query: INSERT INTO project_resource (id, tenantId, projectId, productVariantId, isBaseUnitVariant, startDate, endDate, type, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.id
+            - jsonPath: $.*.tenantId
+            - jsonPath: $.*.projectId
+            - jsonPath: $.*.resource.productVariantId
+            - jsonPath: $.*.resource.isBaseUnitVariant
+            - jsonPath: $.*.startDate
+            - jsonPath: $.*.endDate
+            - jsonPath: $.*.resource.type
+            - jsonPath: $.*.auditDetails.createdBy
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.createdTime
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+
+    - version: 1.0
+      description: Update a project resourcce
+      fromTopic: update-project-resource-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE project_resource SET tenantId=?, projectId=?, productVariantId=?, isBaseUnitVariant=?, startDate=?, endDate=?, type=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?  WHERE id = ?
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.tenantId
+            - jsonPath: $.*.projectId
+            - jsonPath: $.*.productVariantId
+            - jsonPath: $.*.isBaseUnitVariant
+            - jsonPath: $.*.startDate
+            - jsonPath: $.*.endDate
+            - jsonPath: $.*.type
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.id
+
+    - version: 1.0
+      description: Delete a project resourcce
+      fromTopic: delete-project-resource-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE project_resource SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?  WHERE id = ?
+          basePath: $.*
+          jsonMaps:
+            - jsonPath: $.*.auditDetails.lastModifiedBy
+            - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.rowVersion
+            - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.id
+
     - version: 1.0
       description: Saves a project facility
       fromTopic: save-project-facility-topic
