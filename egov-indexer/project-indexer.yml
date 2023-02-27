@@ -61,3 +61,34 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
+
+
+    - topic: save-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: projectResourceIndex-v1
+          type: projectResourceIndex
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+
+    - topic: update-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: projectResourceUpdateIndex-v1
+          type: projectResource-update
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: delete-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: projectResourceDeleteIndex-v1
+          type: projectResource-delete
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
