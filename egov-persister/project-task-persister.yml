@@ -31,10 +31,11 @@ serviceMaps:
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
 
-        - query: INSERT INTO ADDRESS(id, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*.address
           jsonMaps:
             - jsonPath: $.*.address.id
+            - jsonPath: $.*.address.clientReferenceId
             - jsonPath: $.*.address.tenantId
             - jsonPath: $.*.address.doorNo
             - jsonPath: $.*.address.latitude
@@ -50,10 +51,11 @@ serviceMaps:
             - jsonPath: $.*.address.street
             - jsonPath: $.*.address.locality.code
 
-        - query: INSERT INTO TASK_RESOURCE(id, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*.resources.*
           jsonMaps:
             - jsonPath: $.*.resources.*.id
+            - jsonPath: $.*.resources.*.clientReferenceId
             - jsonPath: $.*.resources.*.tenantId
             - jsonPath: $.*.resources.*.productVariantId
             - jsonPath: $.*.resources.*.taskId
@@ -112,10 +114,11 @@ serviceMaps:
             - jsonPath: $.*.address.locality.code
             - jsonPath: $.*.address.id
 
-        - query: INSERT INTO TASK_RESOURCE(id, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET tenantid = ?, taskid = ?, productvariantid = ?, quantity = ?, isDelivered = ?, reasonIfNotDelivered = ?, lastModifiedBy = ?, lastModifiedTime = ?;
+        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET tenantid = ?, taskid = ?, productvariantid = ?, quantity = ?, isDelivered = ?, reasonIfNotDelivered = ?, lastModifiedBy = ?, lastModifiedTime = ?;
           basePath: $.*.resources.*
           jsonMaps:
             - jsonPath: $.*.resources.*.id
+            - jsonPath: $.*.resources.*.clientReferenceId
             - jsonPath: $.*.resources.*.tenantId
             - jsonPath: $.*.resources.*.productVariantId
             - jsonPath: $.*.resources.*.taskId
