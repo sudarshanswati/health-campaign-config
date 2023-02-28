@@ -1956,7 +1956,7 @@
     "filterKeys": [
       {"key": "Daily Count", "column": "Daily Count"}
     ],
-
+    "showFooter": true,
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [
@@ -2108,7 +2108,7 @@
     "filterKeys": [
       {"key": "Daily Count", "column": "Daily Count"}
     ],
-
+    "showFooter": true,
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [
