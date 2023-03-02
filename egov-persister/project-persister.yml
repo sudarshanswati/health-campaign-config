@@ -177,7 +177,7 @@ serviceMaps:
             - jsonPath: $.Projects.*.auditDetails.lastModifiedTime
 
 
-        - query: INSERT INTO project_address(id,tenantId,projectId,doorNo,latitude,longitude,locationAccuracy,type,addressLine1,addressLine2,landmark,city,pinCode,buildingName,street,locality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO project_address(id,tenantId,projectId,doorNo,latitude,longitude,locationAccuracy,type,addressLine1,addressLine2,landmark,city,pinCode,buildingName,street,boundaryType,locality) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.Projects.*.address
           jsonMaps:
             - jsonPath: $.Projects.*.address.id
@@ -209,6 +209,8 @@ serviceMaps:
             - jsonPath: $.Projects.*.address.buildingName
 
             - jsonPath: $.Projects.*.address.street
+
+            - jsonPath: $.Projects.*.address.boundaryType
 
             - jsonPath: $.Projects.*.address.locality.code
 
@@ -310,7 +312,7 @@ serviceMaps:
             - jsonPath: $.Projects.*.id
 
 
-        - query: UPDATE project_address SET doorNo = ?, latitude=?, longitude=?, locationAccuracy=?, type=?, addressLine1=?, addressLine2=?, landmark=?, city=?, pinCode=?, buildingName=?, street=?, locality=? WHERE id=?;
+        - query: UPDATE project_address SET doorNo = ?, latitude=?, longitude=?, locationAccuracy=?, type=?, addressLine1=?, addressLine2=?, landmark=?, city=?, pinCode=?, buildingName=?, street=?, boundaryType=?, locality=? WHERE id=?;
           basePath: $.Projects.*.address
           jsonMaps:
 
@@ -337,6 +339,8 @@ serviceMaps:
             - jsonPath: $.Projects.*.address.buildingName
 
             - jsonPath: $.Projects.*.address.street
+
+            - jsonPath: $.Projects.*.address.boundaryType
 
             - jsonPath: $.Projects.*.address.locality.code
 
