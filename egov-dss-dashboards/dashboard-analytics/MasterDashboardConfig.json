@@ -500,8 +500,27 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 221,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByDistrictTotal",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -936,8 +955,27 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 321,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByAPTotal",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_AP_TOTAL",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
