@@ -458,11 +458,11 @@ serviceMaps:
           jsonMaps:
             - jsonPath: $.*.tenantId
             - jsonPath: $.*.projectId
-            - jsonPath: $.*.productVariantId
-            - jsonPath: $.*.isBaseUnitVariant
+            - jsonPath: $.*.resource.productVariantId
+            - jsonPath: $.*.resource.isBaseUnitVariant
             - jsonPath: $.*.startDate
             - jsonPath: $.*.endDate
-            - jsonPath: $.*.type
+            - jsonPath: $.*.resource.type
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
