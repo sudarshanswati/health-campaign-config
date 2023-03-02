@@ -2317,10 +2317,10 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"province\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Total Households distributed\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"province\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"total_count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "filterKeys": [],
@@ -2332,15 +2332,14 @@
     "plotLabel": "Province",
     "excludedColumns": [
       "S.N.",
-      "Overall Household target",
-      "Total Households distributed"
+      "Overall Household target"
     ],
     "computedFields": [
       {
         "postAggregationTheory": "",
         "actionName": "PercentageComputedField",
         "fields": [
-          "Total Households distributed",
+          "total_count",
           "Overall Household target"
         ],
         "newField": "Households Coverage",
@@ -2365,10 +2364,10 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"locationKey\": \"province\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Total Households distributed\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"productVariant\":\"LLIN\"}},{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\":{\"isDelivered\":true}}]}},\"aggs\":{\"total_count\":{\"terms\":{\"size\":500,\"field\":\"district\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Households distributed\":{\"value_count\":{\"field\":\"id\"}}}}}}}}"
       }
     ],
     "filterKeys": [],
@@ -2380,15 +2379,14 @@
     "plotLabel": "Districts",
     "excludedColumns": [
       "S.N.",
-      "Overall Household target",
-      "Total Households distributed"
+      "Overall Household target"
     ],
     "computedFields": [
       {
         "postAggregationTheory": "",
         "actionName": "PercentageComputedField",
         "fields": [
-          "Total Households distributed",
+          "total_count",
           "Overall Household target"
         ],
         "newField": "Households Coverage",
