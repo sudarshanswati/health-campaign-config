@@ -260,7 +260,7 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 205,
+              "id": 204,
               "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "vizType": "chart",
@@ -270,6 +270,24 @@
                 {
                   "id": "totalHouseholdsNotDelivered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 205,
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalComplaintsRegistered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -696,7 +714,7 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 305,
+              "id": 304,
               "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
               "vizType": "chart",
@@ -706,6 +724,24 @@
                 {
                   "id": "totalHouseholdsNotDelivered",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 305,
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalComplaintsRegistered",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
