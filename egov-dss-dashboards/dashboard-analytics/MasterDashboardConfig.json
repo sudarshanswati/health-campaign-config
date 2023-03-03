@@ -88,29 +88,6 @@
                   "headers": []
                 }
               ]
-            },
-            {
-              "id": 104,
-              "name": "DSS_COVERAGE_BY_PROVINCE",
-              "label": "DSS_COVERAGE_BY_PROVINCE",
-              "vizType": "stacked-table",
-              "noUnit": true,
-              "isCollapsible": false,
-              "ref": {
-                "url": "provincial-health-dashboard",
-                "logoUrl": "",
-                "type": "internal"
-              },
-              "charts": [
-                {
-                  "id": "coverageByProvince",
-                  "name": "DSS_COVERAGE_BY_PROVINCE",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
@@ -131,6 +108,35 @@
                   "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
                   "code": "",
                   "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_COVERAGE_BY_PROVINCE",
+          "vizArray": [
+            {
+              "id": 301,
+              "name": "DSS_COVERAGE_BY_PROVINCE",
+              "label": "DSS_COVERAGE_BY_PROVINCE",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "ref": {
+                "url": "provincial-health-dashboard",
+                "logoUrl": "",
+                "type": "internal"
+              },
+              "charts": [
+                {
+                  "id": "coverageByProvince",
+                  "name": "DSS_COVERAGE_BY_PROVINCE",
+                  "code": "",
+                  "chartType": "table",
                   "filter": "",
                   "headers": []
                 }
