@@ -16,3 +16,26 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
           timeStampField: $.createdTime
+        - name: user-sync-index-v1
+          type: users
+          id: $.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": {} }
+            fieldMapping:
+              - inJsonPath: $.userId
+                outJsonPath: $.Data.userId
+              - inJsonPath: $.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.province
+                outJsonPath: $.Data.province
+              - inJsonPath: $.district
+                outJsonPath: $.Data.district
+              - inJsonPath: $.administrativeProvince
+                outJsonPath: $.Data.administrativeProvince
+              - inJsonPath: $.locality
+                outJsonPath: $.Data.locality
+              - inJsonPath: $.village
+                outJsonPath: $.Data.village
+          timeStampField: $.createdTime
