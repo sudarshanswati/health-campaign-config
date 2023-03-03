@@ -88,9 +88,39 @@
                   "headers": []
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
+          "vizArray": [
             {
-              "id": 104,
+              "id": 201,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsCoverageHeatMap",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_COVERAGE_BY_PROVINCE",
+          "vizArray": [
+            {
+              "id": 301,
               "name": "DSS_COVERAGE_BY_PROVINCE",
               "label": "DSS_COVERAGE_BY_PROVINCE",
               "vizType": "stacked-table",
