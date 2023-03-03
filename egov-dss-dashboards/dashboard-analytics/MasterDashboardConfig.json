@@ -88,6 +88,29 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 104,
+              "name": "DSS_COVERAGE_BY_PROVINCE",
+              "label": "DSS_COVERAGE_BY_PROVINCE",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "ref": {
+                "url": "provincial-health-dashboard",
+                "logoUrl": "",
+                "type": "internal"
+              },
+              "charts": [
+                {
+                  "id": "coverageByProvince",
+                  "name": "DSS_COVERAGE_BY_PROVINCE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
