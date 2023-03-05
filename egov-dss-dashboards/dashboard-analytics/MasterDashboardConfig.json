@@ -530,8 +530,27 @@
           ]
         },
         {
+          "row": 4,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 226,
+              "name": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByStatusSummaryProvince",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -966,8 +985,27 @@
           ]
         },
         {
+          "row": 4,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 326,
+              "name": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByStatusSummaryDistrict",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {

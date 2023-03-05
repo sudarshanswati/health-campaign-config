@@ -2484,5 +2484,115 @@
     "insight": {
     },
     "_comment": " "
+  },
+  "complaintsByStatusSummaryProvince": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by AP's\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by AP's\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by AP's\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}/d\",\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total Today\": {\n          \"terms\": {\n            \"field\": \"province\"\n          },\n          \"aggs\": {\n            \"Total Households Visited Today\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "District's",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Total",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "complaintsByStatusSummaryDistrict": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"province\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by AP's\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by AP's\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by AP's\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by AP's\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by AP's\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by AP's\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}/d\",\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total Today\": {\n          \"terms\": {\n            \"field\": \"province\"\n          },\n          \"aggs\": {\n            \"Total Households Visited Today\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "AP's",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Total",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
   }
 }
