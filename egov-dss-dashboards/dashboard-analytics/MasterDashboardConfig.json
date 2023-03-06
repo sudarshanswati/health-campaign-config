@@ -553,6 +553,7 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
@@ -586,6 +587,30 @@
                   "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
                   "code": "",
                   "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 243,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByDistrict",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "table",
                   "filter": "",
                   "headers": []
                 }
@@ -989,6 +1014,7 @@
           ]
         },
         {
+          "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
@@ -1022,6 +1048,30 @@
                   "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT",
                   "code": "",
                   "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 343,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByAP",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+                  "code": "",
+                  "chartType": "table",
                   "filter": "",
                   "headers": []
                 }
