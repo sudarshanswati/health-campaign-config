@@ -530,8 +530,27 @@
           ]
         },
         {
+          "row": 3,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 226,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "averageResolutionTimeProvince",
+                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
@@ -966,8 +985,27 @@
           ]
         },
         {
+          "row": 3,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 326,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "averageResolutionTimeDistrict",
+                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         },
         {
