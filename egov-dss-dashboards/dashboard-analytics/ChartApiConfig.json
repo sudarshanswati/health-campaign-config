@@ -1884,21 +1884,21 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Bednets Total\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Total Bednets Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Bednets Total\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Total Bednets Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -1926,7 +1926,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Rejected Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Rejected Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
 
       },
       {
@@ -1934,14 +1934,14 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Relocated Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Relocated Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Closed Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Closed Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
 
@@ -2036,21 +2036,21 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Bednets Total\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Total Bednets Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Bednets Total\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Total Bednets Distributed\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -2078,7 +2078,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Rejected Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"REJECTED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Rejected Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
 
       },
       {
@@ -2086,14 +2086,14 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Relocated Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"RELOCATED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Relocated Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMMM yy\"\n          },\n          \"aggs\": {\n            \"Household Closed Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"quantity\": 0\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": false\n              }\n            },\n            {\n              \"term\": {\n                \"deliveryComment\": \"CLOSED\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"household count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Household Closed Delivery Count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
 
@@ -2188,7 +2188,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"term\": {\n                \"district\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Distributions\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\"\n          },\n          \"aggs\": {\n            \"Day wise distributions\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"term\": {\n                \"district\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Distributions\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Day wise distributions\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -2342,7 +2342,7 @@
           "total_count",
           "Overall Household target"
         ],
-        "newField": "Households Coverage",
+        "newField": "percentage_value",
         "_comments": ""
       }
     ],
@@ -2367,7 +2367,7 @@
         "dateRefField": "createdTime",
         "requestQueryMap": "{\"locationKey\": \"province\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"productVariant\":\"LLIN\"}},{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\":{\"isDelivered\":true}}]}},\"aggs\":{\"total_count\":{\"terms\":{\"size\":500,\"field\":\"district\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Households distributed\":{\"value_count\":{\"field\":\"id\"}}}}}}}}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Total Households distributed\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"district\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"total_count\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "filterKeys": [],
@@ -2389,7 +2389,7 @@
           "total_count",
           "Overall Household target"
         ],
-        "newField": "Households Coverage",
+        "newField": "percentage_value",
         "_comments": ""
       }
     ],
@@ -2483,6 +2483,100 @@
     ],
     "insight": {
     },
+    "_comment": " "
+  },
+  "populationCoverageHeatMap": {
+    "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\":{\n          \"must\": [\n              {\n                \"term\": {\n                    \"productVariant\": \"LLIN\"\n                }\n              },\n              {\n                \"term\": {\n                    \"targetType\": \"INDIVIDUAL\"\n                }\n              },\n              {\n                \"term\": {\n                    \"district\": \"\"\n                }\n              }\n              \n            ],\n            \"must_not\":[\n            {\n              \"term\": {\n                \"province\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Population Target\": {\n          \"terms\": {\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }, \n            \"field\": \"province\"\n          },\n          \"aggs\": {\n            \"Overall Population target\": {\n              \"sum\": {\n                \"field\": \"overallTarget\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Total Population covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"province\"\n          },\n          \"aggs\": {\n            \"Quantity\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            },\n            \"total_count\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Quantity\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "xtable",
+    "valueType": "percentage",
+    "drillChart": "populationCoverageHeatMapProvince",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Province",
+    "excludedColumns": [
+      "S.N.",
+      "Overall Population target"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "total_count",
+          "Overall Population target"
+        ],
+        "newField": "percentage_value",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "populationCoverageHeatMapProvince": {
+    "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"locationKey\": \"province\"}",
+        "indexName": "micro-plan-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"targetType\": \"INDIVIDUAL\"\n              }\n            },\n            {\n              \"term\": {\n                \"administrativeProvince\": \"\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"term\": {\n                \"district\": \"\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Population Target\": {\n          \"terms\": {\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Overall Population target\": {\n              \"sum\": {\n                \"field\": \"overallTarget\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "createdTime",
+        "requestQueryMap": "{\"locationKey\": \"province\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"isDelivered\": true\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Total Population covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"district\"\n          },\n          \"aggs\": {\n            \"Quantity\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            },\n            \"total_count\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Quantity\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "xtable",
+    "valueType": "percentage",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Districts",
+    "excludedColumns": [
+      "S.N.",
+      "Overall Population target"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "total_count",
+          "Overall Population target"
+        ],
+        "newField": "percentage_value",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
     "_comment": " "
   }
 }
