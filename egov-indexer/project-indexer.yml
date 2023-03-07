@@ -40,36 +40,6 @@ ServiceMaps:
                 outJsonPath: $.Data.village
           timeStampField: $.lastModifiedTime
 
-    - topic: save-project-staff-topic
-      configKey: INDEX
-      indexes:
-        - name: projectStaffIndex-v1
-          type: projectStaff
-          id: $.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
-
-    - topic: update-project-staff-topic
-      configKey: INDEX
-      indexes:
-        - name: projectStaffUpdateIndex-v1
-          type: projectStaff-update
-          id: $.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-
-    - topic: delete-project-staff-topic
-      configKey: INDEX
-      indexes:
-        - name: projectStaffDeleteIndex-v1
-          type: projectStaff-delete
-          id: $.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-
     - topic: save-project-beneficiary-topic
       configKey: INDEX
       indexes:
