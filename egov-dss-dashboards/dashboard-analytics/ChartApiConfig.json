@@ -2280,7 +2280,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Distributions by AP's\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Distributions\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value*(-1)\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Distributions by APs\": {\n          \"terms\": {\n            \"field\": \"administrativeProvince\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Distributions\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['quantity'].value*(-1)\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -2288,7 +2288,7 @@
       {
         "postAggregationTheory" : "",
         "actionName": "SumComputedField",
-        "fields" : ["Overall Target","Distributions by AP's"],
+        "fields" : ["Overall Target","Distributions by APs"],
         "newField" : "Required Stock",
         "_comments": ""
       }
@@ -2301,7 +2301,7 @@
     "documentType": "_doc",
     "action": "",
     "computeMultiPaths": true,
-    "aggregationPaths": ["Available Stock","Overall Target","Distributions by AP's"],
+    "aggregationPaths": ["Available Stock","Overall Target","Distributions by APs"],
     "insight": { },
     "_comment": " "
   },
@@ -2577,6 +2577,298 @@
     },
     "hideInsights": true,
     "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "totalComplaintsRegistered": {
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints Status\": {\n          \"terms\": {\n            \"field\": \"Data.service.applicationStatus.keyword\",\n            \"size\": 10\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints Status"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "complaintsByDistrictTotal": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by District\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints by District"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "totalComplaintsRegisteredByType": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n\"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus\": [\n                  \"\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints Type\": {\n          \"terms\": {\n            \"field\": \"Data.service.serviceCode.keyword\"\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints Type"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "complaintsByAPTotal": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_AP_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by AP\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints by AP"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "complaintsByStatusBreakdownProvincial": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_PROVINCIAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by District\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by District\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by District\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Open Complaints by District","Resolved Complaints by District","Rejected Complaints by District"],
+    "insight": { },
+    "_comment": " "
+  },
+  "complaintsByStatusBreakdownDistrict": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Open Complaints by APs","Resolved Complaints by APs","Rejected Complaints by APs"],
+    "insight": { },
+    "_comment": " "
+  },
+  "complaintsByStatusSummaryProvince": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Districts",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "showFooter": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Registered",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "complaintsByStatusSummaryDistrict": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\", \"district\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "APs",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Registered",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "averageResolutionTimeProvince":{
+    "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Solved filter's\": {\n      \"filters\": {\n        \"filters\": {\n          \"NAME\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"terms\": {\n                    \"Data.service.applicationStatus.keyword\": [\n                      \"resolved\",\n                      \"rejected\"\n                    ]\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Resolution time in hours\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.createdTime\"\n              }\n            },\n            \"Created Time\": {\n              \"sum\": {\n                \"field\": \"Data.service.auditDetails.createdTime\"\n              }\n            },\n            \"Last Modified Time\": {\n              \"sum\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            },\n            \"Difference of Time\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"CT\": \"Created Time\",\n                  \"LMT\": \"Last Modified Time\",\n                  \"CC\": \"Complaints Count\"\n                },\n                \"script\": \"(params.LMT-params.CT)/3600000/params.CC\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Resolution time in hours"],
+    "insight": { },
+    "_comment": " "
+  },
+  "averageResolutionTimeDistrict":{
+    "chartName": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Solved filter's\": {\n      \"filters\": {\n        \"filters\": {\n          \"NAME\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"terms\": {\n                    \"Data.service.applicationStatus.keyword\": [\n                      \"resolved\",\n                      \"rejected\"\n                    ]\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Resolution time in hours\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.createdTime\"\n              }\n            },\n            \"Created Time\": {\n              \"sum\": {\n                \"field\": \"Data.service.auditDetails.createdTime\"\n              }\n            },\n            \"Last Modified Time\": {\n              \"sum\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            },\n            \"Difference of Time\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"CT\": \"Created Time\",\n                  \"LMT\": \"Last Modified Time\",\n                  \"CC\": \"Complaints Count\"\n                },\n                \"script\": \"(params.LMT-params.CT)/3600000/params.CC\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}/3600000/params.CC\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Resolution time in hours"],
+    "insight": { },
     "_comment": " "
   }
 }
