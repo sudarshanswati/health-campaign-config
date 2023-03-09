@@ -57,3 +57,55 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
+
+    - topic: transformer-producer-bulk-stock-index-v1-topic
+      configKey: INDEX
+      indexes:
+        - name: stock-index-v1
+          type: stock
+          id: $.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.lastModifiedTime
+        - name: user-sync-index-v1
+          type: users
+          id: $.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $.lastModifiedBy
+                outJsonPath: $.Data.userId
+              - inJsonPath: $.lastModifiedTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.facilityId
+                outJsonPath: $.Data.facilityId
+              - inJsonPath: $.productVariant
+                outJsonPath: $.Data.productVariant
+              - inJsonPath: $.physicalCount
+                outJsonPath: $.Data.physicalCount
+              - inJsonPath: $.eventType
+                outJsonPath: $.Data.eventType
+              - inJsonPath: $.eventTimeStamp
+                outJsonPath: $.Data.eventTimeStamp
+              - inJsonPath: $.province
+                outJsonPath: $.Data.province
+              - inJsonPath: $.district
+                outJsonPath: $.Data.district
+              - inJsonPath: $.administrativeProvince
+                outJsonPath: $.Data.administrativeProvince
+              - inJsonPath: $.locality
+                outJsonPath: $.Data.locality
+              - inJsonPath: $.village
+                outJsonPath: $.Data.village
+              - inJsonPath: $.latitude
+                outJsonPath: $.Data.latitude
+              - inJsonPath: $.longitude
+                outJsonPath: $.Data.longitude
+          timeStampField: $.lastModifiedTime
