@@ -2448,24 +2448,9 @@
     "action": "",
     "plotLabel": "Provinces",
     "excludedColumns": ["Overall Population Target","Overall Household Target","Quantity","Total Population Covered"],
-    "listofkeys": ["Total Households Visited Today","Total Households Visited"],
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [
-      {
-        "postAggregationTheory" : "",
-        "actionName": "AdditiveComputedField",
-        "fields" : ["Total Households Visited Today"],
-        "newField" : "",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory" : "",
-        "actionName": "AdditiveComputedField",
-        "fields" : ["Total Households Visited"],
-        "newField" : "",
-        "_comments": ""
-      },
       {
         "postAggregationTheory" : "",
         "actionName": "PercentageComputedField",
