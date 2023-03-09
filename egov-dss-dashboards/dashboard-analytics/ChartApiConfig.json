@@ -1901,7 +1901,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Quantity\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            },\n            \"Total Population Covered\":{\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Quantity\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -1961,7 +1961,7 @@
     "documentType": "_doc",
     "action": "division",
     "plotLabel": "Daily Count",
-    "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
+    "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Households","Quantity","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
     "filterKeys": [
       {"key": "Daily Count", "column": "Daily Count"}
@@ -2053,7 +2053,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Households\": {\n              \"value_count\": {\n                \"field\": \"id\"\n              }\n            },\n            \"Total Population Covered\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Households\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Count\": {\n          \"date_histogram\": {\n            \"field\": \"createdTime\",\n            \"interval\": \"day\",\n            \"format\": \"dd MMM yyyy\",\n            \"min_doc_count\": 1\n          },\n          \"aggs\": {\n            \"Quantity\": {\n              \"sum\": {\n                \"field\": \"quantity\"\n              }\n            },\n            \"Total Population Covered\":{\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Quantity\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -2113,7 +2113,7 @@
     "documentType": "_doc",
     "action": "division",
     "plotLabel": "Daily Count",
-    "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Households","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
+    "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Quantity","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
     "filterKeys": [
       {"key": "Daily Count", "column": "Daily Count"}
