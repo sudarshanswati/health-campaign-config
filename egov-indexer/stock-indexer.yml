@@ -2,62 +2,6 @@ ServiceMaps:
   serviceName: stock
   version: 1.0.0
   mappings:
-    - topic: update-stock-topic
-      configKey: INDEX
-      indexes:
-        - name: stockUpdateIndex-v1
-          type: stock-update
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.*.auditDetails.createdTime
-    - topic: save-stock-topic
-      configKey: INDEX
-      indexes:
-        - name: stockIndex-v1
-          type: stock
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-    - topic: delete-stock-topic
-      configKey: INDEX
-      indexes:
-        - name: stockDeleteIndex-v1
-          type: stock-delete
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-
-    - topic: update-stock-reconciliation-topic
-      configKey: INDEX
-      indexes:
-        - name: stockReconciliationUpdateIndex-v1
-          type: stock-reconciliation-update
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.*.auditDetails.createdTime
-    - topic: save-stock-reconciliation-topic
-      configKey: INDEX
-      indexes:
-        - name: stockReconciliationIndex-v1
-          type: stock-reconciliation
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-    - topic: delete-stock-reconciliation-topic
-      configKey: INDEX
-      indexes:
-        - name: stockReconciliationDeleteIndex-v1
-          type: stock-reconciliation-delete
-          id: $.*.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
-
     - topic: transformer-producer-bulk-stock-index-v1-topic
       configKey: INDEX
       indexes:
@@ -84,16 +28,6 @@ ServiceMaps:
                 outJsonPath: $.Data.userId
               - inJsonPath: $.lastModifiedTime
                 outJsonPath: $.Data.createdTime
-              - inJsonPath: $.facilityId
-                outJsonPath: $.Data.facilityId
-              - inJsonPath: $.productVariant
-                outJsonPath: $.Data.productVariant
-              - inJsonPath: $.physicalCount
-                outJsonPath: $.Data.physicalCount
-              - inJsonPath: $.eventType
-                outJsonPath: $.Data.eventType
-              - inJsonPath: $.eventTimeStamp
-                outJsonPath: $.Data.eventTimeStamp
               - inJsonPath: $.province
                 outJsonPath: $.Data.province
               - inJsonPath: $.district
