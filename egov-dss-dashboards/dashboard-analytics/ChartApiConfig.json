@@ -276,10 +276,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\"aggs\":{\"Total visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}},{\"range\":{\"createdTime\":{\"lte\":\"now\"}}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
+        "aggrQuery": "{\"aggs\":{\"Total visits\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"deliveredTo\":\"HOUSEHOLD\"}},{\"term\": {\"productVariant\": \"LLIN\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"id\"}}}}}}"
       },
       {
         "module": "COMMON",
@@ -456,10 +456,10 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\": {\n                \"createdTime\": {\n                  \"lte\" : \"now\"                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Total Distributions Coverage\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }]\n        }\n      },\n      \"aggs\": {\n        \"distributions\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "metric",
@@ -578,10 +578,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered till Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered till Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -617,10 +617,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "createdTime",
         "requestQueryMap": "{\"province\":\"province\",\"district\":\"district\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            },\n            {\n              \"range\" : {\n                \"createdTime\" : {\n                  \"lte\": \"now\"\n                }\n              }\n            }\n            ]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered till Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Household\": {\n            \"bool\": {\n              \"must\":[\n            {\n              \"term\": {\n                \"deliveredTo\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"term\": {\n                \"productVariant\": \"LLIN\"\n              }\n            }]\n            }\n          }\n        }\n      }, \n      \"aggs\": {\n        \"SUM\": {\n          \"sum\": {\n            \"field\": \"quantity\"\n          }\n        },\n        \"Population Covered till Today\": {\n          \"bucket_script\": {\n            \"buckets_path\": {\n              \"sum\": \"SUM\"\n            },\n            \"script\": \"(params.sum) * 1.8\"\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
