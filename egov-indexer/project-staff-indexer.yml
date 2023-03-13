@@ -2,11 +2,11 @@ ServiceMaps:
   serviceName: project
   version: 1.0.0
   mappings:
-    - topic: transformer-producer-bulk-create-project-task-index-v1-topic
+    - topic: transformer-producer-bulk-project-staff-index-v1-topic
       configKey: INDEX
       indexes:
-        - name: project-task-index-v1
-          type: tasks
+        - name: project-staff-index-v1
+          type: staff
           id: $.id
           isBulk: true
           jsonPath: $
@@ -15,7 +15,7 @@ ServiceMaps:
             fieldMapping:
               - inJsonPath: $
                 outJsonPath: $.Data
-          timeStampField: $.createdTime
+          timeStampField: $.lastModifiedTime
         - name: user-sync-index-v1
           type: users
           id: $.id
@@ -24,9 +24,9 @@ ServiceMaps:
           customJsonMapping:
             indexMapping: { "Data": {} }
             fieldMapping:
-              - inJsonPath: $.userId
+              - inJsonPath: $.lastModifiedBy
                 outJsonPath: $.Data.userId
-              - inJsonPath: $.createdTime
+              - inJsonPath: $.lastModifiedTime
                 outJsonPath: $.Data.createdTime
               - inJsonPath: $.province
                 outJsonPath: $.Data.province
@@ -38,4 +38,4 @@ ServiceMaps:
                 outJsonPath: $.Data.locality
               - inJsonPath: $.village
                 outJsonPath: $.Data.village
-          timeStampField: $.createdTime
+          timeStampField: $.lastModifiedTime
