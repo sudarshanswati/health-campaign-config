@@ -3328,5 +3328,63 @@
     "aggregationPaths": ["Login Error","App Malfunction","Stolen Device","Sync Error"],
     "insight": { },
     "_comment": " "
+  },
+  "ComplaintsShareByDistrict": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by District\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Total Complaints\": {\n          \"value_count\": {\n            \"field\": \"Data.service.id.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "divisionbyconstant",
+    "aggregationPaths": ["Complaints by District","Total Complaints"],
+    "insight": { },
+    "_comment": " "
+  },
+  "ComplaintsShareByAP": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"province\", \"district\": \"district\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by Administrative Province\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Total Complaints\": {\n          \"value_count\": {\n            \"field\": \"Data.service.id.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "divisionbyconstant",
+    "aggregationPaths": ["Complaints by Administrative Province","Total Complaints"],
+    "insight": { },
+    "_comment": " "
   }
 }

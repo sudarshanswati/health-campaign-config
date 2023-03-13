@@ -697,6 +697,24 @@
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
+              "id": 352,
+              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "ComplaintsShareByDistrict",
+                  "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
               "id": 351,
               "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
               "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
@@ -1345,6 +1363,24 @@
           "row": 3,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
+            {
+              "id": 325,
+              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "ComplaintsShareByAP",
+                  "name": "DSS_HEALTH_COMPLAINTS__COMPLAINTS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
             {
               "id": 326,
               "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
