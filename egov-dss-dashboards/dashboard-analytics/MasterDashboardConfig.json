@@ -697,6 +697,24 @@
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
+              "id": 352,
+              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "ComplaintsShareByDistrict",
+                  "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
               "id": 351,
               "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
               "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
@@ -734,7 +752,17 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "BOUNDARY"
+                },
+                {
+                  "id": "complaintsByStatusSummaryDay",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DAYWISE"
                 }
               ]
             }
@@ -1161,6 +1189,49 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
+              "id": 217,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsCoverageHeatMapProvince",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "HOUSEHOLD"
+                },
+                {
+                  "id": "populationCoverageHeatMapProvince",
+                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "POPULATION"
+                },
+                {
+                  "id": "bednetsCoverageHeatMapProvince",
+                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_PROVINCE",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BEDNETS"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
               "id": 315,
               "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
               "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
@@ -1303,6 +1374,24 @@
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
+              "id": 325,
+              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "ComplaintsShareByAP",
+                  "name": "DSS_HEALTH_COMPLAINTS__COMPLAINTS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
               "id": 326,
               "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
               "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
@@ -1340,7 +1429,17 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "BOUNDARY"
+                },
+                {
+                  "id": "complaintsByStatusSummaryDay",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DAYWISE"
                 }
               ]
             }
