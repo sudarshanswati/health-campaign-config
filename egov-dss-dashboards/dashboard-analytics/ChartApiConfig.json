@@ -357,6 +357,138 @@
     },
     "_comment": " "
   },
+  "userSyncSummaryProvince": {
+    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
+        "indexName": "project-staff-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.province.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Total Users Created\": {\n          \"value_count\": {\n            \"field\": \"Data.userId.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
+        "indexName": "user-sync-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.province.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Unique Users Synced\": {\n          \"scripted_metric\": {\n            \"params\": {\n              \"fieldName\": \"Data.userId.keyword\"\n            },\n            \"init_script\": \"state.list = []\",\n            \"map_script\": \"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\n            \"combine_script\": \"return state.list;\",\n            \"reduce_script\": \"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "DATA SYNC",
+    "filterForCurrentDay": true,
+    "excludedColumns": [
+      "S.N.", "DATA SYNC", "Total Users Created","Unique Users Synced"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Users Created"
+        ],
+        "newField": "Total_Users_Created",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Unique Users Synced"
+        ],
+        "newField": "Unique_Users_Synced",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Unique_Users_Synced",
+          "Total_Users_Created"
+        ],
+        "newField": "User_Sync_Rate",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "userSyncSummaryDistrict": {
+    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\", \"district\":\"Data.district.keyword\"}",
+        "indexName": "project-staff-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.district.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Total Users Created\": {\n          \"value_count\": {\n            \"field\": \"Data.userId.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\", \"district\":\"Data.district.keyword\"}",
+        "indexName": "user-sync-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.district.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Unique Users Synced\": {\n          \"scripted_metric\": {\n            \"params\": {\n              \"fieldName\": \"Data.userId.keyword\"\n            },\n            \"init_script\": \"state.list = []\",\n            \"map_script\": \"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\n            \"combine_script\": \"return state.list;\",\n            \"reduce_script\": \"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "DATA SYNC",
+    "filterForCurrentDay": true,
+    "excludedColumns": [
+      "S.N.", "DATA SYNC", "Total Users Created","Unique Users Synced"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Users Created"
+        ],
+        "newField": "Total_Users_Created",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Unique Users Synced"
+        ],
+        "newField": "Unique_Users_Synced",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Unique_Users_Synced",
+          "Total_Users_Created"
+        ],
+        "newField": "User_Sync_Rate",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
   "bednetsTargetProvince": {
     "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET_PROVINCE",
     "queries": [
@@ -2739,15 +2871,17 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\"}",
         "indexName": "pgr-services",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Districts\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by Districts\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
-
+    "filterKeys": [
+      {"key": "Data.district.keyword", "column": "Districts"}
+    ],
     "chartType": "xtable",
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "complaintsByStatusSummaryDistrict",
     "documentType": "_doc",
     "action": "",
     "plotLabel": "Districts",
@@ -2790,14 +2924,133 @@
     "_comment": " "
   },
   "complaintsByStatusSummaryDistrict": {
+    "kind": "drillDown",
     "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"province\":\"Data.province.keyword\", \"district\":\"Data.district.keyword\"}",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\", \"Data.district.keyword\":\"Data.district.keyword\"}",
         "indexName": "pgr-services",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by APs\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "Data.administrativeProvince.keyword", "column": "APs"}
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "complaintsByStatusSummaryAP",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "APs",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Registered",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "complaintsByStatusSummaryAP": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\", \"Data.district.keyword\":\"Data.district.keyword\",\"Data.administrativeProvince.keyword\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by Locality\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by Locality\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by Locality\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "Data.locality.keyword", "column": "Locality"}
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "complaintsByStatusSummaryLocality",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Locality",
+    "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
+        "newField" : "Registered",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Resolved Complaints Count"],
+        "newField" : "Resolved",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Rejected Complaints Count"],
+        "newField" : "Rejected",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Open Complaints Count"],
+        "newField" : "Open",
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "complaintsByStatusSummaryLocality": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_Locality",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\", \"Data.district.keyword\":\"Data.district.keyword\",\"Data.administrativeProvince.keyword\":\"Data.administrativeProvince.keyword\",\"Data.locality.keyword\":\"Data.locality.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open filter by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open Complaints by Village\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Resolved filter by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"resolved\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Resolved Complaints by Village\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Resolved Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Rejected filter by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"rejected\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Rejected Complaints by Village\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Rejected Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
 
@@ -2807,7 +3060,7 @@
     "documentType": "_doc",
     "action": "",
     "showFooter": true,
-    "plotLabel": "APs",
+    "plotLabel": "Village",
     "excludedColumns": ["Resolved Complaints Count", "Rejected Complaints Count", "Open Complaints Count"],
     "hideInsights": true,
     "hideHeaderDenomination": true,
@@ -3322,7 +3575,7 @@
         "dateRefField": "Data.service.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
         "indexName": "pgr-services",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"LoginError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"LoginError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Login Errors\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"AppMalfunction by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"AppMalfunction\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"App Malfunctions\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"StolenDevice by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"StolenDevice\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stolen Devices\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"SyncError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"SyncError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Sync Errors\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"LoginError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"Login Error\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Login Error\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"AppMalfunction by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"AppMalfunction\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"App Malfunction\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"StolenDevice by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"StolenDevice\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stolen Device\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"SyncError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"SyncError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Sync Error\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -3448,6 +3701,127 @@
     "action": "divisionbyconstant",
     "aggregationPaths": ["Complaints by Administrative Province","Total Complaints"],
     "insight": { },
+    "_comment": " "
+  },
+  "openComplaintsSummaryByDistrict": {
+    "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open complaints\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_term\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints count\": {\n              \"date_range\": {\n                \"field\": \"Data.@timestamp\",\n                \"keyed\": true, \n                \"ranges\": [\n                  {\n                    \"from\": \"now-6h\",\n                    \"to\": \"now\",\n                    \"key\": \"open since 6h\"\n                  },\n                  {\n                    \"from\": \"now-12h\",\n                    \"to\": \"now-6h\",\n                    \"key\": \"open since 6h-12h\"\n                  },\n                  {\n                    \"from\": \"now-24h\",\n                    \"to\": \"now-12h\",\n                    \"key\": \"open since 12h-24h\"\n                  },\n                  {\n                    \"from\": \"now-48h\",\n                    \"to\": \"now-24h\",\n                    \"key\": \"open since 24h-48h\"\n                  },\n                  {\n                    \"to\": \"now-48h\",\n                    \"key\": \"open for more than 48h\"\n                  }\n                  \n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "Data.district.keyword", "column": "Open complaints District"}
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "openComplaintsSummaryByAP",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Open complaints District",
+    "excludedColumns": [],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "aggregationPaths": ["open since 6h","open since 6h-12h","open since 12h-24h","open since 24h-48h","open for more than 48h"],
+    "computedFields": [],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "openComplaintsSummaryByAP": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.district.keyword\", \"Data.district.keyword\":\"Data.district.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open complaints\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_term\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints count\": {\n              \"date_range\": {\n                \"field\": \"Data.@timestamp\",\n                \"keyed\": true,\n                \"ranges\": [\n                  {\n                    \"from\": \"now-6h\",\n                    \"to\": \"now\",\n                    \"key\": \"open since 6h\"\n                  },\n                  {\n                    \"from\": \"now-12h\",\n                    \"to\": \"now-6h\",\n                    \"key\": \"open since 6h-12h\"\n                  },\n                  {\n                    \"from\": \"now-24h\",\n                    \"to\": \"now-12h\",\n                    \"key\": \"open since 12h-24h\"\n                  },\n                  {\n                    \"from\": \"now-48h\",\n                    \"to\": \"now-24h\",\n                    \"key\": \"open since 24h-48h\"\n                  },\n                  {\n                    \"to\": \"now-48h\",\n                    \"key\": \"open for more than 48h\"\n                  }\n\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "Data.administrativeProvince.keyword", "column": "Open complaints AP"}
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "openComplaintsSummaryByLocality",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Open complaints AP",
+    "excludedColumns": [],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "aggregationPaths": ["open since 6h","open since 6h-12h","open since 12h-24h","open since 24h-48h","open for more than 48h"],
+    "computedFields": [],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "openComplaintsSummaryByLocality": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_LOCALITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\", \"Data.district.keyword\":\"Data.district.keyword\", \"Data.administrativeProvince.keyword\": \"Data.administrativeProvince.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open complaints\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_term\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints count\": {\n              \"date_range\": {\n                \"field\": \"Data.@timestamp\",\n                \"keyed\": true,\n                \"ranges\": [\n                  {\n                    \"from\": \"now-6h\",\n                    \"to\": \"now\",\n                    \"key\": \"open since 6h\"\n                  },\n                  {\n                    \"from\": \"now-12h\",\n                    \"to\": \"now-6h\",\n                    \"key\": \"open since 6h-12h\"\n                  },\n                  {\n                    \"from\": \"now-24h\",\n                    \"to\": \"now-12h\",\n                    \"key\": \"open since 12h-24h\"\n                  },\n                  {\n                    \"from\": \"now-48h\",\n                    \"to\": \"now-24h\",\n                    \"key\": \"open since 24h-48h\"\n                  },\n                  {\n                    \"to\": \"now-48h\",\n                    \"key\": \"open for more than 48h\"\n                  }\n\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [
+      {"key": "Data.locality.keyword", "column": "Open complaints Locality"}
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "openComplaintsSummaryByVillage",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Open complaints Locality",
+    "excludedColumns": [],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "aggregationPaths": ["open since 6h","open since 6h-12h","open since 12h-24h","open since 24h-48h","open for more than 48h"],
+    "computedFields": [],
+    "insight": {
+    },
+    "_comment": " "
+  },
+  "openComplaintsSummaryByVillage": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_VILLAGE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"Data.province.keyword\":\"Data.province.keyword\", \"Data.district.keyword\":\"Data.district.keyword\", \"Data.administrativeProvince.keyword\": \"Data.administrativeProvince.keyword\",\"Data.locality.keyword\": \"Data.locality.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Open\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.applicationStatus.keyword\": \"open\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Open complaints\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_term\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Open Complaints count\": {\n              \"date_range\": {\n                \"field\": \"Data.@timestamp\",\n                \"keyed\": true,\n                \"ranges\": [\n                  {\n                    \"from\": \"now-6h\",\n                    \"to\": \"now\",\n                    \"key\": \"open since 6h\"\n                  },\n                  {\n                    \"from\": \"now-12h\",\n                    \"to\": \"now-6h\",\n                    \"key\": \"open since 6h-12h\"\n                  },\n                  {\n                    \"from\": \"now-24h\",\n                    \"to\": \"now-12h\",\n                    \"key\": \"open since 12h-24h\"\n                  },\n                  {\n                    \"from\": \"now-48h\",\n                    \"to\": \"now-24h\",\n                    \"key\": \"open since 24h-48h\"\n                  },\n                  {\n                    \"to\": \"now-48h\",\n                    \"key\": \"open for more than 48h\"\n                  }\n\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Open complaints Village",
+    "excludedColumns": [],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "aggregationPaths": ["open since 6h","open since 6h-12h","open since 12h-24h","open since 24h-48h","open for more than 48h"],
+    "computedFields": [],
+    "insight": {
+    },
     "_comment": " "
   }
 }

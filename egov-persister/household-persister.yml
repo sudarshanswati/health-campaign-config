@@ -102,13 +102,16 @@ serviceMaps:
       fromTopic: delete-household-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -158,11 +161,14 @@ serviceMaps:
       fromTopic: delete-household-member-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
