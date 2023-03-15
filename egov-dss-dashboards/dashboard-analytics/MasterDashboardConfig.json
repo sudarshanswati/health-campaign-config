@@ -656,15 +656,15 @@
             },
             {
               "id": 222,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "totalComplaintsRegisteredByType",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -1381,15 +1381,15 @@
             },
             {
               "id": 331,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "totalComplaintsRegisteredByType",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
