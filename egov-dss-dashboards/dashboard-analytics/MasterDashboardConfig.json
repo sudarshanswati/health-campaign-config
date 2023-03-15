@@ -769,6 +769,30 @@
           ]
         },
         {
+          "row": 5,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 227,
+              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "openComplaintsSummaryByDistrict",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
@@ -1440,6 +1464,30 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 327,
+              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "openComplaintsSummaryByAP",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_AP",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
