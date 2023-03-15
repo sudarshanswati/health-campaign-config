@@ -176,6 +176,30 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
+              "id": 200,
+              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncSummaryProvince",
+                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
               "id": 201,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
@@ -848,6 +872,30 @@
       "hideFilterFields": ["DDR", "Ulb", "Denomination", "ModuleFilter"],
       "style": "linear",
       "visualizations": [
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 200,
+              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncSummaryDistrict",
+                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
         {
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
