@@ -2478,15 +2478,15 @@
       {
         "postAggregationTheory" : "",
         "actionName": "PercentageComputedField",
-        "fields" : ["Total Population Covered","Overall Population Target"],
-        "newField" : "Population Coverage",
+        "fields" : ["Total Households Visited","Overall Household Target"],
+        "newField" : "Household Coverage",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "PercentageComputedField",
-        "fields" : ["Total Households Visited","Overall Household Target"],
-        "newField" : "Household Coverage",
+        "fields" : ["Total Population Covered","Overall Population Target"],
+        "newField" : "Population Coverage",
         "_comments": ""
       }
     ],
