@@ -51,13 +51,16 @@ serviceMaps:
       fromTopic: delete-project-staff-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE project_staff SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE project_staff SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -112,13 +115,16 @@ serviceMaps:
       fromTopic: delete-project-beneficiary-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE project_beneficiary SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE project_beneficiary SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -478,13 +484,16 @@ serviceMaps:
       fromTopic: delete-project-resource-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE project_resource SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?  WHERE id = ?
+        - query: UPDATE project_resource SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=?  WHERE id = ?
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -552,11 +561,14 @@ serviceMaps:
       fromTopic: delete-project-facility-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE project_facility SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE project_facility SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id

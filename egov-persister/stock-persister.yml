@@ -64,13 +64,16 @@ serviceMaps:
       fromTopic: delete-stock-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
 
 
@@ -133,11 +136,14 @@ serviceMaps:
       fromTopic: delete-stock-reconciliation-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id

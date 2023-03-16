@@ -176,6 +176,30 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
+              "id": 200,
+              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncSummaryProvince",
+                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
               "id": 201,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
@@ -632,15 +656,15 @@
             },
             {
               "id": 222,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "totalComplaintsRegisteredByType",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -769,6 +793,30 @@
           ]
         },
         {
+          "row": 5,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 227,
+              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "openComplaintsSummaryByDistrict",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
@@ -848,6 +896,30 @@
       "hideFilterFields": ["DDR", "Ulb", "Denomination", "ModuleFilter"],
       "style": "linear",
       "visualizations": [
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 200,
+              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncSummaryDistrict",
+                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
         {
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
@@ -1309,15 +1381,15 @@
             },
             {
               "id": 331,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "totalComplaintsRegisteredByType",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -1440,6 +1512,30 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 327,
+              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "openComplaintsSummaryByAP",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_AP",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
