@@ -144,13 +144,16 @@ serviceMaps:
       fromTopic: delete-project-task-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE PROJECT_TASK SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ?;
+        - query: UPDATE PROJECT_TASK SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
         - query: UPDATE TASK_RESOURCE SET lastModifiedBy = ?, lastModifiedTime = ?, isDeleted = ? WHERE ID = ?;
           basePath: $.*.resources.*
