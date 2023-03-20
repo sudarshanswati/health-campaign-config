@@ -818,17 +818,19 @@
     ],
     "chartType": "line",
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "rdTotalHouseholdsNotDeliveredChartDistrict",
     "isCumulative": false,
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Households not Delivered by District"
     ],
+    "filterKeys": [{"key": "district"}],
     "insight": {},
     "_comment": " "
   },
   "rdTotalHouseholdsNotDeliveredChartDistrict": {
+    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
     "queries": [
       {
@@ -842,11 +844,61 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "rdTotalHouseholdsNotDeliveredChartAp",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Households not Delivered by AP"
+    ],
+    "filterKeys": [{"key": "administrativeProvince"}],
+    "insight": {},
+    "_comment": " "
+  },
+  "rdTotalHouseholdsNotDeliveredChartAp": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Households not Delivered by Locality\": {\n      \"terms\": {\n        \"field\": \"Data.locality.keyword\",\n        \"size\": 500,\n        \"order\": {\n          \"_key\": \"asc\"\n        }\n      },\n      \"aggs\": {\n        \"Households not delivered\": {\n          \"filter\": {\n            \"term\": {\n              \"Data.isDelivered\": false\n            }\n          }, \n          \"aggs\": {\n            \"NAME\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "rdTotalHouseholdsNotDeliveredChartLocality",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households not Delivered by Locality"
+    ],
+    "filterKeys": [{"key": "locality"}],
+    "insight": {},
+    "_comment": " "
+  },
+  "rdTotalHouseholdsNotDeliveredChartLocality": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\",\"locality\":\"Data.locality.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Households not Delivered by Village\": {\n      \"terms\": {\n        \"field\": \"Data.village.keyword\",\n        \"size\": 500,\n        \"order\": {\n          \"_key\": \"asc\"\n        }\n      },\n      \"aggs\": {\n        \"Households not delivered\": {\n          \"filter\": {\n            \"term\": {\n              \"Data.isDelivered\": false\n            }\n          }, \n          \"aggs\": {\n            \"NAME\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households not Delivered by Village"
     ],
     "insight": {},
     "_comment": " "
