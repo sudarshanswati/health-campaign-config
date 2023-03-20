@@ -1037,12 +1037,13 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "rdPopulationChartDistrict",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Total Population Covered"
     ],
+    "filterKeys": [{"key": "district"}],
     "insight": { },
     "_comment": " "
   },
@@ -1068,10 +1069,11 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "rdPopulationChartDistrictPercent",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
+    "filterKeys": [{"key": "district"}],
     "computedFields": [
       {
         "postAggregationTheory" : "repsonseToDifferenceOfDates",
@@ -1085,6 +1087,7 @@
     "_comment": " "
   },
   "rdPopulationChartDistrict": {
+    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
     "queries": [
       {
@@ -1098,16 +1101,18 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "rdPopulationChartAP",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Total Population Covered"
     ],
+    "filterKeys": [{"key": "administrativeProvince"}],
     "insight": { },
     "_comment": " "
   },
   "rdPopulationChartDistrictPercent": {
+    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
     "queries": [
       {
@@ -1123,6 +1128,135 @@
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.targetType.keyword\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"exists\": {\n                    \"field\": \"Data.administrativeProvince.keyword\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"exists\": {\n                    \"field\": \"Data.locality.keyword\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Population Targeted\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"TPD\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.targetPerDay'].value * 365\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "rdPopulationChartApPercent",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
+    "filterKeys": [{"key": "administrativeProvince"}],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "repsonseToDifferenceOfDates",
+        "actionName": "",
+        "fields" : [ "TPD" ],
+        "newField" : "Percentage Covered",
+        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
+      }
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartAP": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": true\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Total Population Covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.locality.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "rdPopulationChartLocality",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Population Covered"
+    ],
+    "filterKeys": [{"key": "locality"}],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartApPercent": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_AP_PERCENT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": true\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Population Covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.locality.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "project-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.targetType.keyword\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"exists\": {\n                    \"field\": \"Data.locality.keyword\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"exists\": {\n                    \"field\": \"Data.village.keyword\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Population Targeted\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.locality.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"TPD\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.targetPerDay'].value * 365\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "rdPopulationChartLocalityPercent",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
+    "filterKeys": [{"key": "locality"}],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "repsonseToDifferenceOfDates",
+        "actionName": "",
+        "fields" : [ "TPD" ],
+        "newField" : "Percentage Covered",
+        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
+      }
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartLocality": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_LOCALITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\",\"locality\":\"Data.locality.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": true\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Total Population Covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Population Covered"
+    ],
+    "insight": { },
+    "_comment": " "
+  },
+  "rdPopulationChartLocalityPercent": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_LOCALITY_PERCENT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\",\"locality\":\"Data.locality.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": true\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Percentage of Population Covered\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.quantity'].value * 1.8\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\",\"locality\":\"Data.locality.keyword\"}",
+        "indexName": "project-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.targetType.keyword\": \"INDIVIDUAL\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"exists\": {\n                    \"field\": \"Data.village.keyword\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Population Targeted\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"TPD\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.targetPerDay'].value * 365\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
 
     ],
