@@ -856,7 +856,7 @@
   },
   "rdTotalHouseholdsNotDeliveredChartAp": {
     "kind": "drillDown",
-    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_AP",
     "queries": [
       {
         "module": "COMMON",
@@ -881,7 +881,7 @@
   },
   "rdTotalHouseholdsNotDeliveredChartLocality": {
     "kind": "drillDown",
-    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
+    "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_NOT_DELIVERED_LOCALITY",
     "queries": [
       {
         "module": "COMMON",
