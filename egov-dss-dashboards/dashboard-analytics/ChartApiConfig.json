@@ -1350,7 +1350,7 @@
   },
   "householdsCoverageBarchartByLocality":{
     "kind": "drillDown",
-    "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
+    "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_LOCALITY",
     "queries": [
       {
         "module": "COMMON",
@@ -1390,7 +1390,7 @@
   },
   "householdsCoverageBarchartByVillage":{
     "kind": "drillDown",
-    "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
+    "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_VILLAGE",
     "queries": [
       {
         "module": "COMMON",
