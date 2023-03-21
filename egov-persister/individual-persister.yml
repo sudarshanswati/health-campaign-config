@@ -209,13 +209,16 @@ serviceMaps:
       fromTopic: delete-individual-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE individual SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id=?;
+        - query: UPDATE individual SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.id
         - query: UPDATE individual_address SET lastModifiedBy=?, lastModifiedTime=?, isDeleted=? WHERE individualId=? AND addressId=?;
           basePath: $.*.address.*
