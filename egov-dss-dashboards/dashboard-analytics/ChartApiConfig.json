@@ -782,8 +782,8 @@
     },
     "_comment": " "
   },
-  "totalHouseholdsNotDelivered": {
-    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+  "totalHouseholdsNotDeliveredProvince": {
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
     "queries": [
       {
         "module": "COMMON",
@@ -796,11 +796,82 @@
     "chartType": "pie",
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "none",
+    "drillChart": "totalHouseholdsNotDeliveredDrilldownProvince",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Not Delivered"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "totalHouseholdsNotDeliveredDrilldownProvince": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DRILLDOWN_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"selectedType\":\"Data.deliveryComments.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Total household not delivered\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": false\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.deliveryComments.keyword\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Not Delivered Drilldown\": {\n          \"terms\": {\n            \"field\": \"Data.district.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Not Delivered Drilldown"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "totalHouseholdsNotDeliveredDistrict": {
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Total household not delivered\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": false\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.deliveryComments.keyword\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Not Delivered\": {\n          \"terms\": {\n            \"field\": \"Data.deliveryComments.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "totalHouseholdsNotDeliveredDrilldownDistrict",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Not Delivered"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "totalHouseholdsNotDeliveredDrilldownDistrict": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DRILLDOWN_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"selectedType\":\"Data.deliveryComments.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"Total household not delivered\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR-2022-12-20-000034\"\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.quantity\": 0\n                  }\n                },\n                {\n                  \"term\": {\n                    \"Data.isDelivered\": false\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"term\": {\n                    \"Data.deliveryComments.keyword\": \"\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Not Delivered Drilldown\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\"\n          }\n        }\n      }\n    }\n  }\n}\n"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Not Delivered Drilldown"
     ],
     "insight": {},
     "_comment": " "
