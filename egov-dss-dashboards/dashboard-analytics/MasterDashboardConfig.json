@@ -340,8 +340,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "id": "totalHouseholdsNotDeliveredProvince",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -1065,8 +1065,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalHouseholdsNotDelivered",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED",
+                  "id": "totalHouseholdsNotDeliveredDistrict",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
