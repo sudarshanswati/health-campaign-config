@@ -3345,7 +3345,7 @@
     "chartType": "pie",
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "rdComplaintsByDistrictTotal",
+    "drillChart": "complaintsByTypeDrilldown",
     "filterKeys": [{"key": "applicationStatus"}],
     "documentType": "_doc",
     "action": "",
@@ -3355,9 +3355,9 @@
     "insight": {},
     "_comment": " "
   },
-  "rdComplaintsByDistrictTotal": {
+  "complaintsByTypeDrilldown": {
     "kind": "drillDown",
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
     "queries": [
       {
         "module": "COMMON",
