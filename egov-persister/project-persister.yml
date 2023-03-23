@@ -133,7 +133,7 @@ serviceMaps:
       fromTopic: save-project
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO project(id,tenantId,projectNumber,name,projectType,projectSubType,department,description,referenceId,startDate,endDate,isTaskEnabled,parent,projectHierarchy,natureOfWork,additionalDetails,isDeleted,rowVersion,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO project(id,tenantId,projectNumber,name,projectType,projectTypeId,projectSubType,department,description,referenceId,startDate,endDate,isTaskEnabled,parent,projectHierarchy,natureOfWork,additionalDetails,isDeleted,rowVersion,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.Projects.*
           jsonMaps:
             - jsonPath: $.Projects.*.id
@@ -145,6 +145,8 @@ serviceMaps:
             - jsonPath: $.Projects.*.name
 
             - jsonPath: $.Projects.*.projectType
+
+            - jsonPath: $.Projects.*.projectTypeId
 
             - jsonPath: $.Projects.*.projectSubType
 
@@ -279,13 +281,15 @@ serviceMaps:
       fromTopic: update-project
       isTransaction: true
       queryMaps:
-        - query: UPDATE project SET name = ?, projectType = ?, projectSubType = ?, department = ?, description = ?, referenceId = ?, startDate = ?, endDate = ?, isTaskEnabled = ?, natureOfWork = ?, additionalDetails = ?, isDeleted = ?, rowVersion = ?, lastModifiedBy = ?, lastModifiedTime = ? WHERE id = ?;
+        - query: UPDATE project SET name = ?, projectType = ?, projectTypeId = ?, projectSubType = ?, department = ?, description = ?, referenceId = ?, startDate = ?, endDate = ?, isTaskEnabled = ?, natureOfWork = ?, additionalDetails = ?, isDeleted = ?, rowVersion = ?, lastModifiedBy = ?, lastModifiedTime = ? WHERE id = ?;
           basePath: $.Projects.*
           jsonMaps:
 
             - jsonPath: $.Projects.*.name
 
             - jsonPath: $.Projects.*.projectType
+
+            - jsonPath: $.Projects.*.projectTypeId
 
             - jsonPath: $.Projects.*.projectSubType
 
