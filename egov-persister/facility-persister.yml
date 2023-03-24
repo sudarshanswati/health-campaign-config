@@ -6,10 +6,11 @@ serviceMaps:
       fromTopic: save-facility-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO FACILITY(id, tenantId, isPermanent, name, usage, storageCapacity, addressId, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO FACILITY(id, clientReferenceId, tenantId, isPermanent, name, usage, storageCapacity, addressId, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
+            - jsonPath: $.*.clientReferenceId
             - jsonPath: $.*.tenantId
             - jsonPath: $.*.isPermanent
             - jsonPath: $.*.name
