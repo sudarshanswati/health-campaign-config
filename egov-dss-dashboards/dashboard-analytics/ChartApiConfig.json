@@ -254,7 +254,7 @@
     "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Total visits",
       "Overall target"
@@ -294,7 +294,7 @@
     "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Total visits",
       "Overall target"
@@ -560,7 +560,7 @@
     "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Total Distributions Coverage",
       "Bednets Target"
@@ -598,7 +598,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Total Distributions Coverage",
       "Bednets Target"
@@ -727,7 +727,7 @@
     "isCappedTillToday":true,
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Population Covered till Today",
       "Overall Population Target"
@@ -766,7 +766,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": [
       "Population Covered till Today",
       "Overall Population Target"
@@ -897,7 +897,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
     "computedFields": [
       {
@@ -957,7 +957,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
     "computedFields": [
       {
@@ -1018,7 +1018,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
     "computedFields": [
       {
@@ -1079,7 +1079,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
     "computedFields": [
       {
@@ -1139,7 +1139,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
     "computedFields": [
       {
@@ -1199,7 +1199,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
     "computedFields": [
       {
@@ -1236,7 +1236,7 @@
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "division",
+    "action": "",
     "aggregationPaths": ["No. of Days Stock Can Last", "Target Per Day"],
     "insight": { },
     "_comment": " "
@@ -1330,7 +1330,7 @@
     "valueType": "percentage",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "percentage",
+    "action": "",
     "aggregationPaths": ["Households Percentage","Households Target"],
     "computedFields": [
       {
@@ -2100,7 +2100,7 @@
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "division",
+    "action": "",
     "plotLabel": "Daily Count",
     "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Households","Quantity","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
@@ -2252,7 +2252,7 @@
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
-    "action": "division",
+    "action": "",
     "plotLabel": "Daily Count",
     "excludedColumns": ["S.N.","Daily Population Target","Total Households Visited","Quantity","Total Population Covered","bednets total","Total Bednets Distributed","Daily Household Target","Daily Bednets Target","Household Rejected Delivery Count","Household Closed Delivery Count","Household Relocated Delivery Count"],
     "divisorFields": ["Daily Household Target","Daily Population Target","Daily Bednets Target"],
@@ -3822,6 +3822,97 @@
     "computedFields": [],
     "insight": {
     },
+    "_comment": " "
+  },
+  "userSyncRateByDistrict": {
+    "chartName": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "user-sync-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Sync Rate Percentage\": {\n      \"terms\": {\n        \"field\": \"Data.province.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Unique Users Synced\": {\n          \"scripted_metric\": {\n            \"params\": {\n              \"fieldName\": \"Data.userId.keyword\"\n            },\n            \"init_script\": \"state.list = []\",\n            \"map_script\": \"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\n            \"combine_script\": \"return state.list;\",\n            \"reduce_script\": \"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "project-staff-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.province.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Total Users Created\": {\n          \"value_count\": {\n            \"field\": \"Data.userId.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "userSyncRateByAP",
+    "documentType": "_doc",
+    "action": "percentage",
+    "filterKeys": [{"key": "district"}],
+    "aggregationPaths": ["Sync Rate Percentage","AGGS"],
+    "insight": { },
+    "_comment": " "
+  },
+  "userSyncRateByAP": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\", \"administrativeProvince\": \"Data.administrativeProvince.keyword\"}",
+        "indexName": "user-sync-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Sync Rate Percentage\": {\n      \"terms\": {\n        \"field\": \"Data.administrativeProvince.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Unique Users Synced\": {\n          \"scripted_metric\": {\n            \"params\": {\n              \"fieldName\": \"Data.userId.keyword\"\n            },\n            \"init_script\": \"state.list = []\",\n            \"map_script\": \"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\n            \"combine_script\": \"return state.list;\",\n            \"reduce_script\": \"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\", \"administrativeProvince\": \"Data.administrativeProvince.keyword\"}",
+        "indexName": "project-staff-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.administrativeProvince.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Total Users Created\": {\n          \"value_count\": {\n            \"field\": \"Data.userId.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "userSyncRateByLocality",
+    "filterKeys": [{"key": "administrativeProvince"}],
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Sync Rate Percentage","AGGS"],
+    "insight": { },
+    "_comment": " "
+  },
+  "userSyncRateByLocality": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_LOCALITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\", \"district\": \"Data.district.keyword\", \"administrativeProvince\": \"Data.administrativeProvince.keyword\", \"locality\": \"Data.locality.keyword\"}",
+        "indexName": "user-sync-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Sync Rate Percentage\": {\n      \"terms\": {\n        \"field\": \"Data.locality.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Unique Users Synced\": {\n          \"scripted_metric\": {\n            \"params\": {\n              \"fieldName\": \"Data.userId.keyword\"\n            },\n            \"init_script\": \"state.list = []\",\n            \"map_script\": \"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\n            \"combine_script\": \"return state.list;\",\n            \"reduce_script\": \"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\", \"district\": \"Data.district.keyword\", \"administrativeProvince\": \"Data.administrativeProvince.keyword\", \"locality\": \"Data.locality.keyword\"}",
+        "indexName": "project-staff-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"terms\": {\n        \"field\": \"Data.locality.keyword\",\n        \"size\": 500\n      },\n      \"aggs\": {\n        \"Total Users Created\": {\n          \"value_count\": {\n            \"field\": \"Data.userId.keyword\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": ["Sync Rate Percentage","AGGS"],
+    "insight": { },
     "_comment": " "
   }
 }
