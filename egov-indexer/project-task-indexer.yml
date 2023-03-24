@@ -24,7 +24,7 @@ ServiceMaps:
           customJsonMapping:
             indexMapping: { "Data": {} }
             fieldMapping:
-              - inJsonPath: $.userId
+              - inJsonPath: $.lastModifiedBy
                 outJsonPath: $.Data.userId
               - inJsonPath: $.createdTime
                 outJsonPath: $.Data.createdTime
