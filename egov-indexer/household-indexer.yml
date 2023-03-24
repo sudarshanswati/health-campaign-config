@@ -7,25 +7,25 @@ ServiceMaps:
       indexes:
         - name: household-index-v1
           type: household
-          id: $.*.id
+          id: $.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.*.auditDetails.createdTime
+          timeStampField: $.auditDetails.createdTime
     - topic: update-household-topic
       configKey: INDEX
       indexes:
         - name: household-index-v1
           type: household
-          id: $.*.id
+          id: $.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.*.auditDetails.lastModifiedTime
+          timeStampField: $.auditDetails.lastModifiedTime
     - topic: delete-household-topic
       configKey: INDEX
       indexes:
         - name: household-index-v1
           type: household
-          id: $.*.id
+          id: $.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.*.auditDetails.lastModifiedTime
+          timeStampField: $.auditDetails.lastModifiedTime
