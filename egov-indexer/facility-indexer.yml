@@ -5,9 +5,9 @@ ServiceMaps:
     - topic: save-facility-topic
       configKey: INDEX
       indexes:
-        - name: facilityIndex-v1
+        - name: facility-index-v1
           type: facility
-          id: $.id
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
           timeStampField: $.*.auditDetails.createdTime
