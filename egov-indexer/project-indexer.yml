@@ -43,90 +43,90 @@ ServiceMaps:
     - topic: save-project-beneficiary-topic
       configKey: INDEX
       indexes:
-        - name: projectBeneficiaryIndex-v1
-          type: projectBeneficiary
-          id: $.id
+        - name: project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
+          timeStampField: $.*.auditDetails.createdTime
 
     - topic: update-project-beneficiary-topic
       configKey: INDEX
       indexes:
-        - name: projectBeneficiaryUpdateIndex-v1
-          type: projectBeneficiary-update
-          id: $.id
+        - name: project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
 
     - topic: delete-project-beneficiary-topic
       configKey: INDEX
       indexes:
-        - name: projectBeneficiaryDeleteIndex-v1
-          type: projectBeneficiary-delete
-          id: $.id
+        - name: project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
 
 
     - topic: save-project-resource-topic
       configKey: INDEX
       indexes:
-        - name: projectResourceIndex-v1
-          type: projectResourceIndex
-          id: $.id
+        - name: project-resource-index-v1
+          type: project-resource
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
+          timeStampField: $.*.auditDetails.createdTime
 
     - topic: update-project-resource-topic
       configKey: INDEX
       indexes:
-        - name: projectResourceUpdateIndex-v1
-          type: projectResource-update
-          id: $.id
+        - name: project-resource-index-v1
+          type: project-resource
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
 
     - topic: delete-project-resource-topic
       configKey: INDEX
       indexes:
-        - name: projectResourceDeleteIndex-v1
-          type: projectResource-delete
-          id: $.id
+        - name: project-resource-index-v1
+          type: project-resource
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
 
     - topic: save-project-facility-topic
       configKey: INDEX
       indexes:
-        - name: projectFacilityIndex-v1
-          type: projectFacility
-          id: $.id
+        - name: project-facility-index-v1
+          type: project-facility
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
+          timeStampField: $.*.auditDetails.createdTime
 
     - topic: update-project-facility-topic
       configKey: INDEX
       indexes:
-        - name: projectFacilityUpdateIndex-v1
-          type: projectFacility-update
-          id: $.id
+        - name: project-facility-index-v1
+          type: project-facility
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
 
     - topic: delete-project-facility-topic
       configKey: INDEX
       indexes:
-        - name: projectFacilityDeleteIndex-v1
-          type: projectFacility-delete
-          id: $.id
+        - name: project-facility-index-v1
+          type: project-facility
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime

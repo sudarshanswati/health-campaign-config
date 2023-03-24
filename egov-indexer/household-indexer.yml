@@ -5,7 +5,7 @@ ServiceMaps:
     - topic: save-household-topic
       configKey: INDEX
       indexes:
-        - name: householdIndex-v1
+        - name: household-index-v1
           type: household
           id: $.*.id
           isBulk: true
@@ -14,18 +14,18 @@ ServiceMaps:
     - topic: update-household-topic
       configKey: INDEX
       indexes:
-        - name: householdUpdateIndex-v1
-          type: household-update
-          id: $.id
+        - name: household-index-v1
+          type: household
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
     - topic: delete-household-topic
       configKey: INDEX
       indexes:
-        - name: householdDeleteIndex-v1
-          type: household-delete
-          id: $.id
+        - name: household-index-v1
+          type: household
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
