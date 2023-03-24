@@ -5,7 +5,7 @@ ServiceMaps:
     - topic: save-individual-topic
       configKey: INDEX
       indexes:
-        - name: individualIndex-v1
+        - name: individual-index-v1
           type: individual
           id: $.*.id
           isBulk: true
@@ -14,18 +14,18 @@ ServiceMaps:
     - topic: update-individual-topic
       configKey: INDEX
       indexes:
-        - name: individualUpdateIndex-v1
-          type: individual-update
-          id: $.id
+        - name: individual-index-v1
+          type: individual
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
     - topic: delete-individual-topic
       configKey: INDEX
       indexes:
-        - name: individualDeleteIndex-v1
-          type: individual-delete
-          id: $.id
+        - name: individual-index-v1
+          type: individual
+          id: $.*.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          timeStampField: $.*.auditDetails.lastModifiedTime
