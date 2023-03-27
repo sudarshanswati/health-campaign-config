@@ -3165,21 +3165,21 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"Todays visits\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"range\": {\n                \"Data.@timestamp\": {\n                  \"gte\": \"now/d\",\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total Today\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Total Households Visited Today\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\":{\n          \"must\": [\n              {\n                \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
         "indexName": "project-task-index-v1",
         "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\":{\n          \"must\": [\n              {\n                \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                }\n              },\n              {\n                \"term\": {\n                    \"Data.isDelivered\": true\n                }\n              }\n              \n            ]\n        }\n      },\n      \"aggs\": {\n        \"Population Total\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Quantity\": {\n              \"sum\": {\n                \"field\": \"Data.quantity\"\n              }\n            },\n            \"Total Population Covered\":{\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"target\": \"Quantity\"\n                },\n                \"script\": \"params.target * 1.8\"\n              }\n            }\n          }\n          \n        }\n      }\n    }\n  }\n}"
