@@ -3369,7 +3369,8 @@
     "isCumulative": false,
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "none",
+    "drillChart": "complaintsByAPTotal",
+    "filterKeys": [{"key": "district"}],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -3416,11 +3417,63 @@
     "isCumulative": false,
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "none",
+    "drillChart": "complaintsByLocalityTotal",
+    "filterKeys": [{"key": "administrativeProvince"}],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "Complaints by AP"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "complaintsByLocalityTotal": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_LOCALITY_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by Locality\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "complaintsByVillageTotal",
+    "filterKeys": [{"key": "locality"}],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints by Locality"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "complaintsByVillageTotal": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_VILLAGE_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\",\"locality\":\"Data.locality.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"terms\": {\n                \"Data.service.applicationStatus.keyword\": [\n                  \"open\",\n                  \"resolved\",\n                  \"rejected\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Complaints by Village\": {\n          \"terms\": {\n            \"order\": {\n              \"_key\": \"asc\"\n            },\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500\n          },\n          \"aggs\": {\n            \"Complaints Breakdown\": {\n              \"value_count\": {\n                \"field\": \"Data.service.auditDetails.lastModifiedTime\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints by Village"
     ],
     "insight": {},
     "_comment": " "
