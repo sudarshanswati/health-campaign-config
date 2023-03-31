@@ -885,6 +885,24 @@
         {
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
+            {
+              "id": 262,
+              "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+              "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrict",
+                  "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         }
       ]
@@ -1610,6 +1628,24 @@
         {
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
+            {
+              "id": 361,
+              "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_AP",
+              "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByAP",
+                  "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_AP",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
           ]
         }
       ]
