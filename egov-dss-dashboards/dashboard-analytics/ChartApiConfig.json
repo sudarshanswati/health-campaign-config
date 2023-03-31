@@ -4287,7 +4287,8 @@
     "isCumulative": false,
     "valueType": "number",
     "plotLabel": "none",
-    "drillChart": "none",
+    "drillChart": "complaintsByTypeBreakdownDistrict",
+    "filterKeys": [{"key": "district"}],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": ["Login Error","App Malfunction","Stolen Device","Sync Error"],
@@ -4303,6 +4304,52 @@
         "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
         "indexName": "pgr-services",
         "aggrQuery": "{\n  \"aggs\": {\n    \"LoginError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"LoginError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Login Error\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"AppMalfunction by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"AppMalfunction\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"App Malfunction\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"StolenDevice by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"StolenDevice\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stolen Device\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"SyncError by APs\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"SyncError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Sync Error\": {\n          \"terms\": {\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "complaintsByTypeBreakdownAP",
+    "filterKeys": [{"key": "administrativeProvince"}],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Login Error","App Malfunction","Stolen Device","Sync Error"],
+    "insight": { },
+    "_comment": " "
+  },
+  "complaintsByTypeBreakdownAP": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_TYPE_BREAKDOWN_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\",\"administrativeProvince\": \"Data.administrativeProvince.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"LoginError by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"LoginError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Login Error\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"AppMalfunction by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"AppMalfunction\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"App Malfunction\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"StolenDevice by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"StolenDevice\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stolen Device\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"SyncError by Locality\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"SyncError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Sync Error\": {\n          \"terms\": {\n            \"field\": \"Data.locality.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "complaintsByTypeBreakdownLocality",
+    "filterKeys": [{"key": "locality"}],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": ["Login Error","App Malfunction","Stolen Device","Sync Error"],
+    "insight": { },
+    "_comment": " "
+  },
+  "complaintsByTypeBreakdownLocality": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_TYPE_BREAKDOWN_LOCALITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\",\"administrativeProvince\": \"Data.administrativeProvince.keyword\", \"locality\": \"Data.locality.keyword\"}",
+        "indexName": "pgr-services",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"LoginError by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"LoginError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Login Error\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"AppMalfunction by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"AppMalfunction\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"App Malfunction\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"StolenDevice by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"StolenDevice\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stolen Device\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"SyncError by Village\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.service.serviceCode.keyword\": \"SyncError\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Sync Error\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 500,\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Complaints Count\": {\n              \"value_count\": {\n                \"field\": \"Data.service.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
