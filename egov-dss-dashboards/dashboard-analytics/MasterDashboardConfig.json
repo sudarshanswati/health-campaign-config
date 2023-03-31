@@ -571,6 +571,24 @@
                   "tabName": "BEDNETS"
                 }
               ]
+            },
+            {
+              "id": 218,
+              "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsVisitedLatLong",
+                  "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -859,7 +877,7 @@
           ]
         },
         {
-          "row": 2,
+          "row": 3,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
@@ -873,6 +891,46 @@
                 {
                   "id": "InventorySummaryByDistrict",
                   "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 244,
+              "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+              "label": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "warehouseDistributionLatLongPoints",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTable",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTable1",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",

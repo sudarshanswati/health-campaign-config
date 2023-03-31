@@ -4513,5 +4513,189 @@
     "aggregationPaths": ["Sync Rate Percentage","AGGS"],
     "insight": { },
     "_comment": " "
+  },
+  "householdsVisitedLatLong": {
+    "chartName": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"locationKey\": \"Data.province.keyword\"}",
+        "indexName": "project-task-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"NAME\": {\n      \"terms\": {\n        \"field\": \"Data.id.keyword\",\n        \"size\": 100\n      },\n      \"aggs\": {\n        \"LATITUDE\":{\n          \"avg\": {\n            \"field\": \"Data.latitude\"\n          }\n        },\n        \"LONGITUDE\": {\n          \"avg\": {\n            \"field\": \"Data.longitude\"\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "PLOTLABELPOINTS",
+    "excludedColumns": [
+      "S.N.",
+      "LONGITUDE", "LATITUDE"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "longitude": true,
+        "fields" : [ "LONGITUDE" ],
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "latitude": true,
+        "fields": ["LATITUDE"],
+        "_comments": ""
+      }
+    ],
+    "insight": {
+    },
+    "latLongMap": true,
+    "hideInsights": false,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "warehouseDistributionLatLongPoints": {
+    "chartName": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"locationKey\": \"Data.province.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"NAME\": {\n      \"terms\": {\n        \"field\": \"Data.village.keyword\",\n        \"size\": 100\n      },\n      \"aggs\": {\n        \"LATITUDE\":{\n          \"avg\": {\n            \"field\": \"Data.latitude\"\n          }\n        },\n        \"LONGITUDE\": {\n          \"avg\": {\n            \"field\": \"Data.longitude\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"locationKey\": \"Data.province.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"NAME\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.facilityId.keyword\": [\n                  \"F000001\",\n                  \"F000002\"\n                ]\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"NAME\": {\n          \"terms\": {\n            \"field\": \"Data.facilityId.keyword\",\n            \"size\": 100\n          },\n          \"aggs\": {\n            \"LATITUDE\": {\n              \"avg\": {\n                \"field\": \"Data.latitude\"\n              }\n            },\n            \"LONGITUDE\": {\n              \"avg\": {\n                \"field\": \"Data.longitude\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "PLOTLABELWAREHOUSEPOINTS",
+    "isCumulative" : false,
+    "excludedColumns": [
+      "S.N.",
+      "LONGITUDE", "LATITUDE"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory" : "",
+        "actionName": "AdditiveComputedField",
+        "longitude": true,
+        "fields" : [ "LONGITUDE" ],
+  
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "latitude": true,
+        "fields": ["LATITUDE"],
+  
+        "_comments": ""
+      }
+      ],
+    "insight": {
+    },
+    "latLongMap": true,
+    "hideInsights": false,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "warehouseDistributionLatLongTable": {
+    "chartName": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"No. of Days Stock Can Last\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Incoming Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"RECEIVED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Outgoing Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"DISPATCHED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Total Stock\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"IS\": \"Incoming Stock>SUM\",\n                  \"OS\": \"Outgoing Stock>SUM\"\n                },\n                \"script\": \"params.IS-params.OS\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "project-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.targetType.keyword\": \"PRODUCT\"\n                  }\n                },\n                {\n                  \"exists\": {\n                    \"field\": \"Data.village.keyword\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Target Per Day\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "line",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "division",
+    "plotLabel": "TESTLINEPLOTLABEL",
+    "linePlotLabel": "LINEPLOTLABELTABLE",
+    "isCumulative" : false,
+    "aggregationPaths": ["No. of Days Stock Can Last", "Target Per Day"],
+    "insight": {
+    },
+    "latLongMap": true,
+    "hideInsights": false,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "warehouseDistributionLatLongTable1": {
+    "chartName": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Available Stock\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Incoming Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"RECEIVED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Outgoing Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"DISPATCHED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Total Stock\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"IS\": \"Incoming Stock>SUM\",\n                  \"OS\": \"Outgoing Stock>SUM\"\n                },\n                \"script\": \"params.IS-params.OS\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Stock Received Filter\": {\n      \"filter\": {\n        \"term\": {\n          \"Data.eventType.keyword\": \"RECEIVED\"\n        }\n      },\n      \"aggs\": {\n        \"Stock Received\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 1000\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"Data.physicalCount\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Stock Dispatched Filter\": {\n      \"filter\": {\n        \"term\": {\n          \"Data.eventType.keyword\": \"DISPATCHED\"\n        }\n      },\n      \"aggs\": {\n        \"Stock Dispatched\": {\n          \"terms\": {\n            \"field\": \"Data.village.keyword\",\n            \"size\": 1000\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"Data.physicalCount\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ],\n              \"must_not\": [\n                {\n                  \"terms\": {\n                    \"Data.facilityId.keyword\": [\n                      \"F000002\",\n                      \"F000001\"\n                    ]\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Available Stock\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.facilityId.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Incoming Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"RECEIVED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Outgoing Stock\": {\n              \"filter\": {\n                \"term\": {\n                  \"Data.eventType.keyword\": \"DISPATCHED\"\n                }\n              },\n              \"aggs\": {\n                \"SUM\": {\n                  \"sum\": {\n                    \"field\": \"Data.physicalCount\"\n                  }\n                }\n              }\n            },\n            \"Total Stock\": {\n              \"bucket_script\": {\n                \"buckets_path\": {\n                  \"IS\": \"Incoming Stock>SUM\",\n                  \"OS\": \"Outgoing Stock>SUM\"\n                },\n                \"script\": \"params.IS-params.OS\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"province\": \"Data.province.keyword\", \"district\": \"Data.district.keyword\"}",
+        "indexName": "stock-index-v1",
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Stock Received Filter\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.facilityId.keyword\": [\n                  \"F000002\",\n                  \"F000001\"\n                ]\n              }\n            }\n          ],\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.eventType.keyword\": {\n                  \"value\": \"RECEIVED\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stock Received\": {\n          \"terms\": {\n            \"field\": \"Data.facilityId.keyword\",\n            \"size\": 1000\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"Data.physicalCount\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"Stock Dispatched Filter\": {\n      \"filter\": {\n        \"bool\": {\n          \"must_not\": [\n            {\n              \"terms\": {\n                \"Data.facilityId.keyword\": [\n                  \"F000002\",\n                  \"F000001\"\n                ]\n              }\n            }\n          ],\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.eventType.keyword\": {\n                  \"value\": \"DISPATCHED\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Stock Dispatched\": {\n          \"terms\": {\n            \"field\": \"Data.facilityId.keyword\",\n            \"size\": 1000\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"field\": \"Data.physicalCount\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "line",
+    "valueType": "number",
+    "drillChart": "",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "TESTLINEPLOTLABEL",
+    "linePlotLabel": "LINEPLOTLABELTABLE",
+    "isCumulative" : false,
+    "aggregationPaths": ["Available Stock", "Stock Received", "Stock Dispatched"],
+    "insight": {
+    },
+    "latLongMap": true,
+    "hideInsights": false,
+    "hideHeaderDenomination": true,
+    "_comment": " "
   }
 }
