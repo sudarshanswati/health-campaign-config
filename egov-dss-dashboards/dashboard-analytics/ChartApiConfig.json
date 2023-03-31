@@ -4350,7 +4350,7 @@
     "documentType": "_doc",
     "action": "divisionbyconstant",
     "aggregationPaths": ["Complaints by District","Total Complaints"],
-    "filterKeys": [{"key": "administrativeProvince"}],
+    "filterKeys": [{"key": "district"}],
     "insight": { },
     "_comment": " "
   },
@@ -4381,7 +4381,7 @@
     "documentType": "_doc",
     "action": "divisionbyconstant",
     "aggregationPaths": ["Complaints by Administrative Province","Total Complaints"],
-    "filterKeys": [{"key": "locality"}],
+    "filterKeys": [{"key": "administrativeProvince"}],
     "insight": { },
     "_comment": " "
   },
@@ -4412,7 +4412,7 @@
     "documentType": "_doc",
     "action": "divisionbyconstant",
     "aggregationPaths": ["Complaints by Locality","Total Complaints"],
-    "filterKeys": [{"key": "village"}],
+    "filterKeys": [{"key": "locality"}],
     "insight": { },
     "_comment": " "
   },
