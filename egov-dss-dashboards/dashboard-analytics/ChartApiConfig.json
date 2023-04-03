@@ -4211,7 +4211,7 @@
     ],
     "chartType": "xtable",
     "valueType": "number",
-    "drillChart": "InventorySummaryByVillage",
+    "drillChart": "none",
     "documentType": "_doc",
     "action": "",
     "plotLabel": "Inventory summary By Locality",
