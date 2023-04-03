@@ -581,7 +581,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsVisitedLatLong",
+                  "id": "householdsVisitedLatLongPoints",
                   "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
                   "code": "",
                   "chartType": "points",
@@ -877,30 +877,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 243,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "InventorySummaryByDistrict",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 2,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
@@ -921,7 +897,7 @@
                   "headers": []
                 },
                 {
-                  "id": "warehouseDistributionLatLongTable",
+                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistricts",
                   "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
@@ -929,8 +905,56 @@
                   "headers": []
                 },
                 {
-                  "id": "warehouseDistributionLatLongTable1",
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrict",
                   "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDisp",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableStockStatusDistrict",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableWarNumDistrict",
+                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 243,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByDistrict",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
