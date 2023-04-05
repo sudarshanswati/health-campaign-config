@@ -797,7 +797,7 @@
     "chartType": "pie",
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -844,7 +844,7 @@
     "chartType": "pie",
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -890,7 +890,7 @@
     ],
     "chartType": "line",
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "isCumulative": false,
     "documentType": "_doc",
     "action": "",
@@ -916,7 +916,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -941,7 +941,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -989,7 +989,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1020,7 +1020,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
@@ -1052,7 +1052,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1084,7 +1084,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
@@ -1116,7 +1116,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1148,7 +1148,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Bednets Distributed","Bednets Targeted"],
@@ -1241,7 +1241,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1273,7 +1273,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
@@ -1305,7 +1305,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1338,7 +1338,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
@@ -1370,7 +1370,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1403,7 +1403,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Population Covered","Population Targeted"],
@@ -1497,7 +1497,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1528,7 +1528,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
@@ -1560,7 +1560,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1592,7 +1592,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
@@ -1624,7 +1624,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "number",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -1656,7 +1656,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Percentage of Households Visited","Households Targeted"],
@@ -1812,7 +1812,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Households Percentage","Households Target"],
@@ -1852,7 +1852,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Households Percentage","Households Target"],
@@ -1892,7 +1892,7 @@
     "chartType": "line",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "none",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": ["Households Percentage","Households Target"],
@@ -2048,7 +2048,6 @@
     "action": "",
     "plotLabel": "District",
     "excludedColumns": ["Household Closed delivery count","Household Relocated delivery count","Household Rejected delivery count","Bednets distributed count","Population covered count","Households distributed count","Quantity","Total Households distributed","Overall Household target","Total Population covered","Overall Population target","Total Bednets distributed","Overall Bednets target"],
-
     "computedFields": [
       {
         "postAggregationTheory" : "",
@@ -2812,21 +2811,21 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.district.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Household Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Household Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"INDIVIDUAL\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.district.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Population Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"INDIVIDUAL\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Population Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"PRODUCT\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.district.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Bednets Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"chartSpecificProperty\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"PRODUCT\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.locality.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Daily Bednets Target\": {\n              \"sum\": {\n                \"field\": \"Data.targetPerDay\"\n            }\n          }\n        }\n      }\n    }\n  }"
       },
       {
         "module": "COMMON",
