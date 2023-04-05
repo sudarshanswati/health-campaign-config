@@ -844,7 +844,7 @@
     "chartType": "pie",
     "valueType": "number",
     "showLabel": true,
-    "drillChart": "totalHouseholdsNotDeliveredDrilldownDistrict",
+    "drillChart": "",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
