@@ -969,7 +969,7 @@
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 262,
+              "id": 261,
               "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "label": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "vizType": "chart",
@@ -987,7 +987,7 @@
               ]
             },
             {
-              "id": 263,
+              "id": 262,
               "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
               "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
               "vizType": "chart",
@@ -1011,7 +1011,7 @@
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 264,
+              "id": 263,
               "name": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "label": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "vizType": "chart",
@@ -1029,7 +1029,7 @@
               ]
             },
             {
-              "id": 265,
+              "id": 264,
               "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "label": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
               "vizType": "chart",
