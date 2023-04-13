@@ -1769,6 +1769,7 @@
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
+    "targetLineChart": "rdUncoveredPopulationTargetLineProvince",
     "action": "",
     "insight": { },
     "_comment": " "
@@ -1806,6 +1807,7 @@
     "isCappedTillToday":true,
     "valueType": "number",
     "drillChart": "none",
+    "targetLineChart": "none",
     "documentType": "_doc",
     "action": "",
     "insight": { },
