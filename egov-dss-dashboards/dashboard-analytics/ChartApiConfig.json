@@ -1770,6 +1770,7 @@
     "drillChart": "none",
     "documentType": "_doc",
     "targetLineChart": "rdUncoveredPopulationTargetLineProvince",
+    "aggregationPaths": ["Overall Population target","Total Population covered"],
     "action": "",
     "insight": { },
     "_comment": " "
@@ -1808,6 +1809,7 @@
     "valueType": "number",
     "drillChart": "none",
     "targetLineChart": "none",
+    "aggregationPaths": ["Overall Population target","Total Population covered"],
     "documentType": "_doc",
     "action": "",
     "insight": { },
