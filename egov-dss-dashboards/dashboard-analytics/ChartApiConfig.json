@@ -203,6 +203,7 @@
       "Target Households per Day"
     ],
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "insight": {
     },
     "_comment": " "
@@ -227,6 +228,7 @@
       "Target Households per Day"
     ],
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "insight": {
     },
     "_comment": " "
@@ -502,6 +504,7 @@
     ],
     "chartType": "metric",
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -526,6 +529,7 @@
     ],
     "chartType": "metric",
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -679,6 +683,7 @@
       "Target Population per Day"
     ],
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "insight": {},
     "_comment": " "
   },
@@ -702,6 +707,7 @@
       "Target Population per Day"
     ],
     "postAggregationTheory": "repsonseToDifferenceOfDates",
+    "isCappedByCampaignPeriod": true,
     "insight": {},
     "_comment": " "
   },
@@ -4979,7 +4985,7 @@
         "fields": ["LATITUDE"],
         "_comments": ""
       }
-      ],
+    ],
     "insight": {
     },
     "hideInsights": false,
