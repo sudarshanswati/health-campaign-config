@@ -651,6 +651,30 @@
           ]
         },
         {
+          "row": 6,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 217,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationProvince",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
@@ -1531,6 +1555,30 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 317,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationDistrict",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
