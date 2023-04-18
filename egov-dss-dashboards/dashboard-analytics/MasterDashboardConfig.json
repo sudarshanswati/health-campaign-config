@@ -651,6 +651,30 @@
           ]
         },
         {
+          "row": 6,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 217,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationProvince",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
@@ -882,31 +906,31 @@
           "vizArray": [
             {
               "id": 244,
-              "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
-              "label": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+              "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+              "label": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
               "vizType": "latlong",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "warehouseDistributionLatLongPoints",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "points",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistricts",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrict",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrict",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistricts",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -914,7 +938,7 @@
                 },
                 {
                   "id": "warehouseDistributionLatLongTableAvlRcvdDisp",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -922,7 +946,7 @@
                 },
                 {
                   "id": "warehouseDistributionLatLongTableStockStatusDistrict",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -930,7 +954,7 @@
                 },
                 {
                   "id": "warehouseDistributionLatLongTableWarNumDistrict",
-                  "name": "DSS_HEALTH_RD_WH_DISTRIBUTION_LATLONG",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -1457,6 +1481,24 @@
                   "tabName": "BEDNETS"
                 }
               ]
+            },
+            {
+              "id": 318,
+              "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsVisitedLatLongPointsDistrict",
+                  "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -1513,6 +1555,30 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 317,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationDistrict",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
@@ -1745,7 +1811,7 @@
           ]
         },
         {
-          "row": 2,
+          "row": 3,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
@@ -1759,6 +1825,70 @@
                 {
                   "id": "InventorySummaryByAP",
                   "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 344,
+              "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+              "label": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "warehouseDistributionLatLongPointsDistrict",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrictBoard",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableDaysStockLastsAp",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispAps",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableStockStatusAp",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableWarNumAp",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
