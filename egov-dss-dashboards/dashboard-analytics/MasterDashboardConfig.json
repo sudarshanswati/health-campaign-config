@@ -605,11 +605,30 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "actualVsPlannedLineGraph",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+                  "id": "actualVsPlannedHouseholdLineGraph",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
+                  "tabName": "Household",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedBednetsLineGraph",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Bednets",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedPopulationLineGraph",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_Population_LINE_GRAPH",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Population",
                   "headers": []
                 }
               ]
