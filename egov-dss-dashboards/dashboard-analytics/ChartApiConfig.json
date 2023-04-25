@@ -3563,14 +3563,14 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"Todays visits\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"range\": {\n                \"Data.@timestamp\": {\n                  \"gte\": \"now/d\",\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total Today\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Total Households Visited Today\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"Todays visits\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"range\": {\n                \"Data.@timestamp\": {\n                  \"gte\": \"now/d\",\n                  \"lte\": \"now\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total Today\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\",\n            \"min_doc_count\":0\n          },\n          \"aggs\": {\n            \"Total Households Visited Today\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\":{\n          \"must\": [\n              {\n                \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Total Households Visited\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\":{\n          \"must\": [\n              {\n                \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                }\n              }\n            ]\n        }\n      },\n      \"aggs\": {\n        \"Household Total\": {\n          \"terms\": {\n            \"field\": \"Data.province.keyword\"\n          },\n          \"aggs\": {\n            \"Total Households Visited Cumulative\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
@@ -3608,7 +3608,7 @@
       {
         "postAggregationTheory" : "",
         "actionName": "PercentageComputedField",
-        "fields" : ["Total Households Visited","Overall Household Target"],
+        "fields" : ["Total Households Visited Cumulative","Overall Household Target"],
         "newField" : "Household Coverage",
         "_comments": ""
       },
