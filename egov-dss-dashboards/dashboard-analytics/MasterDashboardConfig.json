@@ -605,8 +605,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "actualVsPlannedHouseholdLineGraph",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH",
+                  "id": "actualVsPlannedHouseholdLineGraphProvince",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_PROVINCE",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
@@ -614,8 +614,8 @@
                   "headers": []
                 },
                 {
-                  "id": "actualVsPlannedBednetsLineGraph",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH",
+                  "id": "actualVsPlannedBednetsLineGraphProvince",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_PROVINCE",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
@@ -623,8 +623,8 @@
                   "headers": []
                 },
                 {
-                  "id": "actualVsPlannedPopulationLineGraph",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_Population_LINE_GRAPH",
+                  "id": "actualVsPlannedPopulationLineGraphProvince",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
@@ -1534,11 +1534,30 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "actualVsPlannedLineGraph",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+                  "id": "actualVsPlannedHouseholdLineGraphDistrict",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_DISTRICT",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
+                  "tabName": "Household",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedBednetsLineGraphDistrict",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Bednets",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedPopulationLineGraphDistrict",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Population",
                   "headers": []
                 }
               ]
