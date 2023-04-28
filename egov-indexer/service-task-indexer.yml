@@ -1,0 +1,18 @@
+ServiceMaps:
+  serviceName: service-request
+  version: 1.0.0
+  mappings:
+    - topic: transformer-producer-service-task-index-v1-topic
+      configKey: INDEX
+      indexes:
+        - name: service-task-index-v1
+          type: service
+          id: $.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": {} }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.*.auditDetails.createdTime
