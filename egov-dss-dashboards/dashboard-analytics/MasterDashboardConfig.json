@@ -640,6 +640,30 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
+              "id": 217,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationProvince",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
               "id": 216,
               "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
               "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
@@ -664,30 +688,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 6,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
-          "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdUncoveredPopulationProvince",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             }
@@ -1569,6 +1569,30 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
+              "id": 317,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationDistrict",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
               "id": 316,
               "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
               "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_ADMINISTRATIVE_PROVINCE",
@@ -1593,30 +1617,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 5,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
-          "vizArray": [
-            {
-              "id": 317,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdUncoveredPopulationDistrict",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             }
@@ -1849,30 +1849,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 343,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "InventorySummaryByAP",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 2,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
@@ -1895,6 +1871,30 @@
                 {
                   "id": "warehouseDistributionLatLongTableAvlRcvdDispFacilities",
                   "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 343,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByAP",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
