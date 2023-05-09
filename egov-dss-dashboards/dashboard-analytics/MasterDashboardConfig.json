@@ -614,21 +614,21 @@
                   "headers": []
                 },
                 {
-                  "id": "actualVsPlannedBednetsLineGraphProvince",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_PROVINCE",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Bednets",
-                  "headers": []
-                },
-                {
                   "id": "actualVsPlannedPopulationLineGraphProvince",
                   "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
                   "tabName": "Population",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedBednetsLineGraphProvince",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_PROVINCE",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Bednets",
                   "headers": []
                 }
               ]
@@ -637,6 +637,30 @@
         },
         {
           "row": 5,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 217,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationProvince",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
@@ -664,30 +688,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 6,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
-          "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdUncoveredPopulationProvince",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             }
@@ -1543,21 +1543,21 @@
                   "headers": []
                 },
                 {
-                  "id": "actualVsPlannedBednetsLineGraphDistrict",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Bednets",
-                  "headers": []
-                },
-                {
                   "id": "actualVsPlannedPopulationLineGraphDistrict",
                   "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
                   "code": "",
                   "chartType": "line",
                   "filter": "",
                   "tabName": "Population",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedBednetsLineGraphDistrict",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Bednets",
                   "headers": []
                 }
               ]
@@ -1566,6 +1566,30 @@
         },
         {
           "row": 4,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 317,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationDistrict",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
@@ -1593,30 +1617,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 5,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
-          "vizArray": [
-            {
-              "id": 317,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdUncoveredPopulationDistrict",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             }
@@ -1849,30 +1849,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 343,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "InventorySummaryByAP",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 2,
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
@@ -1895,6 +1871,30 @@
                 {
                   "id": "warehouseDistributionLatLongTableAvlRcvdDispFacilities",
                   "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 343,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByAP",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
