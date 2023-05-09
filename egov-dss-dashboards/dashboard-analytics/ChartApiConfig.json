@@ -1497,7 +1497,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Number of households visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.district.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.district.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -1507,7 +1507,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Number of households visited"
+      "Households Visited"
     ],
     "filterKeys": [{"key": "district"}],
     "insight": { },
@@ -1560,7 +1560,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Number of households visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.administrativeProvince.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -1570,7 +1570,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Number of households visited"
+      "Households Visited"
     ],
     "filterKeys": [{"key": "administrativeProvince"}],
     "insight": { },
@@ -1624,7 +1624,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Number of households visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.locality.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.locality.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -1634,7 +1634,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Number of households visited"
+      "Households Visited"
     ],
     "filterKeys": [{"key": "locality"}],
     "insight": { },
@@ -1688,7 +1688,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"province\":\"Data.province.keyword\",\"district\":\"Data.district.keyword\",\"administrativeProvince\":\"Data.administrativeProvince.keyword\", \"locality\":\"Data.locality.keyword\"}",
         "indexName": "project-task-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Number of households visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filters\": {\n        \"filters\": {\n          \"FILTERS\": {\n            \"bool\": {\n              \"must\": [\n                {\n                  \"term\": {\n                    \"Data.deliveredTo.keyword\": \"HOUSEHOLD\"\n                  }\n                },\n                {\n                  \"match_phrase\": {\n                    \"Data.productVariant\": \"PVAR\"\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      \"aggs\": {\n        \"Households Visited\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.village.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"Count\": {\n              \"value_count\": {\n                \"field\": \"Data.id.keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       }
     ],
     "chartType": "line",
@@ -1698,7 +1698,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Number of households visited"
+      "Households Visited"
     ],
     "insight": { },
     "_comment": " "
@@ -5006,7 +5006,7 @@
     ],
     "chartType": "line",
     "isCumulative": false,
-    "valueType": "percentage",
+    "valueType": "number",
     "plotLabel": "none",
     "drillChart": "ComplaintsShareByAP",
     "documentType": "_doc",
@@ -5037,7 +5037,7 @@
     ],
     "chartType": "line",
     "isCumulative": false,
-    "valueType": "percentage",
+    "valueType": "number",
     "plotLabel": "none",
     "drillChart": "ComplaintsShareByLocality",
     "documentType": "_doc",
@@ -5068,7 +5068,7 @@
     ],
     "chartType": "line",
     "isCumulative": false,
-    "valueType": "percentage",
+    "valueType": "number",
     "plotLabel": "none",
     "drillChart": "ComplaintsShareByVillage",
     "documentType": "_doc",
@@ -5099,7 +5099,7 @@
     ],
     "chartType": "line",
     "isCumulative": false,
-    "valueType": "percentage",
+    "valueType": "number",
     "plotLabel": "none",
     "drillChart": "none",
     "documentType": "_doc",
@@ -5581,7 +5581,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"province\": \"Data.province.keyword\"}",
         "indexName": "project-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGR\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"PRODUCT\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.district.keyword\"\n              }\n            },\n            {\n              \"match_phrase\": {\n                \"Data.productVariant\": \"PVAR\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.administrativeProvince.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Overall Target\": {\n          \"terms\": {\n            \"size\": 500,\n            \"field\": \"Data.district.keyword\",\n            \"order\": {\n              \"_key\": \"asc\"\n            }\n          },\n          \"aggs\": {\n            \"SUM\": {\n              \"sum\": {\n                \"script\": {\n                  \"source\": \"doc['Data.overallTarget']*(-1)\"}\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\n  “aggs”: {\n    “AGGR”: {\n      “filter”: {\n        “bool”: {\n          “must”: [\n            {\n              “term”: {\n                “Data.targetType.keyword”: “PRODUCT”\n              }\n            },\n            {\n              “exists”: {\n                “field”: “Data.district.keyword”\n              }\n            },\n            {\n              “match_phrase”: {\n                “Data.productVariant”: “PVAR”\n              }\n            }\n          ],\n          “must_not”: [\n            {\n              “exists”: {\n                “field”: “Data.administrativeProvince.keyword”\n              }\n            }\n          ]\n        }\n      },\n      “aggs”: {\n        “Overall Target”: {\n          “terms”: {\n            “size”: 500,\n            “field”: “Data.district.keyword”,\n            “order”: {\n              “_key”: “asc”\n            }\n          },\n          “aggs”: {\n            “SUM”: {\n              “sum”: {\n                “field”: “Data.overallTarget”\n              }\n            },\n            “Negative Overall Target”: {\n              “bucket_script”: {\n                “buckets_path”: {\n                  “ot”: “SUM”\n                },\n                “script”: “params.ot * (-1)”\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
       },
       {
         "module": "COMMON",
