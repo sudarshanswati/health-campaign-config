@@ -16,6 +16,8 @@ ServiceMaps:
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data
+          - inJsonPath: $.service.tenantId
+            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,boundaryType=Provincia,code=$.service.address.locality.code,tenantId=$.service.tenantId
@@ -101,7 +103,9 @@ ServiceMaps:
           indexMapping: {"Data":{"ward":{}, "history":{}, "department":"department", "slaHours":"slaHours", "tenantData":{}}}
           fieldMapping:
           - inJsonPath: $
-            outJsonPath: $.Data
+            outJsonPath: $.
+          - inJsonPath: $.service.tenantId
+            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,boundaryType=Provincia,code=$.service.address.locality.code,tenantId=$.service.tenantId
@@ -167,8 +171,6 @@ ServiceMaps:
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data.PGREntity
-          - inJsonPath: $.service.tenantId
-            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,code=$.service.address.locality.code,tenantId=$.service.tenantId
