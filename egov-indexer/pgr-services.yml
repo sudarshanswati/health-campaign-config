@@ -103,7 +103,7 @@ ServiceMaps:
           indexMapping: {"Data":{"ward":{}, "history":{}, "department":"department", "slaHours":"slaHours", "tenantData":{}}}
           fieldMapping:
           - inJsonPath: $
-            outJsonPath: $.
+            outJsonPath: $.Data
           - inJsonPath: $.service.tenantId
             outJsonPath: $.Data.tenantId
           externalUriMapping:
