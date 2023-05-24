@@ -103,7 +103,7 @@ ServiceMaps:
           indexMapping: {"Data":{"ward":{}, "history":{}, "department":"department", "slaHours":"slaHours", "tenantData":{}}}
           fieldMapping:
           - inJsonPath: $
-            outJsonPath: $.
+            outJsonPath: $.Data
           - inJsonPath: $.service.tenantId
             outJsonPath: $.Data.tenantId
           externalUriMapping:
@@ -155,6 +155,17 @@ ServiceMaps:
             uriResponseMapping:
             - inJsonPath: $.MdmsRes.tenant.tenants
               outJsonPath: $.Data.tenantData
+          - path: http://egov-mdms-service.egov:8080/egov-mdms-service/v1/_search
+            moduleName: RAINMAKER-PGR
+            masterName: ServiceDefs
+            tenantId: default
+            filter: "[?((@.serviceCode == $servicecode) && (@.active == true))]"
+            filterMapping:
+              - variable: $servicecode
+                valueJsonpath: $.service.serviceCode
+            uriResponseMapping:
+              - inJsonPath: $.MdmsRes.RAINMAKER-PGR.ServiceDefs.*.slaHours
+                outJsonPath: $.Data.slaHours
 
   - topic: pgr-services-legacyIndex
     configKey: LEGACYINDEX
