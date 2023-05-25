@@ -16,6 +16,8 @@ ServiceMaps:
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data
+          - inJsonPath: $.service.tenantId
+            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,boundaryType=Provincia,code=$.service.address.locality.code,tenantId=$.service.tenantId
@@ -102,6 +104,8 @@ ServiceMaps:
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data
+          - inJsonPath: $.service.tenantId
+            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,boundaryType=Provincia,code=$.service.address.locality.code,tenantId=$.service.tenantId
@@ -151,6 +155,17 @@ ServiceMaps:
             uriResponseMapping:
             - inJsonPath: $.MdmsRes.tenant.tenants
               outJsonPath: $.Data.tenantData
+          - path: http://egov-mdms-service.egov:8080/egov-mdms-service/v1/_search
+            moduleName: RAINMAKER-PGR
+            masterName: ServiceDefs
+            tenantId: default
+            filter: "[?((@.serviceCode == $servicecode) && (@.active == true))]"
+            filterMapping:
+              - variable: $servicecode
+                valueJsonpath: $.service.serviceCode
+            uriResponseMapping:
+              - inJsonPath: $.MdmsRes.RAINMAKER-PGR.ServiceDefs.*.slaHours
+                outJsonPath: $.Data.slaHours
 
   - topic: pgr-services-legacyIndex
     configKey: LEGACYINDEX
@@ -167,8 +182,6 @@ ServiceMaps:
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data.PGREntity
-          - inJsonPath: $.service.tenantId
-            outJsonPath: $.Data.tenantId
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,code=$.service.address.locality.code,tenantId=$.service.tenantId
