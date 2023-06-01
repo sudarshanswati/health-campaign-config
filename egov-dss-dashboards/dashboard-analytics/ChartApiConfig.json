@@ -2448,6 +2448,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
@@ -2619,6 +2620,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
@@ -2790,6 +2792,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
@@ -2959,6 +2962,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
@@ -4166,6 +4170,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "complaintsByStatusSummaryDistrict": {
@@ -4225,6 +4230,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "complaintsByStatusSummaryAP": {
@@ -4284,6 +4290,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "complaintsByStatusSummaryLocality": {
@@ -4341,6 +4348,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "averageResolutionTimeProvince":{
@@ -4573,6 +4581,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "InventorySummaryByAP": {
@@ -4661,6 +4670,7 @@
     ],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "InventorySummaryByLocality": {
@@ -5136,6 +5146,7 @@
     "computedFields": [],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "openComplaintsSummaryByAP": {
@@ -5167,6 +5178,7 @@
     "computedFields": [],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "openComplaintsSummaryByLocality": {
@@ -5198,6 +5210,7 @@
     "computedFields": [],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "openComplaintsSummaryByVillage": {
@@ -5227,6 +5240,7 @@
     "computedFields": [],
     "insight": {
     },
+    "sort": "sortKeyAsc",
     "_comment": " "
   },
   "checklistCompletionRateOfNationalSupervisor": {
