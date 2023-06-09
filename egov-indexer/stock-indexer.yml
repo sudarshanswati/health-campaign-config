@@ -42,4 +42,4 @@ ServiceMaps:
                 outJsonPath: $.Data.latitude
               - inJsonPath: $.longitude
                 outJsonPath: $.Data.longitude
-          timeStampField: $.lastModifiedTime
+          timeStampField: $.Data.createdTime
