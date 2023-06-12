@@ -6,7 +6,7 @@ serviceMaps:
       fromTopic: save-stock-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, facilityId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, transactingPartyId, transactingPartyType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, facilityId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, transactingPartyId, transactingPartyType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -31,16 +31,18 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.dateOfEntry
 
     - version: 1.0
       description: Updates a stock
       fromTopic: update-stock-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK SET tenantId=?, facilityId=?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, transactingPartyId=?, transactingPartyType=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=? WHERE id=? AND isDeleted=false;
+        - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, facilityId=?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, transactingPartyId=?, transactingPartyType=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
+            - jsonPath: $.*.dateOfEntry
             - jsonPath: $.*.facilityId
             - jsonPath: $.*.productVariantId
             - jsonPath: $.*.wayBillNumber
