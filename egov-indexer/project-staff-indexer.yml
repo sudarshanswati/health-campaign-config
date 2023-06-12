@@ -38,4 +38,4 @@ ServiceMaps:
                 outJsonPath: $.Data.locality
               - inJsonPath: $.village
                 outJsonPath: $.Data.village
-          timeStampField: $.Data.createdTime
+          timeStampField: $.lastModifiedTime
