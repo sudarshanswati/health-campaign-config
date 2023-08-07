@@ -6,7 +6,7 @@ serviceMaps:
       fromTopic: save-product-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO product(id, tenantId, type, name, manufacturer, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO product(id, tenantId, type, name, manufacturer, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -23,15 +23,13 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-            - jsonPath: $.*.clientAuditDetails.createdTime
-            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
 
     - version: 1.0
       description: Updates Product
       fromTopic: update-product-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE product SET tenantId = ?, type = ?, name = ?, manufacturer = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime=? WHERE id = ?
+        - query: UPDATE product SET tenantId = ?, type = ?, name = ?, manufacturer = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE id = ?
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -45,7 +43,6 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -53,7 +50,7 @@ serviceMaps:
       fromTopic: save-product-variant-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO product_variant(id, tenantId, productId, sku, variation, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO product_variant(id, tenantId, productId, sku, variation, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -70,15 +67,13 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-            - jsonPath: $.*.clientAuditDetails.createdTime
-            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
 
     - version: 1.0
       description: Updates a product variant
       fromTopic: update-product-variant-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE product_variant SET tenantId = ?, productId = ?, sku = ?, variation = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime=? WHERE id = ?;
+        - query: UPDATE product_variant SET tenantId = ?, productId = ?, sku = ?, variation = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE id = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -92,5 +87,4 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.id
