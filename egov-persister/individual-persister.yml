@@ -9,6 +9,7 @@ serviceMaps:
       module: INDIVIDUAL
       objecIdJsonPath: $.id
       tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.0.auditDetails.createdBy
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
