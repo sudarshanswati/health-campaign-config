@@ -6,7 +6,7 @@ serviceMaps:
       fromTopic: save-project-task-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO PROJECT_TASK(id, clientReferenceId, tenantId, projectId, projectBeneficiaryId, projectBeneficiaryClientReferenceId, plannedStartDate, plannedEndDate, actualStartDate, actualEndDate, addressId, status, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO PROJECT_TASK(id, clientReferenceId, tenantId, projectId, projectBeneficiaryId, projectBeneficiaryClientReferenceId, plannedStartDate, plannedEndDate, actualStartDate, actualEndDate, addressId, status, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -30,6 +30,8 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.clientAuditDetails.createdTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
 
         - query: INSERT INTO ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*.address
@@ -73,7 +75,7 @@ serviceMaps:
       fromTopic: update-project-task-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE PROJECT_TASK SET tenantId = ?, projectId = ?, projectBeneficiaryId = ?, projectBeneficiaryClientReferenceId = ?, addressId = ?, plannedStartDate = ?, plannedEndDate = ?, actualStartDate = ?, actualEndDate = ?, status = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID = ?;
+        - query: UPDATE PROJECT_TASK SET tenantId = ?, projectId = ?, projectBeneficiaryId = ?, projectBeneficiaryClientReferenceId = ?, addressId = ?, plannedStartDate = ?, plannedEndDate = ?, actualStartDate = ?, actualEndDate = ?, status = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime = ? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -93,6 +95,7 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
+            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.id
 
         - query: UPDATE ADDRESS SET tenantId = ?, doorno = ?, latitude = ?, longitude = ?, locationAccuracy = ?, type = ?, addressline1 = ?, addressline2 = ?, landmark = ?, city = ?, pincode = ?, buildingName = ?, street = ?, localityCode = ? WHERE ID = ?;
@@ -144,11 +147,12 @@ serviceMaps:
       fromTopic: delete-project-task-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE PROJECT_TASK SET lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
+        - query: UPDATE PROJECT_TASK SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
             - jsonPath: $.*.additionalFields
