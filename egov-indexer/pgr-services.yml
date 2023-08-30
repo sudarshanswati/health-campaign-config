@@ -186,7 +186,7 @@ ServiceMaps:
         timeStampField: $.service.auditDetails.lastModifiedTime
         fieldsToBeMasked: ["$.service.citizen.userName", "$.service.citizen.name", "$.service.citizen.mobileNumber", "$.service.citizen.emailId"]
         customJsonMapping:
-          indexMapping: {"Data":{"PGREntity":{},"ward":{},"tenantData":{}, "history":{}}}
+          indexMapping: {"Data":{"ward":{}, "history":{}, "department":"department", "slaHours":"slaHours", "tenantData":{},"auditDetails": {}}}
           fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data
