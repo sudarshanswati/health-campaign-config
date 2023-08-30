@@ -182,14 +182,18 @@ ServiceMaps:
         type: general
         isBulk: true
         id: $.service.serviceRequestId
-        jsonPath: $.PGREntities.*
+        jsonPath: $.*
         timeStampField: $.service.auditDetails.lastModifiedTime
         fieldsToBeMasked: ["$.service.citizen.userName", "$.service.citizen.name", "$.service.citizen.mobileNumber", "$.service.citizen.emailId"]
         customJsonMapping:
-          indexMapping: {"Data":{"PGREntity":{},"ward":{},"tenantData":{}, "history":{}}}
+          indexMapping: {"Data":{"ward":{}, "history":{}, "department":"department", "slaHours":"slaHours", "tenantData":{},"auditDetails": {}}}
           fieldMapping:
           - inJsonPath: $
-            outJsonPath: $.Data.PGREntity
+            outJsonPath: $.Data
+          - inJsonPath: $.service.tenantId
+            outJsonPath: $.Data.tenantId
+          - inJsonPath: $.service.auditDetails
+            outJsonPath: $.Data.auditDetails
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
               queryParam: hierarchyTypeCode=ADMIN,code=$.service.address.locality.code,tenantId=$.service.tenantId
@@ -227,6 +231,8 @@ ServiceMaps:
               uriResponseMapping:
                 - inJsonPath: $.ProcessInstances
                   outJsonPath: $.Data.history
+                - inJsonPath: $.ProcessInstances[0]
+                  outJsonPath: $.Data.currentProcessInstance
           mdmsMapping:
           - path: http://egov-mdms-service.egov:8080/egov-mdms-service/v1/_search
             moduleName: tenant
