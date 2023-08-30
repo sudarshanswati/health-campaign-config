@@ -182,17 +182,17 @@ ServiceMaps:
         type: general
         isBulk: true
         id: $.service.serviceRequestId
-        jsonPath: $.PGREntities.*
+        jsonPath: $.*
         timeStampField: $.service.auditDetails.lastModifiedTime
         fieldsToBeMasked: ["$.service.citizen.userName", "$.service.citizen.name", "$.service.citizen.mobileNumber", "$.service.citizen.emailId"]
         customJsonMapping:
           indexMapping: {"Data":{"PGREntity":{},"ward":{},"tenantData":{}, "history":{}}}
           fieldMapping:
-          - inJsonPath: $.PGREntities
+          - inJsonPath: $
             outJsonPath: $.Data
-          - inJsonPath: $.PGREntities.service.tenantId
+          - inJsonPath: $.service.tenantId
             outJsonPath: $.Data.tenantId
-          - inJsonPath: $.PGREntities.service.auditDetails
+          - inJsonPath: $.service.auditDetails
             outJsonPath: $.Data.auditDetails
           externalUriMapping:
             - path: http://egov-location.egov:8080/egov-location/location/v11/boundarys/_search
