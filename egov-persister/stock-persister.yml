@@ -6,7 +6,7 @@ serviceMaps:
       fromTopic: save-stock-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, facilityId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, transactingPartyId, transactingPartyType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry, clientCreatedTime, clientLastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, facilityId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, transactingPartyId, transactingPartyType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -34,13 +34,15 @@ serviceMaps:
             - jsonPath: $.*.dateOfEntry
             - jsonPath: $.*.clientAuditDetails.createdTime
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.createdBy
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
 
     - version: 1.0
       description: Updates a stock
       fromTopic: update-stock-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, facilityId=?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, transactingPartyId=?, transactingPartyType=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ? WHERE id=? AND isDeleted=false;
+        - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, facilityId=?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, transactingPartyId=?, transactingPartyType=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -62,6 +64,7 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -69,12 +72,13 @@ serviceMaps:
       fromTopic: delete-stock-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
+        - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
             - jsonPath: $.*.additionalFields
@@ -88,7 +92,7 @@ serviceMaps:
       fromTopic: save-stock-reconciliation-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId, facilityId, dateOfReconciliation, calculatedCount, physicalRecordedCount, commentsOnReconciliation, productVariantId, referenceId, referenceIdType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted,clientCreatedTime, clientLastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId, facilityId, dateOfReconciliation, calculatedCount, physicalRecordedCount, commentsOnReconciliation, productVariantId, referenceId, referenceIdType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted,clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -113,13 +117,15 @@ serviceMaps:
             - jsonPath: $.*.isDeleted
             - jsonPath: $.*.clientAuditDetails.createdTime
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.createdBy
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
 
     - version: 1.0
       description: Updates a stock reconciliation
       fromTopic: update-stock-reconciliation-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?, referenceId=?, referenceIdType=?, dateOfReconciliation=?, calculatedCount=?, physicalRecordedCount=?, commentsOnReconciliation=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ? WHERE id=? AND isDeleted=false;
+        - query: UPDATE STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?, referenceId=?, referenceIdType=?, dateOfReconciliation=?, calculatedCount=?, physicalRecordedCount=?, commentsOnReconciliation=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -138,6 +144,7 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
             - jsonPath: $.*.id
 
     - version: 1.0
@@ -145,12 +152,13 @@ serviceMaps:
       fromTopic: delete-stock-reconciliation-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
+        - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
+            - jsonPath: $.*.clientAuditDetails.lastModifiedBy
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
             - jsonPath: $.*.additionalFields
