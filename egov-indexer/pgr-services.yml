@@ -175,7 +175,7 @@ ServiceMaps:
               - inJsonPath: $.MdmsRes.RAINMAKER-PGR.ServiceDefs.*.slaHours
                 outJsonPath: $.Data.slaHours
 
-  - topic: pgr-services-legacyIndex
+  - topic: pgr-services-inboxIndex
     configKey: LEGACYINDEX
     indexes:
       - name: pgr-services
