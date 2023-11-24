@@ -6,10 +6,17 @@ serviceMaps:
     description: Persists events into the table
     fromTopic: save-user-events
     isTransaction: true
+    isAuditEnabled: true
+    module: USER-EVENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.RequestInfo.userInfo.uuid
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: INSERT INTO eg_usrevents_events(tenantid, id, source, eventtype, category, name, postedby, referenceid, description, status, eventdetails, actions, recepient, createdby, createdtime, lastmodifiedby, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
-      basePath: events.*
+      basePath: $.events.*
       jsonMaps:
 
 
@@ -74,6 +81,13 @@ serviceMaps:
     description: Updates event details in the table
     fromTopic: update-user-events
     isTransaction: true
+    isAuditEnabled: true
+    module: USER-EVENT-UPDATE
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.RequestInfo.userInfo.uuid
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE eg_usrevents_events SET description = ?, status = ?, name = ?, category = ?, eventdetails = ?, actions = ?, recepient = ? , lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ?;
 

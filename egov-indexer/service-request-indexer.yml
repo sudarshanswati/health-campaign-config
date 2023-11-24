@@ -7,7 +7,7 @@ ServiceMaps:
       indexes:
         - name: service-task-v1
           type: service
-          id: $.id
+          id: $.clientReferenceId,$.tenantId
           isBulk: true
           jsonPath: $
           customJsonMapping:
@@ -26,8 +26,12 @@ ServiceMaps:
             fieldMapping:
               - inJsonPath: $.createdBy
                 outJsonPath: $.Data.userId
+              - inJsonPath: $.userName
+                outJsonPath: $.Data.userName
+              - inJsonPath: $.role
+                outJsonPath: $.Data.role
               - inJsonPath: $.createdTime
-                outJsonPath: $.Data.createdTime
+                outJsonPath: $.Data.clientCreatedTime
               - inJsonPath: $.province
                 outJsonPath: $.Data.province
               - inJsonPath: $.district
@@ -38,4 +42,8 @@ ServiceMaps:
                 outJsonPath: $.Data.locality
               - inJsonPath: $.village
                 outJsonPath: $.Data.village
-          timeStampField: $.lastModifiedTime
+              - inJsonPath: $.syncedTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.syncedTimeStamp
+                outJsonPath: $.Data.syncedTimeStamp
+          timeStampField: $.createdTime

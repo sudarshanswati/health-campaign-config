@@ -7,7 +7,7 @@ ServiceMaps:
       indexes:
         - name: household-index-v1
           type: household
-          id: $.id
+          id: $.clientReferenceId
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.createdTime
@@ -16,7 +16,7 @@ ServiceMaps:
       indexes:
         - name: household-index-v1
           type: household
-          id: $.id
+          id: $.clientReferenceId
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
@@ -25,6 +25,33 @@ ServiceMaps:
       indexes:
         - name: household-index-v1
           type: household
+          id: $.clientReferenceId
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: save-household-member-topic
+      configKey: INDEX
+      indexes:
+        - name: household-member-index-v1
+          type: member
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+    - topic: update-household-member-topic
+      configKey: INDEX
+      indexes:
+        - name: household--member-index-v1
+          type: member
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: delete-household-member-topic
+      configKey: INDEX
+      indexes:
+        - name: household-member-index-v1
+          type: member
           id: $.id
           isBulk: true
           jsonPath: $.*

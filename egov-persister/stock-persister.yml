@@ -5,24 +5,32 @@ serviceMaps:
       description: Saves a stock
       fromTopic: save-stock-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.facilityId
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      auditAttributeBasePath: $.*         
       queryMaps:
-        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, senderType, senderId, receiverType, receiverId, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, facilityId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, transactingPartyId, transactingPartyType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
             - jsonPath: $.*.clientReferenceId
             - jsonPath: $.*.tenantId
+            - jsonPath: $.*.facilityId
             - jsonPath: $.*.productVariantId
-            - jsonPath: $.*.wayBillNumber
+            - jsonPath: $.*.waybillNumber
             - jsonPath: $.*.quantity
             - jsonPath: $.*.referenceId
             - jsonPath: $.*.referenceIdType
             - jsonPath: $.*.transactionType
             - jsonPath: $.*.transactionReason
-            - jsonPath: $.*.senderType
-            - jsonPath: $.*.senderId
-            - jsonPath: $.*.receiverType
-            - jsonPath: $.*.receiverId
+            - jsonPath: $.*.transactingPartyId
+            - jsonPath: $.*.transactingPartyType
             - jsonPath: $.*.additionalFields
               type: JSON
               dbType: JSONB
@@ -42,23 +50,31 @@ serviceMaps:
       description: Updates a stock
       fromTopic: update-stock-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK-UPDATE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.facilityId
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*         
       queryMaps:
-        - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, senderType=?, senderId=?, receiverType=?, receiverId=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
+        - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, facilityId=?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, transactingPartyId=?, transactingPartyType=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
             - jsonPath: $.*.dateOfEntry
+            - jsonPath: $.*.facilityId
             - jsonPath: $.*.productVariantId
-            - jsonPath: $.*.wayBillNumber
+            - jsonPath: $.*.waybillNumber
             - jsonPath: $.*.quantity
             - jsonPath: $.*.referenceId
             - jsonPath: $.*.referenceIdType
             - jsonPath: $.*.transactionType
             - jsonPath: $.*.transactionReason
-            - jsonPath: $.*.senderType
-            - jsonPath: $.*.senderId
-            - jsonPath: $.*.receiverType
-            - jsonPath: $.*.receiverId
+            - jsonPath: $.*.transactingPartyId
+            - jsonPath: $.*.transactingPartyType
             - jsonPath: $.*.additionalFields
               type: JSON
               dbType: JSONB
@@ -73,6 +89,15 @@ serviceMaps:
       description: Deletes a stock
       fromTopic: delete-stock-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK-DELETE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.facilityId
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*       
       queryMaps:
         - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
@@ -93,6 +118,15 @@ serviceMaps:
       description: Saves a stock reconciliation
       fromTopic: save-stock-reconciliation-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK-RECONCILE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      auditAttributeBasePath: $.*        
       queryMaps:
         - query: INSERT INTO STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId, facilityId, dateOfReconciliation, calculatedCount, physicalRecordedCount, commentsOnReconciliation, productVariantId, referenceId, referenceIdType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted,clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -126,6 +160,15 @@ serviceMaps:
       description: Updates a stock reconciliation
       fromTopic: update-stock-reconciliation-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK-RECONCILE-UPDATE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*        
       queryMaps:
         - query: UPDATE STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?, referenceId=?, referenceIdType=?, dateOfReconciliation=?, calculatedCount=?, physicalRecordedCount=?, commentsOnReconciliation=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
@@ -153,6 +196,15 @@ serviceMaps:
       description: Deletes a stock reconciliation
       fromTopic: delete-stock-reconciliation-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK-RECONCILE-DELETE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.clientReferenceId
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*        
       queryMaps:
         - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*

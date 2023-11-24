@@ -5,6 +5,15 @@ serviceMaps:
       description: Persists service definition details in service definition table
       fromTopic: save-service-definition
       isTransaction: true
+      isAuditEnabled: true
+      module: SAVE-SERVICE-DEFINITION
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.RequestInfo.userInfo.uuid
+      auditAttributeBasePath: $.ServiceDefinition
       queryMaps:
 
         - query: INSERT INTO eg_service_definition(id, tenantid, code, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime, additionaldetails, clientid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -78,6 +87,15 @@ serviceMaps:
       description: Persists service details in service table
       fromTopic: save-service
       isTransaction: true
+      isAuditEnabled: true
+      module: SAVE-SERVICE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.referenceId
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.RequestInfo.userInfo.uuid
+      auditAttributeBasePath: $.Service      
       queryMaps:
 
 

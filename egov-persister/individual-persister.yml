@@ -121,6 +121,13 @@ serviceMaps:
       description: Updates Individual
       fromTopic: update-individual-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: INDIVIDUAL-UPDATE
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE individual SET userId=?, userUuid=?, tenantId=?, givenName=?, familyName=?, otherNames=?, dateOfBirth=?, Gender=?, bloodGroup=?, mobileNumber=?, altContactNumber=?, email=?, fatherName=?, husbandName=?, relationship=?, photo=?, isSystemUserActive=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, username = ?, password = ?, type = ?, roles = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
@@ -246,6 +253,13 @@ serviceMaps:
       description: Deletes Individual and related Entities
       fromTopic: delete-individual-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: INDIVIDUAL-DELETE
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE individual SET lastModifiedBy=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?,  lastModifiedTime=?, rowVersion=?, isDeleted=?, isSystemUserActive=? WHERE id=?;
           basePath: $.*

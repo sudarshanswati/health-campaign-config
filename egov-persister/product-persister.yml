@@ -5,6 +5,15 @@ serviceMaps:
       description: Persists Product
       fromTopic: save-product-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PRODUCT
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      auditAttributeBasePath: $.*      
       queryMaps:
         - query: INSERT INTO product(id, tenantId, type, name, manufacturer, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
@@ -28,6 +37,15 @@ serviceMaps:
       description: Updates Product
       fromTopic: update-product-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PRODUCT-UPDATE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*  
       queryMaps:
         - query: UPDATE product SET tenantId = ?, type = ?, name = ?, manufacturer = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE id = ?
           basePath: $.*
@@ -49,6 +67,15 @@ serviceMaps:
       description: Saves a product variant
       fromTopic: save-product-variant-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PRODUCT-VARIANT
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      auditAttributeBasePath: $.*  
       queryMaps:
         - query: INSERT INTO product_variant(id, tenantId, productId, sku, variation, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -72,6 +99,15 @@ serviceMaps:
       description: Updates a product variant
       fromTopic: update-product-variant-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PRODUCT-UPDATE
+      #below there fields are applied on each index if the object is an array
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      transactionCodeJsonPath: $.id
+      #below twofields of audit are applied on the whole object recieved in the kafka
+      userUuidJsonPath: $.[0].auditDetails.lastModifiedBy
+      auditAttributeBasePath: $.*  
       queryMaps:
         - query: UPDATE product_variant SET tenantId = ?, productId = ?, sku = ?, variation = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE id = ?;
           basePath: $.*
