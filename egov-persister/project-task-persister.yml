@@ -64,7 +64,7 @@ serviceMaps:
             - jsonPath: $.*.address.street
             - jsonPath: $.*.address.locality.code
 
-        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted, additionalDetails) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*.resources.*
           jsonMaps:
             - jsonPath: $.*.resources.*.id
@@ -80,6 +80,9 @@ serviceMaps:
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.resources.*.isDeleted
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
 
     - version: 1.0
       description: Updates a project task
@@ -138,7 +141,7 @@ serviceMaps:
             - jsonPath: $.*.address.locality.code
             - jsonPath: $.*.address.id
 
-        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET tenantid = ?, taskid = ?, productvariantid = ?, quantity = ?, isDelivered = ?, reasonIfNotDelivered = ?, lastModifiedBy = ?, lastModifiedTime = ?;
+        - query: INSERT INTO TASK_RESOURCE(id, clientReferenceId, tenantid, productvariantid, taskid, quantity, isDelivered, reasonIfNotDelivered, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO UPDATE SET tenantid = ?, taskid = ?, productvariantid = ?, quantity = ?, isDelivered = ?, reasonIfNotDelivered = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?;
           basePath: $.*.resources.*
           jsonMaps:
             - jsonPath: $.*.resources.*.id
@@ -149,6 +152,9 @@ serviceMaps:
             - jsonPath: $.*.resources.*.quantity
             - jsonPath: $.*.resources.*.isDelivered
             - jsonPath: $.*.resources.*.deliveryComment
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.resources.*.auditDetails.createdBy
             - jsonPath: $.*.resources.*.auditDetails.createdTime
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedBy
@@ -160,6 +166,9 @@ serviceMaps:
             - jsonPath: $.*.resources.*.quantity
             - jsonPath: $.*.resources.*.isDelivered
             - jsonPath: $.*.resources.*.deliveryComment
+            - jsonPath: $.*.additionalFields
+              type: JSON
+              dbType: JSONB
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.resources.*.auditDetails.lastModifiedTime
 
