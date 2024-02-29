@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a project staff
-      fromTopic: save-project-staff-health-topic
+      fromTopic: save-project-staff-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -34,7 +34,7 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Staff
-      fromTopic: update-project-staff-health-topic
+      fromTopic: update-project-staff-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -62,7 +62,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Staff
-      fromTopic: delete-project-staff-health-topic
+      fromTopic: delete-project-staff-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -86,7 +86,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a project beneficiary
-      fromTopic: save-project-beneficiary-health-topic
+      fromTopic: save-project-beneficiary-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -123,7 +123,7 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Beneficiary
-      fromTopic: update-project-beneficiary-health-topic
+      fromTopic: update-project-beneficiary-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -155,7 +155,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Beneficiaries
-      fromTopic: delete-project-beneficiary-health-topic
+      fromTopic: delete-project-beneficiary-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -182,7 +182,7 @@ serviceMaps:
     - version: 1.0
       name: Projects
       description: Persists project details in project table
-      fromTopic: save-project-health
+      fromTopic: save-project
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -337,7 +337,7 @@ serviceMaps:
     - version: 1.0
       name: Projects
       description: Updates project details in project table
-      fromTopic: update-project-health
+      fromTopic: update-project
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -507,7 +507,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a project resource
-      fromTopic: save-project-resource-health-topic
+      fromTopic: save-project-resource-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -537,7 +537,7 @@ serviceMaps:
 
     - version: 1.0
       description: Update a project resourcce
-      fromTopic: update-project-resource-health-topic
+      fromTopic: update-project-resource-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -565,7 +565,7 @@ serviceMaps:
 
     - version: 1.0
       description: Delete a project resourcce
-      fromTopic: delete-project-resource-health-topic
+      fromTopic: delete-project-resource-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -586,7 +586,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a project facility
-      fromTopic: save-project-facility-health-topic
+      fromTopic: save-project-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -626,7 +626,7 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Facility
-      fromTopic: update-project-facility-health-topic
+      fromTopic: update-project-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -660,7 +660,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Facility
-      fromTopic: delete-project-facility-health-topic
+      fromTopic: delete-project-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT

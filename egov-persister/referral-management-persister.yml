@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a side effect
-      fromTopic: save-side-effect-health-topic
+      fromTopic: save-side-effect-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -42,7 +42,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a side effect
-      fromTopic: update-side-effect-health-topic
+      fromTopic: update-side-effect-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -76,7 +76,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a side effect
-      fromTopic: delete-side-effect-health-topic
+      fromTopic: delete-side-effect-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -99,7 +99,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a referral
-      fromTopic: save-referral-health-topic
+      fromTopic: save-referral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -141,7 +141,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a referral
-      fromTopic: update-referral-health-topic
+      fromTopic: update-referral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -178,7 +178,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a referral
-      fromTopic: delete-referral-health-topic
+      fromTopic: delete-referral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -201,7 +201,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a hfreferral
-      fromTopic: save-hfreferral-health-topic
+      fromTopic: save-hfreferral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -240,7 +240,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a hfreferral
-      fromTopic: update-hfreferral-health-topic
+      fromTopic: update-hfreferral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT
@@ -274,7 +274,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a hfreferral
-      fromTopic: delete-hfreferral-health-topic
+      fromTopic: delete-hfreferral-topic
       isTransaction: true
       isAuditEnabled: true
       module: REFERRALMANAGEMENT

@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a project task
-      fromTopic: save-project-task-health-topic
+      fromTopic: save-project-task-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -81,7 +81,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a project task
-      fromTopic: update-project-task-health-topic
+      fromTopic: update-project-task-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -161,7 +161,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a project task
-      fromTopic: delete-project-task-health-topic
+      fromTopic: delete-project-task-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -194,7 +194,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a adverse event
-      fromTopic: save-adverse-event-health-topic
+      fromTopic: save-adverse-event-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -227,7 +227,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a adverse event
-      fromTopic: update-adverse-event-health-topic
+      fromTopic: update-adverse-event-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -256,7 +256,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a adverse event
-      fromTopic: delete-adverse-event-health-topic
+      fromTopic: delete-adverse-event-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT

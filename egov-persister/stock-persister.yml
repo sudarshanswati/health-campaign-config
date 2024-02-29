@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a stock
-      fromTopic: save-stock-health-topic
+      fromTopic: save-stock-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
@@ -47,7 +47,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a stock
-      fromTopic: update-stock-health-topic
+      fromTopic: update-stock-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
@@ -85,7 +85,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a stock
-      fromTopic: delete-stock-health-topic
+      fromTopic: delete-stock-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
@@ -112,7 +112,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a stock reconciliation
-      fromTopic: save-stock-reconciliation-health-topic
+      fromTopic: save-stock-reconciliation-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
@@ -152,7 +152,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a stock reconciliation
-      fromTopic: update-stock-reconciliation-health-topic
+      fromTopic: update-stock-reconciliation-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
@@ -186,7 +186,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a stock reconciliation
-      fromTopic: delete-stock-reconciliation-health-topic
+      fromTopic: delete-stock-reconciliation-topic
       isTransaction: true
       isAuditEnabled: true
       module: STOCK
