@@ -3,8 +3,15 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Persists service definition details in service definition table
-      fromTopic: save-service-definition
+      fromTopic: save-service-definition-health
       isTransaction: true
+      isAuditEnabled: true
+      module: SERVICE-REQUEST
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
 
         - query: INSERT INTO eg_service_definition(id, tenantid, code, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime, additionaldetails, clientid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -76,8 +83,15 @@ serviceMaps:
 
     - version: 1.0
       description: Persists service details in service table
-      fromTopic: save-service
+      fromTopic: save-service-health
       isTransaction: true
+      isAuditEnabled: true
+      module: SERVICE-REQUEST
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
 
 

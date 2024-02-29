@@ -3,8 +3,15 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a facility
-      fromTopic: save-facility-topic
+      fromTopic: save-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: FACILITY
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO FACILITY(id, clientReferenceId, tenantId, isPermanent, name, usage, storageCapacity, addressId, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -49,8 +56,15 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a facility
-      fromTopic: update-facility-topic
+      fromTopic: update-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: FACILITY
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE FACILITY SET tenantId=?, clientReferenceId=?, isPermanent=?, name=?, usage=?, storageCapacity=?, addressId=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=? WHERE id=? AND isDeleted=false;
           basePath: $.*
@@ -107,8 +121,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a facility
-      fromTopic: delete-facility-topic
+      fromTopic: delete-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: FACILITY
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE FACILITY SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*

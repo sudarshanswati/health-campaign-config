@@ -3,8 +3,15 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a stock
-      fromTopic: save-stock-topic
+      fromTopic: save-stock-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO STOCK(id, clientReferenceId, tenantId, productVariantId, wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason, senderType, senderId, receiverType, receiverId, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -40,8 +47,15 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a stock
-      fromTopic: update-stock-topic
+      fromTopic: update-stock-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE STOCK SET tenantId=?, dateOfEntry = ?, productVariantId=?, wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?, transactionReason=?, senderType=?, senderId=?, receiverType=?, receiverId=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
@@ -71,8 +85,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a stock
-      fromTopic: delete-stock-topic
+      fromTopic: delete-stock-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
@@ -91,8 +112,15 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a stock reconciliation
-      fromTopic: save-stock-reconciliation-topic
+      fromTopic: save-stock-reconciliation-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId, facilityId, dateOfReconciliation, calculatedCount, physicalRecordedCount, commentsOnReconciliation, productVariantId, referenceId, referenceIdType, additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted,clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -124,8 +152,15 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a stock reconciliation
-      fromTopic: update-stock-reconciliation-topic
+      fromTopic: update-stock-reconciliation-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?, referenceId=?, referenceIdType=?, dateOfReconciliation=?, calculatedCount=?, physicalRecordedCount=?, commentsOnReconciliation=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
           basePath: $.*
@@ -151,8 +186,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a stock reconciliation
-      fromTopic: delete-stock-reconciliation-topic
+      fromTopic: delete-stock-reconciliation-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: STOCK
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*

@@ -3,8 +3,15 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a project staff
-      fromTopic: save-project-staff-topic
+      fromTopic: save-project-staff-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO project_staff (id, tenantId, projectId, staffId, startDate, endDate, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -27,8 +34,15 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Staff
-      fromTopic: update-project-staff-topic
+      fromTopic: update-project-staff-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_staff SET projectId=?, staffId=?, startDate=?, endDate=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id = ?
           basePath: $.*
@@ -48,8 +62,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Staff
-      fromTopic: delete-project-staff-topic
+      fromTopic: delete-project-staff-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_staff SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
@@ -65,8 +86,15 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a project beneficiary
-      fromTopic: save-project-beneficiary-topic
+      fromTopic: save-project-beneficiary-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO project_beneficiary (id, tenantId, projectId, beneficiaryId, clientReferenceId, beneficiaryClientReferenceId, dateOfRegistration, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy, tag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -95,8 +123,15 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Beneficiary
-      fromTopic: update-project-beneficiary-topic
+      fromTopic: update-project-beneficiary-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_beneficiary SET projectId=?, beneficiaryId=?, clientReferenceId=?, beneficiaryClientReferenceId=?, dateOfRegistration=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, tag=?  WHERE id = ? AND isDeleted=false
           basePath: $.*
@@ -120,8 +155,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Beneficiaries
-      fromTopic: delete-project-beneficiary-topic
+      fromTopic: delete-project-beneficiary-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_beneficiary SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*
@@ -140,8 +182,15 @@ serviceMaps:
     - version: 1.0
       name: Projects
       description: Persists project details in project table
-      fromTopic: save-project
+      fromTopic: save-project-health
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO project(id,tenantId,projectNumber,name,projectType,projectTypeId,projectSubType,department,description,referenceId,startDate,endDate,isTaskEnabled,parent,projectHierarchy,natureOfWork,additionalDetails,isDeleted,rowVersion,createdBy,lastModifiedBy,createdTime,lastModifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.Projects.*
@@ -266,7 +315,7 @@ serviceMaps:
 
             - jsonPath: $.Projects.*.documents.*.documentType
 
-            - jsonPath: $.Projects.*.documents.*.fileStore
+            - jsonPath: $.Projects.*.documents.*.fileStoreId
 
             - jsonPath: $.Projects.*.documents.*.documentUid
 
@@ -288,8 +337,15 @@ serviceMaps:
     - version: 1.0
       name: Projects
       description: Updates project details in project table
-      fromTopic: update-project
+      fromTopic: update-project-health
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project SET name = ?, projectType = ?, projectTypeId = ?, projectSubType = ?, department = ?, description = ?, referenceId = ?, startDate = ?, endDate = ?, isTaskEnabled = ?, natureOfWork = ?, additionalDetails = ?, isDeleted = ?, rowVersion = ?, lastModifiedBy = ?, lastModifiedTime = ? WHERE id = ?;
           basePath: $.Projects.*
@@ -414,7 +470,7 @@ serviceMaps:
 
             - jsonPath: $.Projects.*.documents.*.documentType
 
-            - jsonPath: $.Projects.*.documents.*.fileStore
+            - jsonPath: $.Projects.*.documents.*.fileStoreId
 
             - jsonPath: $.Projects.*.documents.*.documentUid
 
@@ -434,7 +490,7 @@ serviceMaps:
 
             - jsonPath: $.Projects.*.documents.*.documentType
 
-            - jsonPath: $.Projects.*.documents.*.fileStore
+            - jsonPath: $.Projects.*.documents.*.fileStoreId
 
             - jsonPath: $.Projects.*.documents.*.documentUid
 
@@ -450,9 +506,16 @@ serviceMaps:
 
 
     - version: 1.0
-      description: Saves a project resourcce
-      fromTopic: save-project-resource-topic
+      description: Saves a project resource
+      fromTopic: save-project-resource-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO project_resource (id, tenantId, projectId, productVariantId, isBaseUnitVariant, startDate, endDate, type, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
@@ -474,8 +537,15 @@ serviceMaps:
 
     - version: 1.0
       description: Update a project resourcce
-      fromTopic: update-project-resource-topic
+      fromTopic: update-project-resource-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_resource SET tenantId=?, projectId=?, productVariantId=?, isBaseUnitVariant=?, startDate=?, endDate=?, type=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id = ?
           basePath: $.*
@@ -495,25 +565,36 @@ serviceMaps:
 
     - version: 1.0
       description: Delete a project resourcce
-      fromTopic: delete-project-resource-topic
+      fromTopic: delete-project-resource-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE project_resource SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=?  WHERE id = ?
+        - query: UPDATE project_resource SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id = ?
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
             - jsonPath: $.*.auditDetails.lastModifiedTime
             - jsonPath: $.*.rowVersion
             - jsonPath: $.*.isDeleted
-            - jsonPath: $.*.additionalFields
-              type: JSON
-              dbType: JSONB
             - jsonPath: $.*.id
 
     - version: 1.0
       description: Saves a project facility
-      fromTopic: save-project-facility-topic
+      fromTopic: save-project-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
 
         - query: INSERT INTO project_facility (id, tenantId, projectId, facilityId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?);
@@ -545,8 +626,15 @@ serviceMaps:
 
     - version: 1.0
       description: Update Project Facility
-      fromTopic: update-project-facility-topic
+      fromTopic: update-project-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
 
         - query: UPDATE project_facility SET projectId=?, facilityId=?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=? WHERE id = ?
@@ -572,8 +660,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Project Facility
-      fromTopic: delete-project-facility-topic
+      fromTopic: delete-project-facility-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: PROJECT
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.id
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE project_facility SET lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, additionalDetails=? WHERE id=?;
           basePath: $.*

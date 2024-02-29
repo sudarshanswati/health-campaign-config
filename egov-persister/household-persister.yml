@@ -3,8 +3,15 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Persists household.
-      fromTopic: save-household-topic
+      fromTopic: save-household-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers, addressId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
@@ -49,8 +56,15 @@ serviceMaps:
 
     - version: 1.0
       description: Updates household.
-      fromTopic: update-household-topic
+      fromTopic: update-household-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE ID = ?;
           basePath: $.*
@@ -105,8 +119,15 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes household.
-      fromTopic: delete-household-topic
+      fromTopic: delete-household-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?,  rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
@@ -124,8 +145,15 @@ serviceMaps:
 
     - version: 1.0
       description: Persists household member.
-      fromTopic: save-household-member-topic
+      fromTopic: save-household-member-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: INSERT INTO HOUSEHOLD_MEMBER(id, tenantId, clientReferenceId, individualId, individualClientReferenceId, householdId, householdClientReferenceId, isHeadOfHousehold, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
@@ -153,8 +181,15 @@ serviceMaps:
             - jsonPath: $.*.clientAuditDetails.lastModifiedBy
     - version: 1.0
       description: Update household member.
-      fromTopic: update-household-member-topic
+      fromTopic: update-household-member-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, clientReferenceId = ?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE individualId=? AND householdId=? AND isDeleted=false;
           basePath: $.*
@@ -174,8 +209,15 @@ serviceMaps:
             - jsonPath: $.*.householdId
     - version: 1.0
       description: Deletes household Member.
-      fromTopic: delete-household-member-topic
+      fromTopic: delete-household-member-health-topic
       isTransaction: true
+      isAuditEnabled: true
+      module: HOUSEHOLD
+      objecIdJsonPath: $.id
+      tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
+      transactionCodeJsonPath: $.clientReferenceId
+      auditAttributeBasePath: $.*
       queryMaps:
         - query: UPDATE HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
