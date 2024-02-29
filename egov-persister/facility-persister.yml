@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a facility
-      fromTopic: save-facility-health-topic
+      fromTopic: save-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: FACILITY
@@ -56,7 +56,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a facility
-      fromTopic: update-facility-health-topic
+      fromTopic: update-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: FACILITY
@@ -121,7 +121,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes a facility
-      fromTopic: delete-facility-health-topic
+      fromTopic: delete-facility-topic
       isTransaction: true
       isAuditEnabled: true
       module: FACILITY

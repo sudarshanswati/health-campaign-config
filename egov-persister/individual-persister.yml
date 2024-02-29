@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Persists Individual
-      fromTopic: save-individual-health-topic
+      fromTopic: save-individual-topic
       isTransaction: true
       isAuditEnabled: true
       module: INDIVIDUAL
@@ -119,7 +119,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates Individual
-      fromTopic: update-individual-health-topic
+      fromTopic: update-individual-topic
       isTransaction: true
       isAuditEnabled: true
       module: INDIVIDUAL
@@ -251,7 +251,7 @@ serviceMaps:
 
     - version: 1.0
       description: Deletes Individual and related Entities
-      fromTopic: delete-individual-health-topic
+      fromTopic: delete-individual-topic
       isTransaction: true
       isAuditEnabled: true
       module: INDIVIDUAL
@@ -297,7 +297,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates userId and userUuid received from user-service into an individual
-      fromTopic: update-user-id-health-topic
+      fromTopic: update-user-id-topic
       isTransaction: true
       isAuditEnabled: true
       module: INDIVIDUAL
