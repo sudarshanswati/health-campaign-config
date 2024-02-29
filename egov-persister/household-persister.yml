@@ -13,7 +13,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO health.HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers, addressId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers, addressId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -34,7 +34,7 @@ serviceMaps:
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.clientAuditDetails.createdBy
             - jsonPath: $.*.clientAuditDetails.lastModifiedBy
-        - query: INSERT INTO health.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*.address
           jsonMaps:
             - jsonPath: $.*.address.id
@@ -66,7 +66,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE health.HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -83,7 +83,7 @@ serviceMaps:
             - jsonPath: $.*.clientAuditDetails.lastModifiedTime
             - jsonPath: $.*.clientAuditDetails.lastModifiedBy
             - jsonPath: $.*.id
-        - query: INSERT INTO health.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET tenantId = ?, doorno = ?, latitude = ?, longitude = ?, locationAccuracy = ?, type = ?, addressline1 = ?, addressline2 = ?, landmark = ?, city = ?, pincode = ?, buildingName = ?, street = ?, localityCode = ?;
+        - query: INSERT INTO ADDRESS(id, clientReferenceId, tenantid, doorno, latitude, longitude, locationAccuracy, type, addressline1, addressline2, landmark, city, pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET tenantId = ?, doorno = ?, latitude = ?, longitude = ?, locationAccuracy = ?, type = ?, addressline1 = ?, addressline2 = ?, landmark = ?, city = ?, pincode = ?, buildingName = ?, street = ?, localityCode = ?;
           basePath: $.*.address
           jsonMaps:
             - jsonPath: $.*.address.id
@@ -129,7 +129,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE health.HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?,  rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?,  rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
@@ -155,7 +155,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO health.HOUSEHOLD_MEMBER(id, tenantId, clientReferenceId, individualId, individualClientReferenceId, householdId, householdClientReferenceId, isHeadOfHousehold, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO HOUSEHOLD_MEMBER(id, tenantId, clientReferenceId, individualId, individualClientReferenceId, householdId, householdClientReferenceId, isHeadOfHousehold, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -191,7 +191,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE health.HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, clientReferenceId = ?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE individualId=? AND householdId=? AND isDeleted=false;
+        - query: UPDATE HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, clientReferenceId = ?, additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE individualId=? AND householdId=? AND isDeleted=false;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.isHeadOfHousehold
@@ -219,7 +219,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE health.HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
+        - query: UPDATE HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion = ?, isDeleted = ?, additionalDetails=? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.auditDetails.lastModifiedBy
