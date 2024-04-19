@@ -2,7 +2,7 @@ ServiceMaps:
   serviceName: individual
   version: 1.0.0
   mappings:
-    - topic: save-individual-health-topic
+    - topic: save-individual-topic
       configKey: INDEX
       indexes:
         - name: individual-index-v1
@@ -11,7 +11,7 @@ ServiceMaps:
           isBulk: true
           jsonPath: $.*
           timeStampField: $.auditDetails.createdTime
-    - topic: update-individual-health-topic
+    - topic: update-individual-topic
       configKey: INDEX
       indexes:
         - name: individual-index-v1
