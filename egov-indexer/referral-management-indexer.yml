@@ -116,25 +116,20 @@ ServiceMaps:
           jsonPath: $.*
           timeStampField: $.auditDetails.lastModifiedTime
 
-    - topic: save-hfreferral-topic
+    - topic: transformer-producer-hfreferral-index-v1-topic
       configKey: INDEX
       indexes:
         - name: hf-referral-index-v1
           type: hfreferral
-          id: $.id
+          id: $.hfReferral.id
           isBulk: true
           jsonPath: $.*
-          timeStampField: $.auditDetails.createdTime
-
-    - topic: update-hfreferral-topic
-      configKey: INDEX
-      indexes:
-        - name: hf-referral-index-v1
-          type: hfreferral
-          id: $.id
-          isBulk: true
-          jsonPath: $.*
-          timeStampField: $.auditDetails.lastModifiedTime
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.hfReferral.clientAuditDetails.lastModifiedTime
 
     - topic: delete-hfreferral-topic
       configKey: INDEX
