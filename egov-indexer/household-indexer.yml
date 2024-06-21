@@ -6,7 +6,7 @@ ServiceMaps:
       configKey: INDEX
       indexes:
         - name: household-index-v1
-          type: household
+          type: _doc
           id: $.household.clientReferenceId
           isBulk: true
           jsonPath: $.*
@@ -20,7 +20,7 @@ ServiceMaps:
       configKey: INDEX
       indexes:
         - name: household-index-v1
-          type: household
+          type: _doc
           id: $.clientReferenceId
           isBulk: true
           jsonPath: $.*
@@ -29,7 +29,7 @@ ServiceMaps:
       configKey: INDEX
       indexes:
         - name: household-member-index-v1
-          type: member
+          type: _doc
           id: $.householdMember.id
           isBulk: true
           jsonPath: $.*
@@ -38,7 +38,7 @@ ServiceMaps:
       configKey: INDEX
       indexes:
         - name: household-member-index-v1
-          type: member
+          type: _doc
           id: $.id
           isBulk: true
           jsonPath: $.*
