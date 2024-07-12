@@ -1211,7 +1211,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "hcm",
+                  "pageName": "hf",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
