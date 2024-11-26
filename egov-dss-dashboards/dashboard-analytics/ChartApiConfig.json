@@ -4877,7 +4877,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "project-index-v1",
-        "aggrQuery": "{\n  \"aggs\": {\n    \"AGGS\": {\n      \"filter\": {\n        \"bool\": {\n          \"must\": [\n            {\n              \"term\": {\n                \"Data.targetType.keyword\": \"HOUSEHOLD\"\n              }\n            },\n            {\n              \"exists\": {\n                \"field\": \"Data.boundaryHierarchy.province.keyword\"\n              }\n            }\n          ],\n          \"must_not\": [\n            {\n              \"exists\": {\n                \"field\": \"Data.boundaryHierarchy.district.keyword\"\n              }\n            }\n          ]\n        }\n      },\n      \"aggs\": {\n        \"Project Start and End Dates\": {\n          \"terms\": {\n            \"field\": \"Data.boundaryHierarchy.province.keyword\"\n          },\n          \"aggs\": {\n            \"Start Date\": {\n              \"sum\": {\n                \"field\": \"Data.startDate\"\n              }\n            },\n            \"End Date\": {\n              \"sum\": {\n                \"field\": \"Data.endDate\"\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"Project Start and End Dates\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"},\"aggs\":{\"Start Date divided\":{\"bucket_script\":{\"buckets_path\":{\"start_date\":\"Start Date\",\"total_dates\":\"Total Dates\"},\"script\":\"params.start_date / params.total_dates\"}},\"End Date divided\":{\"bucket_script\":{\"buckets_path\":{\"end_date\":\"End Date\",\"total_dates\":\"Total Dates\"},\"script\":\"params.end_date / params.total_dates\"}},\"Total Dates\":{\"value_count\":{\"field\":\"Data.id.keyword\"}},\"Start Date\":{\"min\":{\"field\":\"Data.startDate\"}},\"End Date\":{\"max\":{\"field\":\"Data.endDate\"}}}}}}}}"
       }
     ],
 
@@ -4887,7 +4887,7 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "Provinces",
-    "excludedColumns": ["Total Count Households Visited Cumulative","Total Count Households Visited Today","Overall Population Target","Overall Household Target","Quantity","Total Population Covered", "End Date", "Start Date"],
+    "excludedColumns": ["Total Count Households Visited Cumulative","Total Count Households Visited Today","Overall Population Target","Overall Household Target","Quantity","Total Population Covered", "End Date", "Start Date", "Total Dates", "Start Date divided", "End Date divided"],
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [
@@ -4921,15 +4921,15 @@
       },
       {
         "postAggregationTheory" : "",
-        "actionName": "NoOpsComputedField",
-        "fields" : ["Start Date"],
+        "actionName": "AdditiveComputedField",
+        "fields" : ["Start Date divided"],
         "newField" : "startDate",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
-        "actionName": "NoOpsComputedField",
-        "fields" : ["End Date"],
+        "actionName": "AdditiveComputedField",
+        "fields" : ["End Date divided"],
         "newField" : "endDate",
         "_comments": ""
       }
