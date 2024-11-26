@@ -4921,14 +4921,14 @@
       },
       {
         "postAggregationTheory" : "",
-        "actionName": "AdditiveComputedField",
+        "actionName": "NoOpsComputedField",
         "fields" : ["Start Date"],
         "newField" : "startDate",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
-        "actionName": "AdditiveComputedField",
+        "actionName": "NoOpsComputedField",
         "fields" : ["End Date"],
         "newField" : "endDate",
         "_comments": ""
