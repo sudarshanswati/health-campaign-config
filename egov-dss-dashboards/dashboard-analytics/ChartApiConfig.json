@@ -4887,7 +4887,7 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "Provinces",
-    "excludedColumns": ["Total Count Households Visited Cumulative","Total Count Households Visited Today","Overall Population Target","Overall Household Target","Quantity","Total Population Covered", "End Date", "Start Date", "Total Dates", "Start Date divided", "End Date divided"],
+    "excludedColumns": ["Total Count Households Visited Cumulative","Total Count Households Visited Today","Overall Population Target","Overall Household Target","Quantity","Total Population Covered", "End Date", "Start Date"],
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [
