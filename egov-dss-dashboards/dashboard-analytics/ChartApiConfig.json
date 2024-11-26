@@ -4922,14 +4922,14 @@
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["Start Date divided"],
+        "fields" : ["Start Date"],
         "newField" : "startDate",
         "_comments": ""
       },
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : ["End Date divided"],
+        "fields" : ["End Date"],
         "newField" : "endDate",
         "_comments": ""
       }
